@@ -108,19 +108,19 @@ export default function BlogArticle({ article, relatedArticles }: Props) {
           </span>
         </div>
 
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4">
           {article.title}
         </h1>
 
-        <div className="flex items-center justify-between text-gray-600 mb-6">
-          <div>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-gray-600 mb-6 gap-3">
+          <div className="text-sm sm:text-base">
             <span className="font-medium">{article.author}</span>
             <span className="mx-2">•</span>
             <time>{new Date(article.published_at || article.created_at).toLocaleDateString('de-DE')}</time>
           </div>
           <button
             onClick={handleCopyLink}
-            className="flex items-center gap-2 text-rose-600 hover:text-rose-700 transition-colors"
+            className="flex items-center gap-2 text-rose-600 hover:text-rose-700 transition-colors text-sm sm:text-base"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -140,21 +140,21 @@ export default function BlogArticle({ article, relatedArticles }: Props) {
       )}
 
       {/* Trust Box */}
-      <div className="bg-rose-50 border border-rose-200 rounded-lg p-6 mb-8">
-        <div className="flex items-start gap-4">
+      <div className="bg-rose-50 border border-rose-200 rounded-lg p-4 sm:p-6 mb-8">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
           <img
             src="/images/saskia.png"
             alt="Saskia Heer"
-            className="w-20 h-20 rounded-full object-cover"
+            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover flex-shrink-0"
           />
-          <div>
-            <h3 className="font-bold text-rose-800 mb-2">Ihre Expertin</h3>
-            <p className="text-gray-700">
+          <div className="text-center sm:text-left">
+            <h3 className="font-bold text-rose-800 mb-2 text-lg">Ihre Expertin</h3>
+            <p className="text-gray-700 text-sm sm:text-base">
               Saskia Heer ist approbierte Ärztin mit Spezialisierung auf ästhetische Medizin. 
               Durch zahlreiche Fachkurse und Zertifizierungen garantiert sie höchste 
               Behandlungsqualität und Sicherheit.
             </p>
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-xs sm:text-sm text-gray-600 mt-2">
               Mitglied der Ärztekammer Brandenburg und Bayern
             </p>
           </div>

@@ -117,13 +117,13 @@ export default function AdminDashboard() {
   return (
     <div>
       {/* Statistics */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mb-8">
         {Object.entries(stats).map(([type, count]) => (
-          <div key={type} className="bg-white rounded-lg shadow-sm p-4">
-            <h3 className="text-sm font-medium text-gray-600 mb-1">
+          <div key={type} className="bg-white rounded-lg shadow-sm p-3 md:p-4">
+            <h3 className="text-xs md:text-sm font-medium text-gray-600 mb-1">
               {treatmentTypeLabels[type as TreatmentType]}
             </h3>
-            <p className="text-2xl font-bold text-rose-600">{count}</p>
+            <p className="text-xl md:text-2xl font-bold text-rose-600">{count}</p>
             <p className="text-xs text-gray-500">Veröffentlicht</p>
           </div>
         ))}
@@ -131,10 +131,10 @@ export default function AdminDashboard() {
 
       {/* Filter Tabs */}
       <div className="bg-white rounded-lg shadow-sm mb-6">
-        <div className="flex border-b">
+        <div className="flex border-b overflow-x-auto">
           <button
             onClick={() => setFilter('all')}
-            className={`px-6 py-3 font-medium transition-colors ${
+            className={`px-3 sm:px-6 py-3 font-medium transition-colors text-sm sm:text-base whitespace-nowrap ${
               filter === 'all' 
                 ? 'text-rose-600 border-b-2 border-rose-600' 
                 : 'text-gray-600 hover:text-gray-800'
@@ -144,7 +144,7 @@ export default function AdminDashboard() {
           </button>
           <button
             onClick={() => setFilter('published')}
-            className={`px-6 py-3 font-medium transition-colors ${
+            className={`px-3 sm:px-6 py-3 font-medium transition-colors text-sm sm:text-base whitespace-nowrap ${
               filter === 'published' 
                 ? 'text-rose-600 border-b-2 border-rose-600' 
                 : 'text-gray-600 hover:text-gray-800'
@@ -154,7 +154,7 @@ export default function AdminDashboard() {
           </button>
           <button
             onClick={() => setFilter('draft')}
-            className={`px-6 py-3 font-medium transition-colors ${
+            className={`px-3 sm:px-6 py-3 font-medium transition-colors text-sm sm:text-base whitespace-nowrap ${
               filter === 'draft' 
                 ? 'text-rose-600 border-b-2 border-rose-600' 
                 : 'text-gray-600 hover:text-gray-800'
@@ -165,8 +165,8 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* Articles Table */}
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      {/* Articles Table - Desktop */}
+      <div className="hidden md:block bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50">
@@ -244,6 +244,52 @@ export default function AdminDashboard() {
           </table>
         </div>
 
+        {filteredArticles.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500">Keine Artikel gefunden.</p>
+          </div>
+        )}
+      </div>
+
+      {/* Articles Cards - Mobile */}
+      <div className="md:hidden space-y-4">
+        {filteredArticles.map((article) => (
+          <div key={article.id} className="bg-white rounded-lg shadow-sm p-4">
+            <div className="mb-3">
+              <h3 className="font-semibold text-gray-900 mb-1">{article.title}</h3>
+              <p className="text-sm text-gray-500">{article.slug}</p>
+            </div>
+            
+            <div className="flex flex-wrap gap-2 mb-3">
+              <span className="inline-flex text-xs leading-5 font-semibold rounded-full bg-rose-100 text-rose-800 px-2 py-1">
+                {treatmentTypeLabels[article.treatment_type]}
+              </span>
+              <span className="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800 px-2 py-1">
+                {ageGroupLabels[article.target_age_group]}
+              </span>
+              <span className={`inline-flex text-xs leading-5 font-semibold rounded-full px-2 py-1 ${
+                article.status === 'published' 
+                  ? 'bg-green-100 text-green-800' 
+                  : 'bg-gray-100 text-gray-800'
+              }`}>
+                {article.status === 'published' ? 'Veröffentlicht' : 'Entwurf'}
+              </span>
+            </div>
+            
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-500">
+                {new Date(article.created_at).toLocaleDateString('de-DE')}
+              </span>
+              <button
+                onClick={() => handleStatusToggle(article.id, article.status)}
+                className="text-rose-600 hover:text-rose-900 font-medium"
+              >
+                {article.status === 'published' ? 'Unpublish' : 'Publish'}
+              </button>
+            </div>
+          </div>
+        ))}
+        
         {filteredArticles.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500">Keine Artikel gefunden.</p>
