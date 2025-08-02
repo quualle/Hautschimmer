@@ -28,6 +28,7 @@ const Footer = () => {
             <li><Link href="#treatments" className="hover:text-[#C0A080] transition-colors">Behandlungen</Link></li>
             <li><Link href="#pricing" className="hover:text-[#C0A080] transition-colors">Preise</Link></li>
             <li><Link href="#about" className="hover:text-[#C0A080] transition-colors">Über Uns</Link></li>
+            <li><Link href="/blog" className="hover:text-[#C0A080] transition-colors">Blog</Link></li>
             <li><Link href="#contact" className="hover:text-[#C0A080] transition-colors">Kontakt</Link></li>
           </ul>
         </div>

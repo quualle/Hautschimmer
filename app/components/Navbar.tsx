@@ -50,6 +50,7 @@ const Navbar = () => {
     { name: 'Behandlungen', href: '#treatments', id: 'treatments' },
     { name: 'Preise', href: '#pricing', id: 'pricing' },
     { name: 'Über Uns', href: '#about', id: 'about' },
+    { name: 'Blog', href: '/blog', id: 'blog' },
     { name: 'Kontakt', href: '#contact', id: 'contact' }
   ];
 
