@@ -51,9 +51,29 @@ export default function BlogArticle({ article, relatedArticles }: Props) {
     }
   }
 
+  // Entferne duplizierte Titel-Überschrift aus dem Content
+  const cleanedContent = React.useMemo(() => {
+    const lines = article.content.split('\n');
+    
+    // Prüfe die ersten 3 Zeilen nach duplizierten Titeln
+    for (let i = 0; i < Math.min(3, lines.length); i++) {
+      const line = lines[i].trim();
+      const cleanLine = line.replace(/^#+\s*/, '').trim();
+      
+      if (cleanLine === article.title ||
+          (cleanLine.length > 20 &&
+          article.title.includes(cleanLine.substring(0, 50)))) {
+        lines.splice(i, 1);
+        break;
+      }
+    }
+    
+    return lines.join('\n').trim();
+  }, [article.content, article.title]);
+
   // Format and convert markdown to HTML
   const formattedContent = React.useMemo(() => {
-    let html = article.content
+    let html = cleanedContent
 
     // Headers
     html = html.replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mb-3 mt-6 text-gray-800">$1</h3>')
@@ -82,7 +102,7 @@ export default function BlogArticle({ article, relatedArticles }: Props) {
     html = html.replace(/^> (.+)$/gim, '<blockquote class="border-l-4 border-rose-300 pl-4 py-2 mb-4 italic text-gray-600">$1</blockquote>')
     
     return html
-  }, [article.content])
+  }, [cleanedContent])
 
   const [htmlContent, setHtmlContent] = useState('')
   
