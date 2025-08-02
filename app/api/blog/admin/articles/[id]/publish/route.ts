@@ -3,9 +3,11 @@ import { supabaseAdmin } from '../../../../../../../src/lib/supabase/marketing'
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
+    
     // Check authentication
     const authHeader = request.headers.get('authorization')
     const token = authHeader?.replace('Bearer ', '')
@@ -31,7 +33,7 @@ export async function PATCH(
     const { data, error } = await supabaseAdmin
       .from('articles')
       .update(updateData)
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single()
 

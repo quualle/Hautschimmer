@@ -43,8 +43,9 @@ async function getRelatedArticles(currentId: string, treatmentType: string): Pro
   return data || []
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const article = await getArticle(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const article = await getArticle(slug)
   
   if (!article) {
     return {
@@ -60,8 +61,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogArticlePage({ params }: { params: { slug: string } }) {
-  const article = await getArticle(params.slug)
+export default async function BlogArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const article = await getArticle(slug)
 
   if (!article) {
     notFound()

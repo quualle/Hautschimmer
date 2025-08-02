@@ -51,16 +51,48 @@ export default function BlogArticle({ article, relatedArticles }: Props) {
     }
   }
 
-  // Convert markdown to HTML
+  // Format and convert markdown to HTML
+  const formattedContent = React.useMemo(() => {
+    let html = article.content
+
+    // Headers
+    html = html.replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mb-3 mt-6 text-gray-800">$1</h3>')
+    html = html.replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mb-4 mt-8 text-gray-800">$1</h2>')
+    html = html.replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mb-5 mt-10 text-gray-800">$1</h1>')
+    
+    // Bold text
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold">$1</strong>')
+    
+    // Italic text
+    html = html.replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+    
+    // Lists
+    html = html.replace(/^\* (.+)$/gim, '<li class="ml-6 mb-2">• $1</li>')
+    html = html.replace(/^- (.+)$/gim, '<li class="ml-6 mb-2">• $1</li>')
+    html = html.replace(/^\d+\. (.+)$/gim, '<li class="ml-6 mb-2">$&</li>')
+    
+    // Paragraphs
+    html = html.replace(/\n\n/g, '</p><p class="mb-4 text-gray-700 leading-relaxed">')
+    html = '<p class="mb-4 text-gray-700 leading-relaxed">' + html + '</p>'
+    
+    // Links
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-rose-600 hover:text-rose-700 underline" target="_blank" rel="noopener noreferrer">$1</a>')
+    
+    // Blockquotes
+    html = html.replace(/^> (.+)$/gim, '<blockquote class="border-l-4 border-rose-300 pl-4 py-2 mb-4 italic text-gray-600">$1</blockquote>')
+    
+    return html
+  }, [article.content])
+
   const [htmlContent, setHtmlContent] = useState('')
   
   React.useEffect(() => {
-    const convertMarkdown = async () => {
-      const html = await marked(article.content)
-      setHtmlContent(DOMPurify.sanitize(html))
+    const processContent = async () => {
+      const markedHtml = await marked(formattedContent)
+      setHtmlContent(DOMPurify.sanitize(markedHtml))
     }
-    convertMarkdown()
-  }, [article.content])
+    processContent()
+  }, [formattedContent])
 
   return (
     <article className="container mx-auto px-4 py-8 pt-24 max-w-4xl">
@@ -112,15 +144,18 @@ export default function BlogArticle({ article, relatedArticles }: Props) {
         <div className="flex items-start gap-4">
           <img
             src="/images/saskia.png"
-            alt="Dr. med. Saskia Heer"
+            alt="Saskia Heer"
             className="w-20 h-20 rounded-full object-cover"
           />
           <div>
-            <h3 className="font-semibold text-gray-800 mb-1">Dr. med. Saskia Heer</h3>
-            <p className="text-sm text-gray-600 mb-2">Fachärztin für Ästhetische Medizin</p>
-            <p className="text-sm text-gray-600">
-              Mitglied der Ärztekammer Brandenburg und Bayern • 
-              Spezialisiert auf minimalinvasive ästhetische Behandlungen
+            <h3 className="font-bold text-rose-800 mb-2">Ihre Expertin</h3>
+            <p className="text-gray-700">
+              Saskia Heer ist approbierte Ärztin mit Spezialisierung auf ästhetische Medizin. 
+              Durch zahlreiche Fachkurse und Zertifizierungen garantiert sie höchste 
+              Behandlungsqualität und Sicherheit.
+            </p>
+            <p className="text-sm text-gray-600 mt-2">
+              Mitglied der Ärztekammer Brandenburg und Bayern
             </p>
           </div>
         </div>

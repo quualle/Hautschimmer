@@ -12,8 +12,8 @@ export async function POST(request: NextRequest) {
     const adminPassword = process.env.ADMIN_PASSWORD
     const adminSessionToken = process.env.ADMIN_SESSION_TOKEN
 
-    if (!adminPassword || !adminSessionToken) {
-      console.error('Admin credentials not configured')
+    if (!adminPassword) {
+      console.error('Admin password not configured')
       return NextResponse.json({ error: 'Server-Konfigurationsfehler' }, { status: 500 })
     }
 
@@ -21,12 +21,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Ungültiges Passwort' }, { status: 401 })
     }
 
-    // Generate a session token
-    const sessionToken = crypto.randomBytes(32).toString('hex')
+    // If no session token is configured, generate one and log it
+    if (!adminSessionToken) {
+      const generatedToken = crypto.randomBytes(32).toString('hex')
+      console.log('Generated ADMIN_SESSION_TOKEN:', generatedToken)
+      console.log('Please add this to your .env.local and Netlify environment variables')
+      return NextResponse.json({ 
+        success: true, 
+        sessionToken: generatedToken,
+        message: 'Token generated - check server logs'
+      })
+    }
 
     return NextResponse.json({ 
       success: true, 
-      sessionToken: adminSessionToken // Use configured token for simplicity
+      sessionToken: adminSessionToken
     })
   } catch (error) {
     console.error('Login error:', error)

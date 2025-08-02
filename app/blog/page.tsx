@@ -17,7 +17,7 @@ export default function BlogPage() {
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Informieren Sie sich über die neuesten Behandlungsmethoden, räumen Sie mit Mythen auf 
             und erfahren Sie alles Wissenswerte rund um ästhetische Medizin - 
-            verfasst von Dr. med. Saskia Heer.
+            verfasst von Saskia Heer, Ärztin für ästhetische Medizin.
           </p>
         </div>
         
