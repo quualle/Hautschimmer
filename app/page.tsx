@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Treatments from './components/Treatments';
+import BlogCTA from './components/BlogCTA';
 import Pricing from './components/Pricing';
 import About from './components/About';
 import Testimonials from './components/Testimonials';
@@ -18,6 +19,7 @@ export default function Home() {
       {/* Background overlay to prevent hero background from showing through */}
       <div className="relative z-10 bg-[#FFFBF6]">
         <Treatments />
+        <BlogCTA />
         <Pricing />
         <Testimonials />
         <About />
