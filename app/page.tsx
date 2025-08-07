@@ -5,7 +5,7 @@ import dynamicImport from 'next/dynamic';
 const Navbar = dynamicImport(() => import('./components/Navbar'), { ssr: false });
 const Hero = dynamicImport(() => import('./components/Hero'), { ssr: false });
 const Treatments = dynamicImport(() => import('./components/Treatments'), { ssr: false });
-const BlogCTA = dynamicImport(() => import('./components/BlogCTA'));
+const BlogCTA = dynamicImport(() => import('./components/BlogCTA'), { ssr: false });
 const Pricing = dynamicImport(() => import('./components/Pricing'), { ssr: false });
 const About = dynamicImport(() => import('./components/About'));
 const Testimonials = dynamicImport(() => import('./components/Testimonials'), { ssr: false });

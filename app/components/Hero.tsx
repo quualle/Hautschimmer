@@ -6,8 +6,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPlanityBookingUrl, openPlanityBooking } from '../utils/planityBooking';
 import dynamic from 'next/dynamic';
+import HeroVideo from './HeroVideo';
 
-const HoloOrb = dynamic(() => import('./HoloOrb'), { ssr: false });
+// HoloOrb nur laden, wenn explizit aktiviert
+const enableHolo = typeof process !== 'undefined' && process.env.NEXT_PUBLIC_ENABLE_HOLO_ORB === '1';
+
+// Nur importieren, wenn Flag aktiv, sonst Stub-Komponente rendern
+let DynamicHolo: React.ComponentType = () => null;
+if (enableHolo) {
+  DynamicHolo = dynamic(() => import('./HoloOrb'), { ssr: false, loading: () => <div className="absolute inset-0 -z-0" /> });
+}
 
 const Hero = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -46,32 +54,21 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden">
-      {/* Elegant background with overlay */}
+      {/* State-of-the-art Video Background */}
       {showBackground && (
         <div className="fixed inset-0 w-full h-full z-0">
-          <motion.div 
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.25 }}
-            transition={{ duration: 2.5, ease: "easeOut" }}
-            className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-fixed bg-center bg-no-repeat w-full h-full"
-            style={{ 
-              minHeight: '100vh',
-              filter: 'contrast(1.05) brightness(0.95) blur(3px)',
-            }} 
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-dark/15 via-transparent to-light/40"></div>
-          
-          {/* Subtle grid pattern overlay */}
+          <HeroVideo />
           {showDecorations && (
             <motion.div 
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.03 }}
+              animate={{ opacity: 0.06 }}
               transition={{ duration: 2 }}
               className="absolute inset-0 w-full h-full"
               style={{
-                backgroundImage: `linear-gradient(to right, #D2B48C 1px, transparent 1px), 
-                                  linear-gradient(to bottom, #D2B48C 1px, transparent 1px)`,
+                backgroundImage: `linear-gradient(to right, rgba(210, 180, 140, 0.5) 1px, transparent 1px), 
+                                  linear-gradient(to bottom, rgba(210, 180, 140, 0.5) 1px, transparent 1px)`,
                 backgroundSize: '40px 40px',
+                mixBlendMode: 'soft-light'
               }}
             />
           )}
@@ -118,21 +115,19 @@ const Hero = () => {
       </AnimatePresence>
       
       {/* 3D Holographic Orb */}
-      {showContent && (
-        <div className="absolute inset-0 -z-0">
-          <HoloOrb />
-        </div>
-      )}
+      {showContent && enableHolo ? <DynamicHolo /> : null}
 
       {/* Main hero content */}
       {showContent && (
-        <div className="flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl z-10">
+        <div className="flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl z-10 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-center max-w-3xl px-4"
+            className="text-center w-full"
           >
+            {/* Readability panel */}
+            <div className="glass-hero rounded-3xl px-6 py-8 md:px-10 md:py-10 mx-auto">
             {/* Gold decorative element */}
             {showDecorations && (
               <motion.div
@@ -148,14 +143,14 @@ const Hero = () => {
             
             <h1 className="heading-1 mb-8 relative">
               <span 
-                className="block font-medium tracking-wide text-primary mb-2" 
+                className="block font-medium tracking-wide text-light/95 text-shadow-soft mb-2" 
               >
                 Entdecken Sie Ihre
               </span>
               <span 
-                className="text-secondary font-bold tracking-wider relative inline-block"
+                className="text-light font-bold tracking-wider relative inline-block text-shadow-strong"
                 style={{
-                  textShadow: "0px 0px 1px rgba(0,0,0,0.15), 0px 1px 2px rgba(0,0,0,0.07)",
+                  textShadow: "0 2px 10px rgba(0,0,0,0.45)",
                 }}
               >
                 Natürliche Schönheit
@@ -164,14 +159,14 @@ const Hero = () => {
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
                     transition={{ duration: 1.2, delay: 0.5 }}
-                    className="absolute bottom-0 left-0 h-px bg-secondary/40"
+                    className="absolute bottom-0 left-0 h-px bg-light/60"
                   />
                 )}
               </span>
             </h1>
             
             <p 
-              className="text-base leading-relaxed mb-10 max-w-xl mx-auto text-primary/90 font-medium"
+              className="text-base leading-relaxed mb-10 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
             >
               Exklusive Schönheitsbehandlungen von Ärztin Saskia Heer. <br className="hidden md:block" /> 
               Erleben Sie die perfekte Verbindung von Wissenschaft und Schönheit.  
@@ -187,10 +182,11 @@ const Hero = () => {
               <a 
                 href={getPlanityBookingUrl()}
                 onClick={openPlanityBooking}
-                className="button-secondary font-semibold" 
+                className="button-secondary font-semibold"
               >
                 Jetzt Termin Buchen
               </a>
+            </div>
             </div>
           </motion.div>
         </div>

@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-const MotionDiv: any = dynamic(() => import('framer-motion').then(m => m.motion.div), { ssr: false });
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
 
@@ -74,7 +73,7 @@ const Testimonials = () => {
   return (
     <section className="py-24 bg-primary/10">
       <div className="section-container !pt-0 !pb-0">
-        <MotionDiv
+        <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -85,11 +84,11 @@ const Testimonials = () => {
           <p className="paragraph max-w-3xl mx-auto">
             Entdecken Sie, was unsere zufriedenen Kunden über ihre Erfahrungen und Ergebnisse bei MedEstetique zu sagen haben.
           </p>
-        </MotionDiv>
+        </motion.div>
 
         <div className="relative max-w-4xl mx-auto mb-12">
           {testimonials.map((testimonial, index) => (
-            <MotionDiv
+            <motion.div
               key={testimonial.id}
               initial={{ opacity: 0 }}
               animate={{ 
@@ -113,7 +112,7 @@ const Testimonials = () => {
                   <p className="text-[#C0A080]">{testimonial.treatment}</p>
                 </div>
               </div>
-            </MotionDiv>
+            </motion.div>
           ))}
         </div>
 
@@ -128,7 +127,7 @@ const Testimonials = () => {
           ))}
         </div>
         
-        <MotionDiv
+        <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -137,7 +136,7 @@ const Testimonials = () => {
           <a href={getPlanityBookingUrl()} target="_blank" rel="noopener noreferrer" className="button-primary">
             Jetzt Termin Buchen
           </a>
-        </MotionDiv>
+        </motion.div>
       </div>
     </section>
   );

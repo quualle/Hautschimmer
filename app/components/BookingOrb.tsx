@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { getPlanityBookingUrl, openPlanityBooking } from "../utils/planityBooking";
 
 export default function BookingOrb() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400);
+    const onScroll = () => setVisible(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);

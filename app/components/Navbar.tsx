@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
-const MotionDiv: any = dynamic(() => import('framer-motion').then(m => m.motion.div), { ssr: false });
+import { motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
 
@@ -60,13 +59,14 @@ const Navbar = () => {
       className={`fixed w-full z-50 transition-all duration-500 ${
         scrolled ? 'bg-light/95 backdrop-blur-md shadow-elegant py-2' : 'bg-transparent py-4'
       }`}
+      style={!scrolled ? { background: 'rgba(8,8,10,0.25)', backdropFilter: 'blur(10px)' } : undefined}
     >
       {/* Top gradient border */}
       <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
       
       <nav className="section-container !py-0 flex flex-col items-center">
         <Link href="/" className="relative z-50 group">
-          <MotionDiv 
+          <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -105,7 +105,7 @@ const Navbar = () => {
               {/* Subtle animated underline on hover */}
               <div className="absolute -bottom-1 left-1/2 w-0 h-px bg-secondary/50 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-700 ease-out"></div>
             </div>
-          </MotionDiv>
+          </motion.div>
         </Link>
         
         {/* Refined separator */}
@@ -120,19 +120,19 @@ const Navbar = () => {
             <Link 
               key={link.name} 
               href={link.href} 
-              className={`relative font-light text-sm tracking-wide uppercase ${
+              className={`relative font-light text-sm tracking-wide uppercase text-shadow-soft ${
                 activeSection === link.id 
-                  ? 'text-secondary font-medium' 
-                  : 'text-dark hover:text-secondary'
+                  ? 'text-white font-medium' 
+                  : 'text-white/90 hover:text-white'
               } transition-colors duration-300 group py-1 px-3`}
-              style={{ textShadow: scrolled ? 'none' : '0px 0px 10px rgba(255,249,244,0.8), 0px 0px 5px rgba(255,249,244,0.6)' }}
+              style={{ textShadow: scrolled ? '0 1px 2px rgba(0,0,0,0.25)' : '0 2px 6px rgba(0,0,0,0.45)' }}
             >
               <span className={`relative z-10`}>{link.name}</span>
-              <span className={`absolute inset-x-0 bottom-0 h-px bg-secondary transform origin-left transition-transform duration-300 ${
+              <span className={`absolute inset-x-0 bottom-0 h-px bg-white/70 transform origin-left transition-transform duration-300 ${
                 activeSection === link.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
               }`}></span>
               {!scrolled && (
-                <span className="absolute inset-0 bg-dark/10 backdrop-blur-sm rounded-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               )}
             </Link>
           ))}
@@ -149,7 +149,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation with enhanced animations */}
         {isOpen && (
-          <MotionDiv 
+          <motion.div 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -180,7 +180,7 @@ const Navbar = () => {
             >
               Jetzt Termin Buchen
             </a>
-          </MotionDiv>
+          </motion.div>
         )}
       </nav>
       
