@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPlanityBookingUrl, openPlanityBooking } from '../utils/planityBooking';
+import dynamic from 'next/dynamic';
+
+const HoloOrb = dynamic(() => import('./HoloOrb'), { ssr: false });
 
 const Hero = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -114,6 +117,13 @@ const Hero = () => {
         )}
       </AnimatePresence>
       
+      {/* 3D Holographic Orb */}
+      {showContent && (
+        <div className="absolute inset-0 -z-0">
+          <HoloOrb />
+        </div>
+      )}
+
       {/* Main hero content */}
       {showContent && (
         <div className="flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl z-10">
@@ -170,7 +180,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a 
                 href="#treatments" 
-                className="button-primary font-semibold text-light" 
+                className="button-holo" 
               >
                 Unsere Behandlungen
               </a>

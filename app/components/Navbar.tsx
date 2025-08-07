@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+const MotionDiv: any = dynamic(() => import('framer-motion').then(m => m.motion.div), { ssr: false });
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
 
@@ -65,7 +66,7 @@ const Navbar = () => {
       
       <nav className="section-container !py-0 flex flex-col items-center">
         <Link href="/" className="relative z-50 group">
-          <motion.div 
+          <MotionDiv 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -104,7 +105,7 @@ const Navbar = () => {
               {/* Subtle animated underline on hover */}
               <div className="absolute -bottom-1 left-1/2 w-0 h-px bg-secondary/50 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-700 ease-out"></div>
             </div>
-          </motion.div>
+          </MotionDiv>
         </Link>
         
         {/* Refined separator */}
@@ -148,7 +149,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation with enhanced animations */}
         {isOpen && (
-          <motion.div 
+          <MotionDiv 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -179,7 +180,7 @@ const Navbar = () => {
             >
               Jetzt Termin Buchen
             </a>
-          </motion.div>
+          </MotionDiv>
         )}
       </nav>
       

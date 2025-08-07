@@ -1,13 +1,17 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Treatments from './components/Treatments';
-import BlogCTA from './components/BlogCTA';
-import Pricing from './components/Pricing';
-import About from './components/About';
-import Testimonials from './components/Testimonials';
-import TreatmentRooms from './components/TreatmentRooms';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+export const dynamic = 'force-dynamic';
+
+import dynamicImport from 'next/dynamic';
+
+const Navbar = dynamicImport(() => import('./components/Navbar'), { ssr: false });
+const Hero = dynamicImport(() => import('./components/Hero'), { ssr: false });
+const Treatments = dynamicImport(() => import('./components/Treatments'), { ssr: false });
+const BlogCTA = dynamicImport(() => import('./components/BlogCTA'));
+const Pricing = dynamicImport(() => import('./components/Pricing'), { ssr: false });
+const About = dynamicImport(() => import('./components/About'));
+const Testimonials = dynamicImport(() => import('./components/Testimonials'), { ssr: false });
+const TreatmentRooms = dynamicImport(() => import('./components/TreatmentRooms'));
+const Contact = dynamicImport(() => import('./components/Contact'));
+const Footer = dynamicImport(() => import('./components/Footer'));
 
 export default function Home() {
   return (

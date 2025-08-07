@@ -2,7 +2,9 @@
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
-    "./app/components/**/*.{js,ts,jsx,tsx}"
+    "./app/components/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -29,5 +31,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/container-queries'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 };

@@ -2,6 +2,9 @@ import './globals.css';
 import { Montserrat, Playfair_Display } from 'next/font/google';
 import type { Metadata } from 'next';
 import GoogleAnalytics from './components/GoogleAnalytics';
+import CommandPalette from './components/CommandPalette';
+import SmoothScroll from './components/SmoothScroll';
+import BookingOrb from './components/BookingOrb';
 
 // More refined font configuration with weight variants
 const montserrat = Montserrat({
@@ -39,6 +42,9 @@ export default function RootLayout({
     <html lang="de" className={`${montserrat.variable} ${playfairDisplay.variable} scroll-smooth`}>
       <body className="bg-light text-primary antialiased selection:bg-secondary/20 selection:text-primary">
         <GoogleAnalytics />
+        <SmoothScroll />
+        <CommandPalette />
+        <BookingOrb />
         {children}
       </body>
     </html>
