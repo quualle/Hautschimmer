@@ -97,13 +97,13 @@ const Navbar = () => {
                 className="h-auto" 
                 style={{ 
                   maxWidth: 'clamp(280px, 38vw, 450px)',
-                  filter: 'contrast(1.05) brightness(0.98)',
+                  filter: 'brightness(1.05) contrast(1.08) drop-shadow(0 2px 8px rgba(0,0,0,0.35))',
                   transform: 'translateY(2px)'
                 }} 
               />
               
-              {/* Subtle animated underline on hover */}
-              <div className="absolute -bottom-1 left-1/2 w-0 h-px bg-secondary/50 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-700 ease-out"></div>
+              {/* Underline */}
+              <div className="absolute -bottom-1 left-1/2 w-0 h-px bg-white/80 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-700 ease-out"></div>
             </div>
           </motion.div>
         </Link>

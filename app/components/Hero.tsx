@@ -119,7 +119,7 @@ const Hero = () => {
 
       {/* Main hero content */}
       {showContent && (
-        <div className="flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl z-10 px-4">
+        <div className="flex justify-center items-center absolute top-[74%] md:top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl z-10 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,21 +127,11 @@ const Hero = () => {
             className="text-center w-full"
           >
             {/* Readability panel */}
-            <div className="glass-hero rounded-3xl px-6 py-8 md:px-10 md:py-10 mx-auto">
+            <div className="hero-elegant rounded-3xl px-6 py-6 md:px-8 md:py-8 mx-auto">
             {/* Gold decorative element */}
-            {showDecorations && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5, delay: 0.2 }}
-                className="mb-4"
-              >
-                <div className="gold-circle mb-1"></div>
-                <div className="gold-divider w-24 mx-auto mb-3"></div>
-              </motion.div>
-            )}
+            {/* Decorative header removed for a more compact panel */}
             
-            <h1 className="heading-1 mb-8 relative">
+            <h1 className="heading-1 mb-6 relative">
               <span 
                 className="block font-medium tracking-wide text-light/95 text-shadow-soft mb-2" 
               >
@@ -166,7 +156,7 @@ const Hero = () => {
             </h1>
             
             <p 
-              className="text-base leading-relaxed mb-10 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
+              className="text-base leading-relaxed mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
             >
               Exklusive Schönheitsbehandlungen von Ärztin Saskia Heer. <br className="hidden md:block" /> 
               Erleben Sie die perfekte Verbindung von Wissenschaft und Schönheit.  
@@ -182,7 +172,7 @@ const Hero = () => {
               <a 
                 href={getPlanityBookingUrl()}
                 onClick={openPlanityBooking}
-                className="button-secondary font-semibold"
+                className="button-ghost"
               >
                 Jetzt Termin Buchen
               </a>

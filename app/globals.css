@@ -46,6 +46,20 @@ body {
     background: linear-gradient(to right, #D2B48C, #E6C9A8);
     box-shadow: 0 4px 15px rgba(210, 180, 140, 0.2), 0 2px 5px rgba(210, 180, 140, 0.15);
   }
+
+  /* High-contrast ghost button for dark/video backgrounds */
+  .button-ghost {
+    @apply relative inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 text-white focus-glow;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.55);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+  }
+  .button-ghost:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.8);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45), 0 0 20px rgba(210,180,140,0.15);
+  }
   
   .button-primary:hover {
     background: linear-gradient(to right, #D2B48C, #E6C9A8);
@@ -184,5 +198,26 @@ body {
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 20px rgba(210,180,140,0.12);
+  }
+
+  /* Refined hero panel */
+  .hero-elegant {
+    background: linear-gradient(180deg, rgba(8,8,10,0.42) 0%, rgba(8,8,10,0.30) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      0 0 0 1px rgba(255,255,255,0.06),
+      0 28px 70px rgba(0,0,0,0.40),
+      0 0 30px rgba(210,180,140,0.10);
+  }
+
+  .chip-mini {
+    @apply inline-flex items-center uppercase tracking-wider text-xs rounded-full px-3 py-1;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    letter-spacing: 0.08em;
   }
 }
