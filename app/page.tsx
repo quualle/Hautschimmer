@@ -1,0 +1,36 @@
+export const dynamic = 'force-dynamic';
+
+import dynamicImport from 'next/dynamic';
+
+const Navbar = dynamicImport(() => import('./components/Navbar'), { ssr: false });
+const Hero = dynamicImport(() => import('./components/Hero'), { ssr: false });
+const Treatments = dynamicImport(() => import('./components/Treatments'), { ssr: false });
+const BlogCTA = dynamicImport(() => import('./components/BlogCTA'), { ssr: false });
+const Pricing = dynamicImport(() => import('./components/Pricing'), { ssr: false });
+const About = dynamicImport(() => import('./components/About'));
+const Testimonials = dynamicImport(() => import('./components/Testimonials'), { ssr: false });
+const TreatmentRooms = dynamicImport(() => import('./components/TreatmentRooms'));
+const Contact = dynamicImport(() => import('./components/Contact'));
+const Footer = dynamicImport(() => import('./components/Footer'));
+
+export default function Home() {
+  return (
+    <main>
+      <div className="relative z-50">
+        <Navbar />
+      </div>
+      <Hero />
+      {/* Background overlay to prevent hero background from showing through */}
+      <div className="relative z-10 bg-[#FFFBF6]">
+        <Treatments />
+        <BlogCTA />
+        <Pricing />
+        <Testimonials />
+        <About />
+        <TreatmentRooms />
+        <Contact />
+        <Footer />
+      </div>
+    </main>
+  );
+}
