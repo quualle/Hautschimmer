@@ -24,7 +24,6 @@ const treatments = {
       { name: 'Hyperhidrose Achsel', price: 809, duration: '30 Min', info: 'Stoppt übermäßiges Schwitzen', unit: undefined }
     ],
     packages: [
-      { name: 'Stirn + Glabella Paket', price: 269, savings: 44, info: 'Kombinationsbehandlung für die obere Gesichtshälfte', special: undefined },
       { name: 'Summer-Special: Hyperhidrose Achseln', price: 719, special: true, info: 'Behandlung gegen starkes Schwitzen - Sonderpreis nur für kurze Zeit! (Normalpreis: 809€)', savings: 90 },
       { name: '2 Zonen (Stirn + Glabella)', price: 314, info: 'Zwei Behandlungszonen zum Vorteilspreis', special: undefined, savings: undefined },
       { name: '3 Zonen (Stirn + Glabella + Krähenfüße)', price: 449, savings: 79, info: 'Komplettbehandlung für ein frisches Aussehen', special: undefined }
@@ -278,7 +277,7 @@ const Pricing = () => {
                     key={pkg.name}
                     variants={itemVariants}
                     whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                    className="relative group"
+                    className={`relative group ${pkg.name.includes('Summer-Special') ? 'md:col-span-2' : ''}`}
                   >
                     <div className={`
                       rounded-2xl p-8 h-full transition-all duration-300
