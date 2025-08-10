@@ -127,11 +127,11 @@ const Hero = () => {
             className="text-center w-full"
           >
             {/* Readability panel */}
-            <div className="hero-elegant rounded-3xl px-4 py-4 md:px-8 md:py-8 mx-auto">
+            <div className="hero-elegant rounded-3xl px-4 py-3 md:px-8 md:py-8 mx-auto">
             {/* Gold decorative element */}
             {/* Decorative header removed for a more compact panel */}
             
-            <h1 className="heading-1 mb-4 md:mb-6 relative">
+            <h1 className="heading-1 mb-3 md:mb-6 relative">
               <span 
                 className="text-light font-bold tracking-wider relative inline-block text-shadow-strong"
                 style={{
@@ -151,10 +151,13 @@ const Hero = () => {
             </h1>
             
             <p 
-              className="text-sm md:text-base leading-relaxed mb-6 md:mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
+              className="text-sm md:text-base leading-relaxed mb-4 md:mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
             >
-              Tauchen Sie ein in Anti-Aging- und Schönheitsbehandlungen, <br className="hidden md:block" />
-              ärztlich durchgeführt – für ein junges, frisches und natürliches Aussehen.
+              <span className="md:hidden">Tauchen Sie ein in Anti-Aging- und Schönheitsbehandlungen!</span>
+              <span className="hidden md:inline">
+                Tauchen Sie ein in Anti-Aging- und Schönheitsbehandlungen, <br />
+                ärztlich durchgeführt – für ein junges, frisches und natürliches Aussehen.
+              </span>
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
