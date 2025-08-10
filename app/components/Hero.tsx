@@ -133,17 +133,12 @@ const Hero = () => {
             
             <h1 className="heading-1 mb-6 relative">
               <span 
-                className="block font-medium tracking-wide text-light/95 text-shadow-soft mb-2" 
-              >
-                Entdecken Sie Ihre
-              </span>
-              <span 
                 className="text-light font-bold tracking-wider relative inline-block text-shadow-strong"
                 style={{
                   textShadow: "0 2px 10px rgba(0,0,0,0.45)",
                 }}
               >
-                Natürliche Schönheit
+                Ihr neues Strahlen
                 {showDecorations && (
                   <motion.div
                     initial={{ width: 0 }}
@@ -158,8 +153,8 @@ const Hero = () => {
             <p 
               className="text-base leading-relaxed mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
             >
-              Exklusive Schönheitsbehandlungen von Ärztin Saskia Heer. <br className="hidden md:block" /> 
-              Erleben Sie die perfekte Verbindung von Wissenschaft und Schönheit.  
+              Tauchen Sie ein in Anti-Aging- und Schönheitsbehandlungen, <br className="hidden md:block" />
+              ärztlich durchgeführt – für ein junges, frisches und natürliches Aussehen.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
