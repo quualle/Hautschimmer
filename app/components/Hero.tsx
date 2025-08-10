@@ -98,7 +98,7 @@ const Hero = () => {
                 transition={{ duration: 1.5, delay: 0.3 }}
                 className="absolute top-[-25px] h-px bg-secondary/40 -left-12 -right-12 transform"
               />
-              <h1 className="font-serif text-6xl md:text-8xl text-secondary tracking-widest relative">
+              <h1 className="font-serif text-5xl md:text-8xl text-secondary tracking-wider md:tracking-widest relative">
                 <span className="relative z-10">
                   Med<span className="font-light italic">Estetique</span>
                 </span>
@@ -119,7 +119,7 @@ const Hero = () => {
 
       {/* Main hero content */}
       {showContent && (
-        <div className="flex justify-center items-center absolute top-[74%] md:top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl z-10 px-4">
+        <div className="flex justify-center items-center absolute top-[65%] md:top-[70%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl z-10 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,11 +127,11 @@ const Hero = () => {
             className="text-center w-full"
           >
             {/* Readability panel */}
-            <div className="hero-elegant rounded-3xl px-6 py-6 md:px-8 md:py-8 mx-auto">
+            <div className="hero-elegant rounded-3xl px-4 py-4 md:px-8 md:py-8 mx-auto">
             {/* Gold decorative element */}
             {/* Decorative header removed for a more compact panel */}
             
-            <h1 className="heading-1 mb-6 relative">
+            <h1 className="heading-1 mb-4 md:mb-6 relative">
               <span 
                 className="text-light font-bold tracking-wider relative inline-block text-shadow-strong"
                 style={{
@@ -151,25 +151,25 @@ const Hero = () => {
             </h1>
             
             <p 
-              className="text-base leading-relaxed mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
+              className="text-sm md:text-base leading-relaxed mb-6 md:mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
             >
               Tauchen Sie ein in Anti-Aging- und Schönheitsbehandlungen, <br className="hidden md:block" />
               ärztlich durchgeführt – für ein junges, frisches und natürliches Aussehen.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a 
-                href="#treatments" 
-                className="button-holo" 
-              >
-                Unsere Behandlungen
-              </a>
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
               <a 
                 href={getPlanityBookingUrl()}
                 onClick={openPlanityBooking}
+                className="button-holo" 
+              >
+                Jetzt Termin buchen
+              </a>
+              <a 
+                href="#treatments" 
                 className="button-ghost"
               >
-                Jetzt Termin Buchen
+                Unsere Behandlungen
               </a>
             </div>
             </div>

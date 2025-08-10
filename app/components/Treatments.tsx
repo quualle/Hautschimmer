@@ -375,7 +375,7 @@ const Treatments = () => {
     // Section mit neuem Hintergrundverlauf
     <section 
       id="treatments" 
-      className="pt-32 pb-24 relative overflow-hidden"
+      className="pt-16 md:pt-32 pb-24 relative overflow-hidden"
       style={{ background: `linear-gradient(180deg, ${colors.backgroundStart} 0%, ${colors.backgroundEnd} 100%)` }}
     >
       {/* Überarbeiteter Übergangsbereich */}
