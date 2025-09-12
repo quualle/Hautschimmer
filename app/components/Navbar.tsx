@@ -140,47 +140,75 @@ const Navbar = () => {
 
         {/* Mobile Menu Button with refined styling */}
         <button 
-          className="md:hidden text-xl w-10 h-10 flex items-center justify-center absolute top-5 right-5 z-50 text-primary hover:text-secondary transition-colors duration-300" 
+          className={`md:hidden text-xl w-10 h-10 flex items-center justify-center absolute top-5 right-5 z-[60] transition-colors duration-300 ${
+            scrolled 
+              ? 'text-primary hover:text-secondary' 
+              : 'text-white hover:text-secondary'
+          }`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        {/* Mobile Navigation with enhanced animations */}
+        {/* Mobile Navigation Overlay */}
         {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 bg-light/98 backdrop-blur-sm z-40 flex flex-col items-center justify-center space-y-6 p-6"
-          >
-            <div className="gold-divider w-16 mb-4"></div>
-            
-            {navLinks.map(link => (
-              <Link 
-                key={link.name} 
-                href={link.href} 
-                className="text-base font-medium text-primary hover:text-secondary transition-colors duration-300 py-2 px-4 rounded-sm hover:bg-secondary/10"
-                onClick={toggleMenu}
-              >
-                {link.name}
-              </Link>
-            ))}
-            
-            <div className="gold-divider w-16 my-4"></div>
-            
-            <a 
-              href={getPlanityBookingUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-primary mt-2 text-sm"
+          <div className="fixed inset-0 z-[55]">
+            {/* Dark backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               onClick={toggleMenu}
+            />
+            
+            {/* Slide-in menu from right */}
+            <motion.div 
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl"
             >
-              Jetzt Termin Buchen
-            </a>
-          </motion.div>
+              {/* Menu content */}
+              <div className="flex flex-col h-full p-8 pt-20">
+                {/* Logo section */}
+                <div className="mb-8 text-center">
+                  <h2 className="font-serif text-2xl text-primary mb-2">MedEstetique</h2>
+                  <div className="w-12 h-px bg-secondary mx-auto"></div>
+                </div>
+                
+                {/* Navigation links */}
+                <nav className="flex flex-col space-y-4 flex-1">
+                  {navLinks.map(link => (
+                    <Link 
+                      key={link.name} 
+                      href={link.href} 
+                      className="text-lg font-medium text-primary hover:text-secondary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-secondary/5 border-b border-gray-100 last:border-0"
+                      onClick={toggleMenu}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </nav>
+                
+                {/* CTA Button */}
+                <div className="mt-8">
+                  <a 
+                    href={getPlanityBookingUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button-primary w-full text-center block"
+                    onClick={toggleMenu}
+                  >
+                    Jetzt Termin Buchen
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         )}
       </nav>
       
