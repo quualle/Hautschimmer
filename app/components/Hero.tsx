@@ -8,14 +8,9 @@ import { getPlanityBookingUrl, openPlanityBooking } from '../utils/planityBookin
 import dynamic from 'next/dynamic';
 import HeroVideo from './HeroVideo';
 
-// HoloOrb nur laden, wenn explizit aktiviert
-const enableHolo = typeof process !== 'undefined' && process.env.NEXT_PUBLIC_ENABLE_HOLO_ORB === '1';
-
-// Nur importieren, wenn Flag aktiv, sonst Stub-Komponente rendern
-let DynamicHolo: React.ComponentType = () => null;
-if (enableHolo) {
-  DynamicHolo = dynamic(() => import('./HoloOrb'), { ssr: false, loading: () => <div className="absolute inset-0 -z-0" /> });
-}
+// HoloOrb deaktiviert für Kompatibilität
+const enableHolo = false;
+const DynamicHolo: React.ComponentType = () => null;
 
 const Hero = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -153,11 +148,7 @@ const Hero = () => {
             <p 
               className="text-sm md:text-base leading-relaxed mb-4 md:mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
             >
-              <span className="md:hidden">Tauchen Sie ein in Anti-Aging- und Schönheitsbehandlungen!</span>
-              <span className="hidden md:inline">
-                Tauchen Sie ein in Anti-Aging- und Schönheitsbehandlungen, <br />
-                ärztlich durchgeführt – für ein junges, frisches und natürliches Aussehen.
-              </span>
+              Ihre Schönheit in besten Händen
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">

@@ -73,7 +73,7 @@ const Navbar = () => {
             className="flex items-center"
           >
             {/* Logo container with refined glow effect */}
-            <div className="relative w-20 h-20 md:w-22 md:h-22 lg:w-24 lg:h-24 rounded-full mr-5 flex-shrink-0 overflow-hidden group-hover:shadow-gold transition-all duration-300" 
+            <div className="relative w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full mr-3 md:mr-5 flex-shrink-0 overflow-hidden group-hover:shadow-gold transition-all duration-300" 
                 style={{
                   boxShadow: "0 0 25px rgba(210, 180, 140, 0.2), 0 0 10px rgba(210, 180, 140, 0.15), inset 0 0 3px rgba(210, 180, 140, 0.3)"
                 }}>
@@ -96,7 +96,7 @@ const Navbar = () => {
                 height={80} 
                 className="h-auto" 
                 style={{ 
-                  maxWidth: 'clamp(280px, 38vw, 450px)',
+                  maxWidth: 'clamp(220px, 32vw, 450px)',
                   filter: 'brightness(1.05) contrast(1.08) drop-shadow(0 2px 8px rgba(0,0,0,0.35))',
                   transform: 'translateY(2px)'
                 }} 
@@ -154,28 +154,28 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 bg-light/98 z-40 flex flex-col items-center justify-center space-y-8 p-6"
+            className="fixed inset-0 bg-light/98 backdrop-blur-sm z-40 flex flex-col items-center justify-center space-y-6 p-6"
           >
-            <div className="gold-divider w-24 mb-8"></div>
+            <div className="gold-divider w-16 mb-4"></div>
             
             {navLinks.map(link => (
               <Link 
                 key={link.name} 
                 href={link.href} 
-                className="text-lg uppercase tracking-wide font-light text-primary hover:text-secondary transition-colors duration-300"
+                className="text-base font-medium text-primary hover:text-secondary transition-colors duration-300 py-2 px-4 rounded-sm hover:bg-secondary/10"
                 onClick={toggleMenu}
               >
                 {link.name}
               </Link>
             ))}
             
-            <div className="gold-divider w-24 my-8"></div>
+            <div className="gold-divider w-16 my-4"></div>
             
             <a 
               href={getPlanityBookingUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="button-primary mt-4"
+              className="button-primary mt-2 text-sm"
               onClick={toggleMenu}
             >
               Jetzt Termin Buchen

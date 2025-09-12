@@ -42,7 +42,7 @@ body {
   }
   
   .button-primary {
-    @apply px-7 py-3 rounded-none font-light tracking-wider uppercase text-sm transform transition-all duration-300 shadow-elegant;
+    @apply px-6 sm:px-7 py-3 rounded-none font-light tracking-wider uppercase text-sm transform transition-all duration-300 shadow-elegant;
     background: linear-gradient(to right, #D2B48C, #E6C9A8);
     box-shadow: 0 4px 15px rgba(210, 180, 140, 0.2), 0 2px 5px rgba(210, 180, 140, 0.15);
   }
@@ -67,7 +67,7 @@ body {
   }
   
   .button-secondary {
-    @apply px-7 py-3 rounded-none font-light tracking-wider uppercase text-sm transform transition-all duration-300;
+    @apply px-6 sm:px-7 py-3 rounded-none font-light tracking-wider uppercase text-sm transform transition-all duration-300;
     background: rgba(255, 249, 244, 0.6);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(210, 180, 140, 0.3);
