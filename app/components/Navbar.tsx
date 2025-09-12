@@ -170,11 +170,34 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl"
-              style={{ backgroundColor: '#ffffff', opacity: 1 }}
+              className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] shadow-2xl"
+              style={{ 
+                backgroundColor: '#ffffff',
+                backgroundImage: 'none',
+                opacity: 1,
+                zIndex: 9999
+              }}
             >
+              {/* Solid white background overlay - failsafe */}
+              <div 
+                className="absolute inset-0 w-full h-full"
+                style={{ 
+                  backgroundColor: '#ffffff',
+                  backgroundImage: 'none',
+                  opacity: 1,
+                  zIndex: 1
+                }}
+              />
+              
               {/* Menu content */}
-              <div className="flex flex-col h-full p-8 pt-20 bg-white" style={{ backgroundColor: '#ffffff' }}>
+              <div 
+                className="relative flex flex-col h-full p-8 pt-20"
+                style={{ 
+                  backgroundColor: '#ffffff',
+                  backgroundImage: 'none',
+                  zIndex: 2
+                }}
+              >
                 {/* Logo section */}
                 <div className="mb-8 text-center">
                   <h2 className="font-serif text-2xl text-primary mb-2">MedEstetique</h2>
@@ -188,6 +211,7 @@ const Navbar = () => {
                       key={link.name} 
                       href={link.href} 
                       className="text-lg font-medium text-primary hover:text-secondary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-secondary/5 border-b border-gray-100 last:border-0"
+                      style={{ backgroundColor: 'rgba(255,255,255,0.95)' }}
                       onClick={toggleMenu}
                     >
                       {link.name}
