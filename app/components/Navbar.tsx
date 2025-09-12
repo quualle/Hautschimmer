@@ -171,9 +171,10 @@ const Navbar = () => {
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
               className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl"
+              style={{ backgroundColor: '#ffffff', opacity: 1 }}
             >
               {/* Menu content */}
-              <div className="flex flex-col h-full p-8 pt-20">
+              <div className="flex flex-col h-full p-8 pt-20 bg-white" style={{ backgroundColor: '#ffffff' }}>
                 {/* Logo section */}
                 <div className="mb-8 text-center">
                   <h2 className="font-serif text-2xl text-primary mb-2">MedEstetique</h2>
