@@ -148,7 +148,12 @@ const Hero = () => {
             <p 
               className="text-sm md:text-base leading-relaxed mb-4 md:mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
             >
-              Ihre Schönheit in besten Händen
+              <span className="block md:hidden">
+                Schönheitsbehandlungen für ein natürliches Aussehen.
+              </span>
+              <span className="hidden md:block">
+                Tauchen Sie ein in Anti-Aging und Schönheitsbehandlungen. Ärztlich durchgeführt. Für ein junges, frisches und natürliches Aussehen.
+              </span>
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
