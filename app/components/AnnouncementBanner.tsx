@@ -1,11 +1,25 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaTimes, FaMapMarkerAlt } from 'react-icons/fa';
 
 const AnnouncementBanner = () => {
   const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Hide banner when scrolled down more than 50px
+      if (window.scrollY > 50) {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <AnimatePresence mode="wait">
