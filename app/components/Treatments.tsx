@@ -14,30 +14,30 @@ import {
 } from 'react-icons/fa';
 import React from 'react';
 
-// --- REFINED COLOR PALETTE ---
+// --- MODERN COOL COLOR PALETTE ---
 const colors = {
-  backgroundStart: '#FFFFFF',
-  backgroundEnd: '#F9F5F2',
-  primaryAccent: '#D2B48C',       // Sophisticated champagne gold
-  secondaryAccent: '#E6C9A8',     // Soft warm beige
-  gold: '#B89F7A',                // Muted antique gold
-  textPrimary: '#3C322D',         // Deep warm brown
-  textSecondary: '#5D4E46',       // Softer brown for supporting text
+  backgroundStart: '#F7FAFC',
+  backgroundEnd: '#EDF2F7',
+  primaryAccent: '#718096',       // Cool gray
+  secondaryAccent: '#A0AEC0',     // Light cool gray
+  gold: '#4A5568',                // Dark gray
+  textPrimary: '#2D3748',         // Cool slate gray
+  textSecondary: '#4A5568',       // Medium gray
   white: '#FFFFFF',
   cardBgDefault: 'rgba(255, 255, 255, 0.8)',
-  cardBgHover: 'rgba(249, 245, 242, 0.95)',
-  cardBorder: 'rgba(210, 180, 140, 0.25)',
-  selectedGradientStart: 'rgba(210, 180, 140, 0.85)',
-  selectedGradientEnd: 'rgba(230, 201, 168, 0.9)',
-  selectedText: '#3C322D',
-  iconBgDefault: 'rgba(210, 180, 140, 0.15)',
-  iconColorDefault: '#B89F7A',
+  cardBgHover: 'rgba(237, 242, 247, 0.95)',
+  cardBorder: 'rgba(113, 128, 150, 0.25)',
+  selectedGradientStart: 'rgba(113, 128, 150, 0.85)',
+  selectedGradientEnd: 'rgba(160, 174, 192, 0.9)',
+  selectedText: '#2D3748',
+  iconBgDefault: 'rgba(113, 128, 150, 0.15)',
+  iconColorDefault: '#4A5568',
   iconBgSelected: 'rgba(255, 255, 255, 0.25)',
-  iconColorSelected: '#3C322D',
-  buttonGradientStart: '#D2B48C',
-  buttonGradientEnd: '#B89F7A',
+  iconColorSelected: '#2D3748',
+  buttonGradientStart: '#718096',
+  buttonGradientEnd: '#4A5568',
   buttonText: '#FFFFFF',
-  purpleAccent: '#5D4E66', // Deep purple for specific elements
+  purpleAccent: '#553C9A', // Cool purple accent
 };
 
 // Sub-treatments (Inhalte bleiben gleich, Icons können angepasst werden)
@@ -206,38 +206,42 @@ const treatments = [
 // Create a specific component for treatment cards to ensure consistent styling
 const TreatmentCard = ({ treatment, isSelected, onClick, index, inView }) => {
   const cardGradients = {
-    // Define specific gradients for each treatment card for a more luxury feel
-    botox: {
-      start: 'rgba(224, 212, 194, 0.85)', 
-      end: 'rgba(230, 201, 168, 0.9)'
+    // Modern cool gradients for each treatment card
+    muskelrelaxans: {
+      start: 'rgba(160, 174, 192, 0.85)', 
+      end: 'rgba(203, 213, 224, 0.9)'
     },
     hyaluronic: {
-      start: 'rgba(215, 198, 172, 0.85)',
-      end: 'rgba(194, 173, 140, 0.9)'
+      start: 'rgba(113, 128, 150, 0.85)',
+      end: 'rgba(160, 174, 192, 0.9)'
     },
     polynucleotides: {
-      start: 'rgba(212, 196, 174, 0.85)',
-      end: 'rgba(191, 175, 145, 0.9)'
+      start: 'rgba(74, 85, 104, 0.85)',
+      end: 'rgba(113, 128, 150, 0.9)'
     },
     prp: {
-      start: 'rgba(208, 191, 168, 0.85)',
-      end: 'rgba(189, 169, 143, 0.9)'
+      start: 'rgba(45, 55, 72, 0.85)',
+      end: 'rgba(74, 85, 104, 0.9)'
     },
     mesotherapy: {
-      start: 'rgba(210, 194, 175, 0.85)',
-      end: 'rgba(196, 179, 158, 0.9)'
+      start: 'rgba(237, 242, 247, 0.85)',
+      end: 'rgba(226, 232, 240, 0.9)'
     },
     micronutrients: {
-      start: 'rgba(204, 188, 169, 0.85)',
-      end: 'rgba(186, 171, 150, 0.9)'
+      start: 'rgba(203, 213, 224, 0.85)',
+      end: 'rgba(237, 242, 247, 0.9)'
     },
     lipolysis: {
-      start: 'rgba(214, 195, 174, 0.85)',
-      end: 'rgba(199, 180, 158, 0.9)'
+      start: 'rgba(160, 174, 192, 0.85)',
+      end: 'rgba(203, 213, 224, 0.9)'
     },
     exosomes: {
-      start: 'rgba(201, 185, 164, 0.85)',
-      end: 'rgba(184, 169, 147, 0.9)'
+      start: 'rgba(113, 128, 150, 0.85)',
+      end: 'rgba(160, 174, 192, 0.9)'
+    },
+    vitamininfusion: {
+      start: 'rgba(74, 85, 104, 0.85)',
+      end: 'rgba(113, 128, 150, 0.9)'
     }
   };
 
