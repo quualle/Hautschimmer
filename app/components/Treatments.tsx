@@ -42,6 +42,7 @@ const colors = {
 
 // Sub-treatments (Inhalte bleiben gleich, Icons können angepasst werden)
 const muskelrelaxansSubTreatments = [
+  { id: 'faltenKorrektur', title: 'FALTEN KORREKTUR ALLGEMEIN', icon: <FaSmile />, description: 'Umfassende Faltenbehandlung für ein harmonisches, jugendliches Erscheinungsbild. Individuelle Behandlungskonzepte für alle Gesichtsbereiche mit präziser, natürlicher Faltenglättung.' },
   { id: 'eyebrowLift', title: 'AUGENBRAUENLIFTING', icon: <FaEye />, description: 'Natürliches Anheben der Augenbrauen für einen offeneren Blick.' },
   { id: 'gummySmile', title: 'GUMMY SMILE', icon: <FaSmileWink />, description: 'Korrektur eines übermäßigen Zahnfleischlächelns.' },
   { id: 'foreheadLines', title: 'STIRNFALTEN', icon: <FaAngry />, description: 'Glättung horizontaler Stirnfalten.' },
@@ -56,6 +57,9 @@ const muskelrelaxansSubTreatments = [
 ];
 
 const hyaluronSubTreatments = [
+  { id: 'lippen', title: 'LIPPEN VOLUMEN', icon: <FaSmileWink />, description: 'Professionelle Lippenvergrößerung für natürlich volle, definierte Lippen. Sanfte Volumengebung mit Premium-Hyaluronsäure für harmonische Proportionen und sinnliche Ausstrahlung.' },
+  { id: 'nasolabial', title: 'NASOLABIALFALTEN', icon: <FaGrimace />, description: 'Effektive Behandlung der Falten, die von der Nase zu den Mundwinkeln verlaufen. Glättung für ein jugendlicheres, frischeres Erscheinungsbild mit natürlichen Ergebnissen.' },
+  { id: 'marionetten', title: 'MARIONETTENFALTEN', icon: <FaSadTear />, description: 'Korrektur der Falten von den Mundwinkeln zum Kinn. Wiederherstellung einer positiven Gesichtsausstrahlung durch gezielte Volumengebung und Lifting-Effekt.' },
   { id: 'hyaluronidase', title: 'HYALURONIDASE (HYLASE)', icon: <FaSyringe />, description: 'Enzym zum Abbau von unerwünschten Hyaluronsäure-Fillern.' },
   { id: 'barcode', title: 'BARCODE (LIPPENLINIEN)', icon: <FaColumns />, description: 'Gezielte Behandlung der vertikalen Linien oberhalb der Lippen.' },
   { id: 'jawline', title: 'JAWLINE', icon: <FaTeeth />, description: 'Definieren und konturieren der Kieferlinie.' },
@@ -180,6 +184,20 @@ const treatments = [
       <>
         <p className="paragraph mb-4">Exosomen sind winzige Vesikel, die von Zellen freigesetzt werden und wichtige Signalmoleküle wie Wachstumsfaktoren und Proteine enthalten. Sie spielen eine Schlüsselrolle in der Zellkommunikation und Regeneration.</p>
         <p className="paragraph mb-4">Die Exosomen-Therapie, oft kombiniert mit Microneedling, nutzt diese zellfreien Botenstoffe, um die Hautverjüngung intensiv anzuregen, die Kollagenproduktion zu fördern und die Hautqualität nachhaltig zu verbessern. Eine innovative Methode für natürliche Schönheit.</p>
+      </>
+    )
+  },
+  {
+    id: 'vitamininfusion',
+    title: 'Vitamin-Infusionen',
+    icon: <FaVials />,
+    shortDescription: 'Revitalisierung von innen - hochdosierte Nährstofftherapie.',
+    hasSubMenu: false,
+    fullDescription: (
+      <>
+        <p className="paragraph mb-4">Vitamin-Infusionen bieten eine effektive Möglichkeit, den Körper gezielt mit hochwertigen Nährstoffen zu versorgen. Durch die intravenöse Verabreichung werden die Vitamine und Mineralien direkt in den Blutkreislauf eingebracht und umgehen das Verdauungssystem.</p>
+        <p className="paragraph mb-4">Diese Behandlung ist besonders vorteilhaft bei Nährstoffmängeln, zur Stärkung des Immunsystems, bei chronischer Müdigkeit oder zur allgemeinen Revitalisierung. Die Infusionen werden individuell nach Ihren Bedürfnissen zusammengestellt und können Vitamin C, B-Komplex, Zink, Magnesium und weitere wichtige Nährstoffe enthalten.</p>
+        <p className="paragraph mb-4">Erleben Sie neue Energie, verbesserte Hautqualität und gestärktes Wohlbefinden durch unsere maßgeschneiderten Vitamin-Infusionstherapien.</p>
       </>
     )
   }
