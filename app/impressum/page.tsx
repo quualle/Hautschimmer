@@ -9,8 +9,11 @@ const ImpressumPage = () => {
         <h2 className="text-xl font-semibold mb-3">Angaben gemäß § 5 DDG:</h2>
         <p className="mb-2">Saskia Heer</p>
         <p className="mb-2">medestetique</p>
-        <p className="mb-2">Bahnhofstraße 8</p>
-        <p className="mb-4">15711 Königs Wusterhausen</p>
+        <div className="mb-4">
+          <p className="mb-2 font-medium">Standorte:</p>
+          <p className="mb-1">Bahnhofstraße 8, 15711 Königs Wusterhausen</p>
+          <p className="mb-2">Mussinanstraße 65, 92318 Neumarkt i.d.Opf (ab 13.10.2025)</p>
+        </div>
       </section>
 
       <section className="mb-6">
@@ -57,8 +60,8 @@ const ImpressumPage = () => {
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-3">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h2>
         <p className="mb-2">Saskia Heer</p>
-        <p className="mb-2">Bahnhofstraße 8</p>
-        <p className="mb-4">15711 Königs Wusterhausen</p>
+        <p className="mb-2">Bahnhofstraße 8, 15711 Königs Wusterhausen</p>
+        <p className="mb-4">Mussinanstraße 65, 92318 Neumarkt i.d.Opf (ab 13.10.2025)</p>
       </section>
 
       <section className="mb-6">

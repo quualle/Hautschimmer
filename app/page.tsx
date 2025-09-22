@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import dynamicImport from 'next/dynamic';
 
+const AnnouncementBanner = dynamicImport(() => import('./components/AnnouncementBanner'), { ssr: false });
 const Navbar = dynamicImport(() => import('./components/Navbar'), { ssr: false });
 const Hero = dynamicImport(() => import('./components/Hero'), { ssr: false });
 const Treatments = dynamicImport(() => import('./components/Treatments'), { ssr: false });
@@ -16,6 +17,7 @@ const Footer = dynamicImport(() => import('./components/Footer'));
 export default function Home() {
   return (
     <main>
+      <AnnouncementBanner />
       <div className="relative z-50">
         <Navbar />
       </div>

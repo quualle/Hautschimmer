@@ -44,6 +44,15 @@ const Footer = () => {
               <FaEnvelope className="mr-2" />
               <p>saskia.medestetique@gmail.com</p>
             </li>
+            <li className="flex items-start mt-4">
+              <FaMapMarkerAlt className="mr-2 mt-1 text-secondary" />
+              <div>
+                <p className="font-semibold mb-1">Standorte:</p>
+                <p className="text-sm">Königs Wusterhausen</p>
+                <p className="text-sm">Neumarkt i.d.Opf (ab 13.10.2025)</p>
+                <p className="text-sm text-gray-300">Mussinanstraße 65</p>
+              </div>
+            </li>
           </ul>
         </div>
       </div>

@@ -102,9 +102,9 @@ const Contact = () => {
               <h3 className="font-serif text-3xl mb-6 font-semibold drop-shadow-lg">Jetzt Termin Buchen</h3>
               <p className="mb-8 text-lg font-light max-w-xl mx-auto">
                 Ärztliche Leistungen von Saskia Heer werden an ausgewählten Tagen im Jahr
-                im Kosmetikstudio Glam & Glow Beauty in
-                Königs Wusterhausen angeboten. Terminreservierungen sind bequem über unsere
-                Buchungsplattform möglich.
+                im Kosmetikstudio Glam & Glow Beauty in Königs Wusterhausen und 
+                ab dem 13. Oktober 2025 auch in Neumarkt i.d.Opf (Mussinanstraße 65) angeboten. 
+                Terminreservierungen sind bequem über unsere Buchungsplattform möglich.
               </p>
               <a
                 href={getPlanityBookingUrl()}
