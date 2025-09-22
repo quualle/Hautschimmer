@@ -1,25 +1,29 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { FaTimes, FaMapMarkerAlt } from 'react-icons/fa';
 
 const AnnouncementBanner = () => {
   const [isVisible, setIsVisible] = useState(true);
 
-  if (!isVisible) return null;
-
   return (
-    <motion.div
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="relative w-full bg-gradient-to-r from-secondary via-accent to-secondary text-primary py-3 px-4 z-50"
-      style={{
-        background: 'linear-gradient(135deg, #D2B48C 0%, #E6C9A8 50%, #D2B48C 100%)',
-        boxShadow: '0 4px 15px rgba(210, 180, 140, 0.3)'
-      }}
-    >
+    <AnimatePresence mode="wait">
+      {isVisible && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="relative w-full overflow-hidden z-50"
+        >
+          <div
+            className="relative w-full bg-gradient-to-r from-secondary via-accent to-secondary text-primary py-3 px-4"
+            style={{
+              background: 'linear-gradient(135deg, #D2B48C 0%, #E6C9A8 50%, #D2B48C 100%)',
+              boxShadow: '0 4px 15px rgba(210, 180, 140, 0.3)'
+            }}
+          >
       {/* Decorative pattern */}
       <div 
         className="absolute inset-0 opacity-10"
@@ -62,10 +66,13 @@ const AnnouncementBanner = () => {
         </button>
       </div>
       
-      {/* Sparkle animation */}
-      <div className="absolute top-2 left-1/4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
-      <div className="absolute bottom-2 right-1/3 w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-    </motion.div>
+            {/* Sparkle animation */}
+            <div className="absolute top-2 left-1/4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+            <div className="absolute bottom-2 right-1/3 w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
