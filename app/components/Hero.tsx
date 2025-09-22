@@ -121,16 +121,14 @@ const Hero = () => {
             transition={{ duration: 1 }}
             className="text-center w-full"
           >
-            {/* Readability panel */}
-            <div className="hero-elegant rounded-3xl px-4 py-3 md:px-8 md:py-8 mx-auto">
-            {/* Gold decorative element */}
-            {/* Decorative header removed for a more compact panel */}
+            {/* Compact readability panel */}
+            <div className="hero-elegant rounded-2xl px-3 py-4 md:px-6 md:py-6 mx-auto max-w-2xl">
             
-            <h1 className="heading-1 mb-3 md:mb-6 relative">
+            <h1 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 relative text-center">
               <span 
-                className="text-light font-bold tracking-wider relative inline-block text-shadow-strong"
+                className="text-light font-bold tracking-wide relative inline-block text-shadow-strong"
                 style={{
-                  textShadow: "0 2px 10px rgba(0,0,0,0.45)",
+                  textShadow: "0 2px 8px rgba(0,0,0,0.4)",
                 }}
               >
                 Ihr neues Strahlen
@@ -146,27 +144,30 @@ const Hero = () => {
             </h1>
             
             <p 
-              className="text-sm md:text-base leading-relaxed mb-4 md:mb-8 max-w-xl mx-auto text-light/90 font-medium text-shadow-soft"
+              className="text-xs md:text-sm leading-relaxed mb-4 md:mb-6 max-w-lg mx-auto text-light/90 font-medium text-shadow-soft text-center"
+              style={{
+                textShadow: "0 1px 4px rgba(0,0,0,0.3)",
+              }}
             >
               <span className="block md:hidden">
-                Schönheitsbehandlungen für ein natürliches Aussehen.
+                Professionelle Schönheitsbehandlungen für natürliche Ergebnisse.
               </span>
               <span className="hidden md:block">
-                Tauchen Sie ein in Anti-Aging und Schönheitsbehandlungen. Ärztlich durchgeführt. Für ein junges, frisches und natürliches Aussehen.
+                Professionelle Anti-Aging und Schönheitsbehandlungen. Ärztlich durchgeführt für natürliche, harmonische Ergebnisse.
               </span>
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
               <a 
                 href={getPlanityBookingUrl()}
                 onClick={openPlanityBooking}
-                className="button-holo" 
+                className="button-holo text-sm px-6 py-3 min-w-[200px] text-center" 
               >
                 Jetzt Termin buchen
               </a>
               <a 
                 href="#treatments" 
-                className="button-ghost"
+                className="button-ghost text-sm px-6 py-3 min-w-[200px] text-center"
               >
                 Unsere Behandlungen
               </a>

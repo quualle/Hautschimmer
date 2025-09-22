@@ -57,74 +57,63 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled ? 'bg-light/95 backdrop-blur-md shadow-elegant py-2' : 'bg-transparent py-4'
+        scrolled ? 'bg-light/95 backdrop-blur-md shadow-elegant py-1' : 'bg-transparent py-2'
       }`}
       style={!scrolled ? { background: 'rgba(8,8,10,0.25)', backdropFilter: 'blur(10px)' } : undefined}
     >
-      {/* Top gradient border */}
-      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
       
-      <nav className="section-container !py-0 flex flex-col items-center">
-        <Link href="/" className="relative z-50 group">
+      <nav className="section-container !py-0 flex items-center justify-between">
+        {/* Logo and brand - moved to left */}
+        <Link href="/" className="relative z-50 group flex items-center">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
-            {/* Logo container with refined glow effect */}
-            <div className="relative w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full mr-3 md:mr-5 flex-shrink-0 overflow-hidden group-hover:shadow-gold transition-all duration-300" 
+            {/* Smaller logo container */}
+            <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full mr-2 md:mr-3 flex-shrink-0 overflow-hidden group-hover:shadow-glow transition-all duration-300" 
                 style={{
-                  boxShadow: "0 0 25px rgba(210, 180, 140, 0.2), 0 0 10px rgba(210, 180, 140, 0.15), inset 0 0 3px rgba(210, 180, 140, 0.3)"
+                  boxShadow: "0 0 15px rgba(113, 128, 150, 0.2), 0 0 5px rgba(113, 128, 150, 0.15)"
                 }}>
               <Image 
                 src="/images/logo.jpg" 
                 alt="MedEstetique Logo" 
-                width={112} 
-                height={112} 
+                width={48} 
+                height={48} 
                 className="w-full h-full object-cover transform scale-110 group-hover:scale-105 transition-transform duration-700" 
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-dark/5 to-transparent opacity-40"></div>
             </div>
             
-            {/* Brand name with refined styling */}
+            {/* Smaller brand name */}
             <div className="relative">
               <Image 
                 src="/images/Medestetique.png" 
                 alt="MedEstetique Schriftzug" 
-                width={400} 
-                height={80} 
+                width={200} 
+                height={40} 
                 className="h-auto" 
                 style={{ 
-                  maxWidth: 'clamp(220px, 32vw, 450px)',
-                  filter: 'brightness(1.05) contrast(1.08) drop-shadow(0 2px 8px rgba(0,0,0,0.35))',
-                  transform: 'translateY(2px)'
+                  maxWidth: 'clamp(120px, 20vw, 200px)',
+                  filter: 'brightness(1.05) contrast(1.08) drop-shadow(0 2px 8px rgba(0,0,0,0.35))'
                 }} 
               />
-              
-              {/* Underline */}
-              <div className="absolute -bottom-1 left-1/2 w-0 h-px bg-white/80 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-700 ease-out"></div>
             </div>
           </motion.div>
         </Link>
-        
-        {/* Refined separator */}
-        <div className="relative w-full max-w-xl h-px my-4 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
-          <div className="absolute inset-0 w-1/3 bg-gradient-to-r from-transparent via-secondary/60 to-transparent animate-pulse"></div>
-        </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-12 justify-center">
+        {/* Desktop Navigation - moved to right */}
+        <div className="hidden md:flex space-x-8">
           {navLinks.map(link => (
             <Link 
               key={link.name} 
               href={link.href} 
-              className={`relative font-light text-sm tracking-wide uppercase text-shadow-soft ${
+              className={`relative font-light text-xs md:text-sm tracking-wide uppercase text-shadow-soft ${
                 activeSection === link.id 
                   ? 'text-white font-medium' 
                   : 'text-white/90 hover:text-white'
-              } transition-colors duration-300 group py-1 px-3`}
+              } transition-colors duration-300 group py-1 px-2`}
               style={{ textShadow: scrolled ? '0 1px 2px rgba(0,0,0,0.25)' : '0 2px 6px rgba(0,0,0,0.45)' }}
             >
               <span className={`relative z-10`}>{link.name}</span>
@@ -138,9 +127,9 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile Menu Button with refined styling */}
+        {/* Mobile Menu Button */}
         <button 
-          className={`md:hidden text-xl w-10 h-10 flex items-center justify-center absolute top-5 right-5 z-[60] transition-colors duration-300 ${
+          className={`md:hidden text-lg w-8 h-8 flex items-center justify-center z-[60] transition-colors duration-300 ${
             scrolled 
               ? 'text-primary hover:text-secondary' 
               : 'text-white hover:text-secondary'
@@ -236,9 +225,6 @@ const Navbar = () => {
           </div>
         )}
       </nav>
-      
-      {/* Bottom gradient border */}
-      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-secondary/20 to-transparent"></div>
     </header>
   );
 };

@@ -438,7 +438,7 @@ const Treatments = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h2 className="heading-2 mb-5 relative inline-block" style={{ color: colors.textPrimary }}>
-              Moderne Ästhetik <span style={{ color: colors.primaryAccent }}>für Sie</span>
+              Unsere <span style={{ color: colors.primaryAccent }}>Behandlungen</span>
               {/* Akzentlinie überarbeitet */}
               <motion.div 
                 initial={{ width: 0 }}

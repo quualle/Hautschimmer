@@ -23,14 +23,14 @@ export default function Home() {
       </div>
       <Hero />
       {/* Background overlay to prevent hero background from showing through */}
-      <div className="relative z-10 bg-[#FFFBF6]">
+      <div className="relative z-10 bg-[#F7FAFC]">
         <Treatments />
-        <BlogCTA />
         <Pricing />
         <Testimonials />
         <About />
         <TreatmentRooms />
         <Contact />
+        <BlogCTA />
         <Footer />
       </div>
     </main>
