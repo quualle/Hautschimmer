@@ -125,7 +125,7 @@ export function listTreatments() {
 }
 
 export function getWorkingWindowForDate(date: Date) {
-  const weekdayISO = ((date.getDay() + 6) % 7) + 1; // JS 0=Sun -> ISO 7=Sun
+  const weekdayISO = ((date.getUTCDay() + 6) % 7) + 1; // Use UTC to avoid TZ drift in serverless
   const configDay = NEUMARKT_CONFIG.workingHours.find(w => w.day === (weekdayISO as any));
   if (!configDay) return null;
   return { open: configDay.open, close: configDay.close };

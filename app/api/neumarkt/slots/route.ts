@@ -15,7 +15,8 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Missing date' }, { status: 400 });
   }
 
-  const requested = new Date(date + 'T00:00:00');
+  // Use midday to avoid timezone edge cases during day-of-week calculation on server
+  const requested = new Date(date + 'T12:00:00');
 
   // Enforce start date & closed dates
   if (date < NEUMARKT_CONFIG.startDate || NEUMARKT_CONFIG.closedDates.includes(date)) {
