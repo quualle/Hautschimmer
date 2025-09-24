@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
+import BookingSelector from './BookingSelector';
 
 const About = () => {
   const { ref, inView } = useInView({
@@ -87,9 +88,12 @@ const About = () => {
             </div>
             
             <div className="text-center">
-              <a href={getPlanityBookingUrl()} target="_blank" rel="noopener noreferrer" className="button-primary inline-block">
+              <BookingSelector 
+                variant="modal"
+                className="button-primary inline-block"
+              >
                 Jetzt Termin Buchen
-              </a>
+              </BookingSelector>
             </div>
           </motion.div>
         </div>

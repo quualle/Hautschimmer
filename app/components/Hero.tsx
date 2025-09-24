@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { getPlanityBookingUrl, openPlanityBooking } from '../utils/planityBooking';
 import dynamic from 'next/dynamic';
 import HeroVideo from './HeroVideo';
+import BookingSelector from './BookingSelector';
 
 // HoloOrb deaktiviert für Kompatibilität
 const enableHolo = false;
@@ -158,13 +159,12 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
-              <a 
-                href={getPlanityBookingUrl()}
-                onClick={openPlanityBooking}
-                className="button-holo text-sm px-6 py-3 min-w-[200px] text-center" 
+              <BookingSelector 
+                variant="modal"
+                className="button-holo text-sm px-6 py-3 min-w-[200px] text-center"
               >
                 Jetzt Termin buchen
-              </a>
+              </BookingSelector>
               <a 
                 href="#treatments" 
                 className="button-ghost text-sm px-6 py-3 min-w-[200px] text-center"

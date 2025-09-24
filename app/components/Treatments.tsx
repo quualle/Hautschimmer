@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { getPlanityBookingUrl, openPlanityBooking } from '../utils/planityBooking';
+import BookingSelector from './BookingSelector';
 import { 
   FaSyringe, FaWater, FaTint, FaChevronDown, FaSmile, FaAngry, FaGrinAlt, FaUserAlt, FaTeeth, 
   FaColumns, FaChartPie, FaCircle, FaBrain, FaSnowflake, FaGrimace, FaBabyCarriage, 
@@ -14,44 +15,45 @@ import {
 } from 'react-icons/fa';
 import React from 'react';
 
-// --- MODERN COOL COLOR PALETTE ---
+// --- WARMER COLOR PALETTE ---
 const colors = {
-  backgroundStart: '#F7FAFC',
-  backgroundEnd: '#EDF2F7',
-  primaryAccent: '#718096',       // Cool gray
-  secondaryAccent: '#A0AEC0',     // Light cool gray
-  gold: '#4A5568',                // Dark gray
-  textPrimary: '#2D3748',         // Cool slate gray
-  textSecondary: '#4A5568',       // Medium gray
+  backgroundStart: '#FCFAF7',
+  backgroundEnd: '#F5EFE6',
+  primaryAccent: '#C0A080',
+  secondaryAccent: '#E6D9C8',
+  gold: '#9B7D57',
+  textPrimary: '#2F2A26',
+  textSecondary: '#4B423B',
   white: '#FFFFFF',
-  cardBgDefault: 'rgba(255, 255, 255, 0.8)',
-  cardBgHover: 'rgba(237, 242, 247, 0.95)',
-  cardBorder: 'rgba(113, 128, 150, 0.25)',
-  selectedGradientStart: 'rgba(113, 128, 150, 0.85)',
-  selectedGradientEnd: 'rgba(160, 174, 192, 0.9)',
-  selectedText: '#2D3748',
-  iconBgDefault: 'rgba(113, 128, 150, 0.15)',
-  iconColorDefault: '#4A5568',
-  iconBgSelected: 'rgba(255, 255, 255, 0.25)',
-  iconColorSelected: '#2D3748',
-  buttonGradientStart: '#718096',
-  buttonGradientEnd: '#4A5568',
+  cardBgDefault: 'rgba(255, 255, 255, 0.86)',
+  cardBgHover: 'rgba(245, 239, 230, 0.95)',
+  cardBorder: 'rgba(192, 160, 128, 0.28)',
+  selectedGradientStart: 'rgba(192, 160, 128, 0.88)',
+  selectedGradientEnd: 'rgba(230, 217, 200, 0.95)',
+  selectedText: '#2F2A26',
+  iconBgDefault: 'rgba(192, 160, 128, 0.18)',
+  iconColorDefault: '#7A6244',
+  iconBgSelected: 'rgba(255, 255, 255, 0.28)',
+  iconColorSelected: '#2F2A26',
+  buttonGradientStart: '#C0A080',
+  buttonGradientEnd: '#9B7D57',
   buttonText: '#FFFFFF',
-  purpleAccent: '#553C9A', // Cool purple accent
+  purpleAccent: '#8B5CF6',
 };
 
 // Sub-treatments (Inhalte bleiben gleich, Icons können angepasst werden)
 const muskelrelaxansSubTreatments = [
   { id: 'faltenKorrektur', title: 'FALTEN KORREKTUR ALLGEMEIN', icon: <FaSmile />, description: 'Umfassende Faltenbehandlung für ein harmonisches, jugendliches Erscheinungsbild. Individuelle Behandlungskonzepte für alle Gesichtsbereiche mit präziser, natürlicher Faltenglättung.' },
   { id: 'eyebrowLift', title: 'AUGENBRAUENLIFTING', icon: <FaEye />, description: 'Natürliches Anheben der Augenbrauen für einen offeneren Blick.' },
-  { id: 'gummySmile', title: 'GUMMY SMILE', icon: <FaSmileWink />, description: 'Korrektur eines übermäßigen Zahnfleischlächelns.' },
+  { id: 'lipFlip', title: 'LIP FLIP', icon: <FaSmileWink />, description: 'Dezente Betonung der Oberlippe mit Muskelrelaxans.' },
   { id: 'foreheadLines', title: 'STIRNFALTEN', icon: <FaAngry />, description: 'Glättung horizontaler Stirnfalten.' },
   { id: 'frownLines', title: 'ZORNESFALTE', icon: <FaAngry />, description: 'Reduzierung der vertikalen Falten zwischen den Augenbrauen.' },
   { id: 'crowsFeet', title: 'KRÄHENFÜSSE', icon: <FaLaughBeam />, description: 'Glättung der Fältchen um die Augen.' },
-  { id: 'bunnyLines', title: 'BUNNY LINES', icon: <FaSmile />, description: 'Reduzierung der Fältchen auf dem Nasenrücken.' },
+  { id: 'bunnyLines', title: 'BUNNY LINES (NASENFÄLTCHEN)', icon: <FaSmile />, description: 'Reduzierung feiner Fältchen am Nasenrücken.' },
+  { id: 'nasalTip', title: 'NASENSPITZE', icon: <FaGrimace />, description: 'Feinjustierung der Nasenspitzenbewegung.' },
   { id: 'facialSlimming', title: 'FACIAL SLIMMING', icon: <FaUserAlt />, description: 'Verschmälerung des Gesichts durch Entspannung der Kaumuskeln.' },
-  { id: 'neckLift', title: 'NEFERTITI LIFT (HALS)', icon: <FaArrowUp />, description: 'Straffung der Halspartie und Definition der Kinnlinie.' },
-  { id: 'chinDimples', title: 'ERDBEERKINN', icon: <FaCircle />, description: 'Glättung von Grübchen und Unebenheiten am Kinn.' },
+  { id: 'neckLift', title: 'NEFERTITI LIFT (KIEFER/HALS)', icon: <FaArrowUp />, description: 'Definition der Kinn-Kiefer-Linie & Halskontur.' },
+  { id: 'chinDimples', title: 'ERDBEERKINN (PFLASTERSTEIN-KINN)', icon: <FaCircle />, description: 'Glättung von Grübchen und Unebenheiten am Kinn.' },
   { id: 'bruxismBehandlung', title: 'BRUXISMUS (ZÄHNEKNIRSCHEN)', icon: <FaTeeth />, description: 'Linderung von Zähneknirschen und Kieferschmerzen.' },
   { id: 'hyperhidrosisBehandlung', title: 'HYPERHIDROSE (SCHWITZEN)', icon: <FaTint />, description: 'Reduzierung von übermäßigem Schwitzen unter den Achseln, an Händen oder Füßen.' },
 ];
@@ -206,42 +208,42 @@ const treatments = [
 // Create a specific component for treatment cards to ensure consistent styling
 const TreatmentCard = ({ treatment, isSelected, onClick, index, inView }) => {
   const cardGradients = {
-    // Modern cool gradients for each treatment card
+    // Warm, dezente Gradients je Kategorie
     muskelrelaxans: {
-      start: 'rgba(160, 174, 192, 0.85)', 
-      end: 'rgba(203, 213, 224, 0.9)'
+      start: 'rgba(192, 160, 128, 0.35)',
+      end: 'rgba(230, 217, 200, 0.5)'
     },
     hyaluronic: {
-      start: 'rgba(113, 128, 150, 0.85)',
-      end: 'rgba(160, 174, 192, 0.9)'
+      start: 'rgba(230, 217, 200, 0.45)',
+      end: 'rgba(252, 250, 247, 0.6)'
     },
     polynucleotides: {
-      start: 'rgba(74, 85, 104, 0.85)',
-      end: 'rgba(113, 128, 150, 0.9)'
+      start: 'rgba(155, 125, 87, 0.25)',
+      end: 'rgba(230, 217, 200, 0.45)'
     },
     prp: {
-      start: 'rgba(45, 55, 72, 0.85)',
-      end: 'rgba(74, 85, 104, 0.9)'
+      start: 'rgba(47, 42, 38, 0.2)',
+      end: 'rgba(155, 125, 87, 0.25)'
     },
     mesotherapy: {
-      start: 'rgba(237, 242, 247, 0.85)',
-      end: 'rgba(226, 232, 240, 0.9)'
+      start: 'rgba(252, 250, 247, 0.6)',
+      end: 'rgba(230, 217, 200, 0.4)'
     },
     micronutrients: {
-      start: 'rgba(203, 213, 224, 0.85)',
-      end: 'rgba(237, 242, 247, 0.9)'
+      start: 'rgba(230, 217, 200, 0.4)',
+      end: 'rgba(252, 250, 247, 0.6)'
     },
     lipolysis: {
-      start: 'rgba(160, 174, 192, 0.85)',
-      end: 'rgba(203, 213, 224, 0.9)'
+      start: 'rgba(192, 160, 128, 0.35)',
+      end: 'rgba(230, 217, 200, 0.5)'
     },
     exosomes: {
-      start: 'rgba(113, 128, 150, 0.85)',
-      end: 'rgba(160, 174, 192, 0.9)'
+      start: 'rgba(155, 125, 87, 0.25)',
+      end: 'rgba(230, 217, 200, 0.45)'
     },
     vitamininfusion: {
-      start: 'rgba(74, 85, 104, 0.85)',
-      end: 'rgba(113, 128, 150, 0.9)'
+      start: 'rgba(47, 42, 38, 0.2)',
+      end: 'rgba(155, 125, 87, 0.25)'
     }
   };
 
@@ -392,6 +394,36 @@ const Treatments = () => {
     }, 350);
   };
 
+  // Preislabel für Sub-Behandlungen (vereinheitlicht nach neuem Schema)
+  const getPriceLabel = (subId: string) => {
+    // Muskelrelaxans – Zonenmodell
+    const botoxIds = [
+      'faltenKorrektur','eyebrowLift','lipFlip','foreheadLines','frownLines','crowsFeet','bunnyLines','facialSlimming','neckLift','chinDimples','bruxismBehandlung','hyperhidrosisBehandlung','nasalTip'
+    ];
+    if (botoxIds.includes(subId)) {
+      // Spezielle Einzelpreise
+      if (subId === 'bunnyLines') return 'ab 150 €';
+      if (subId === 'lipFlip') return 'ab 150 €';
+      if (subId === 'hyperhidrosisBehandlung') return 'ab 500 €';
+      if (subId === 'bruxismBehandlung') return 'ab 300 €';
+      if (subId === 'nasalTip') return 'ab 150 €';
+      if (subId === 'chinDimples') return 'ab 150 €';
+      if (subId === 'eyebrowLift') return 'ab 150 €';
+      if (subId === 'neckLift') return 'ab 300 €';
+      // Standard-Zonenhinweis für übrige mimische Falten
+      if (['foreheadLines','frownLines','crowsFeet'].includes(subId)) return '1 Zone 189 €';
+      return '1 Zone 189 € · 2 Zonen 314 € · 3 Zonen 450 €';
+    }
+    // Hyaluron – ab-Preise + Standard
+    if (subId === 'lippen') return 'ab 150 €';
+    if (subId === 'nasolabial') return 'ab 250 €';
+    if (subId === 'jawline') return 'ab 430 €';
+    if (subId === 'fullface') return 'ab 1169 €';
+    if (subId === 'tearTrough' || subId === 'chin' || subId === 'cheekbones' || subId === 'marionetten' || subId === 'barcode') return 'Standard 215 €/ml';
+    if (subId === 'hyaluronidase') return 'Preis nach Aufwand';
+    return '';
+  };
+
   // --- JSX mit neuem Styling ---
   return (
     // Section mit neuem Hintergrundverlauf
@@ -452,7 +484,7 @@ const Treatments = () => {
           initial={{ opacity: 0, y: 60 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-20 mt-32" // Mehr Abstand
+          className="text-center mb-20 mt-2" // weiter nach oben (deutlich)
         >
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
@@ -612,6 +644,16 @@ const Treatments = () => {
                     style={{ background: `linear-gradient(90deg, ${colors.primaryAccent}, ${colors.secondaryAccent})` }}
                   ></motion.div>
                   
+                  {/* Preis-Tag oben rechts (wenn Sub-Option gewählt) */}
+                  {selectedSubTreatment && (
+                    <div className="absolute -top-5 right-4 bg-white/90 border rounded-xl px-4 py-2 shadow"
+                         style={{ borderColor: colors.cardBorder }}>
+                      <span className="text-sm font-medium" style={{ color: colors.textPrimary }}>
+                        {getPriceLabel(selectedSubTreatment.id)}
+                      </span>
+                    </div>
+                  )}
+
                   {/* Zurück-Button (falls Sub-Treatment ausgewählt) - Style angepasst */}
                   {selectedSubTreatment && (
                      <div className="mb-8"> {/* Mehr Abstand */}
@@ -629,95 +671,169 @@ const Treatments = () => {
                       </div>
                   )}
 
-                  {/* Hauptinhalt der Beschreibung */}
-                  <div className="flex flex-col md:flex-row md:items-center mb-8 gap-6">
-                    {/* Icon im Beschreibungsfeld */}
-                     <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
-                           style={{ background: `linear-gradient(135deg, ${colors.selectedGradientStart}, ${colors.selectedGradientEnd})` }}>
-                        <div className="text-4xl" style={{ color: colors.selectedText }}>
-                           {selectedSubTreatment ? selectedSubTreatment.icon : selectedTreatment.icon}
-                        </div>
-                      </div>
+                  {/* Header schlicht & elegant */}
+                  <div className="mb-6">
                     <h3 className="heading-3 mb-0" style={{ color: colors.textPrimary }}>
                       {selectedSubTreatment ? selectedSubTreatment.title : selectedTreatment.title}
                     </h3>
                   </div>
                   
                   {/* Textinhalt - Styling über Tailwind Prose anpassen */}
-                   <div className="prose prose-lg max-w-none prose-p:text-[${colors.textSecondary}] prose-headings:text-[${colors.textPrimary}] prose-strong:text-[${colors.textPrimary}] prose-a:text-[${colors.primaryAccent}] hover:prose-a:text-[${colors.secondaryAccent}]">
+                   <div className="max-w-none">
                      {selectedSubTreatment ? (
                        <>
-                         <p className="paragraph mb-6">{selectedSubTreatment.description}</p>
-                         {/* Hervorgehobener Info-Block - Style angepasst */}
-                         <div className="p-6 rounded-xl my-8 border-l-4" 
-                              style={{ background: `${colors.secondaryAccent}26`, borderColor: colors.primaryAccent }} >
-                           <p className="paragraph mb-0 italic text-base" style={{ color: colors.textPrimary }}>
-                             {/* Text bleibt spezifisch für Behandlung */}
-                             {selectedTreatment.id === 'muskelrelaxans' 
-                               ? `Unsere Spezialisten für ${selectedSubTreatment.title} verwenden nur hochwertige Produkte und präzise Techniken für natürlich aussehende Ergebnisse, die Ihre natürliche Ausdrucksfähigkeit bewahren.`
-                               : selectedTreatment.id === 'hyaluronic'
-                               ? `Unsere Spezialisten für ${selectedSubTreatment.title} verwenden nur hochwertige Hyaluronsäure-Produkte und fortschrittliche Techniken für harmonische Ergebnisse.`
-                               : `Vertrauen Sie auf unsere Expertise für ${selectedSubTreatment.title}, um optimale Resultate zu erzielen.`
-                             }
-                           </p>
+                         <p className="paragraph mb-4" style={{ color: colors.textSecondary }}>{selectedSubTreatment.description}</p>
+                         {/* Dezenter Hinweis */}
+                         <div className="mt-2 text-sm italic" style={{ color: colors.textPrimary }}>
+                           {selectedTreatment.id === 'muskelrelaxans' 
+                             ? `Präzise Dosierung mit Fokus auf natürliche Mimik und stimmige Proportionen.`
+                             : selectedTreatment.id === 'hyaluronic'
+                             ? `Verwendung hochwertiger Hyaluronsäure mit der passenden Konsistenz für Ihr Areal.`
+                             : `Individuell abgestimmtes Vorgehen – für ein harmonisches Gesamtbild.`}
                          </div>
                          
                          {/* Spezielle Fälle - Styling angepasst */}
                          {selectedSubTreatment.id === 'hyaluronidase' && (
-                           <div className="bg-white/50 p-6 rounded-xl shadow-md border mt-6" style={{ borderColor: colors.cardBorder }}>
-                             <h4 className="font-serif text-xl font-semibold mb-4" style={{ color: colors.textPrimary }}>Wann wird Hyaluronidase eingesetzt?</h4>
-                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0 list-none p-0">
-                               {['Korrektur überfüllter Bereiche', 'Behandlung asymmetrischer Ergebnisse', 
-                                 'Auflösung von Knötchen', 'Management von Komplikationen'].map((item, i) => (
-                                 <li key={i} className="flex items-center bg-white/70 p-3 rounded-lg text-sm">
-                                   <FaDotCircle className="h-4 w-4 mr-2 flex-shrink-0" style={{ color: colors.primaryAccent }}/>
-                                   <span style={{ color: colors.textSecondary }}>{item}</span>
-                                 </li>
+                           <div className="mt-6">
+                             <h4 className="font-serif text-lg font-semibold mb-2" style={{ color: colors.textPrimary }}>Wann wird Hyaluronidase eingesetzt?</h4>
+                             <ul className="list-disc pl-5 text-sm" style={{ color: colors.textSecondary }}>
+                               {['Korrektur überfüllter Bereiche','Behandlung asymmetrischer Ergebnisse','Auflösung von Knötchen','Management von Komplikationen'].map((item,i)=>(
+                                 <li key={i} className="mb-1">{item}</li>
                                ))}
                              </ul>
                            </div>
                          )}
                          {selectedSubTreatment.id === 'bruxismBehandlung' && (
-                           <div className="space-y-6 mt-6">
-                             <div className="bg-white/50 p-6 rounded-xl shadow-md border" style={{ borderColor: colors.cardBorder }}>
-                               <h4 className="font-serif text-xl font-semibold mb-3" style={{ color: colors.textPrimary }}>Wirkung bei Zähneknirschen</h4>
-                               <p className="paragraph mb-0 text-sm" style={{ color: colors.textSecondary }}>
-                                Das Muskelrelaxans entspannt gezielt die Kaumuskulatur, um unbewusstes Zähneknirschen und Kieferpressen zu reduzieren.
-                               </p>
-                             </div>
-                              <div className="bg-white/50 p-6 rounded-xl shadow-md border" style={{ borderColor: colors.cardBorder }}>
-                               <h4 className="font-serif text-xl font-semibold mb-4" style={{ color: colors.textPrimary }}>Vorteile</h4>
-                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0 list-none p-0">
-                                 {['Reduziert Knirschen & Pressen', 'Lindert Kieferschmerzen', 
-                                   'Schützt die Zähne', 'Kann Kopfschmerzen reduzieren'].map((item, i) => (
-                                  <li key={i} className="flex items-center bg-white/70 p-3 rounded-lg text-sm">
-                                     <FaDotCircle className="h-4 w-4 mr-2 flex-shrink-0" style={{ color: colors.primaryAccent }}/>
-                                     <span style={{ color: colors.textSecondary }}>{item}</span>
-                                  </li>
-                                ))}
-                               </ul>
-                             </div>
+                           <div className="mt-6">
+                             <h4 className="font-serif text-lg font-semibold mb-2" style={{ color: colors.textPrimary }}>Wirkung bei Zähneknirschen</h4>
+                             <p className="text-sm mb-2" style={{ color: colors.textSecondary }}>Gezielte Entspannung der Kaumuskulatur reduziert unbewusstes Pressen/Knirschen und lindert damit häufig Kieferbeschwerden.</p>
+                             <ul className="list-disc pl-5 text-sm" style={{ color: colors.textSecondary }}>
+                               {['Reduziert Knirschen & Pressen','Lindert Kieferschmerzen','Schützt die Zähne','Kann Spannungskopfschmerzen verbessern'].map((item,i)=>(
+                                 <li key={i} className="mb-1">{item}</li>
+                               ))}
+                             </ul>
                            </div>
                          )}
                          {selectedSubTreatment.id === 'hyperhidrosisBehandlung' && (
-                           <div className="space-y-6 mt-6">
-                             <div className="bg-white/50 p-6 rounded-xl shadow-md border" style={{ borderColor: colors.cardBorder }}>
-                               <h4 className="font-serif text-xl font-semibold mb-3" style={{ color: colors.textPrimary }}>Wirkung bei Schwitzen</h4>
-                               <p className="paragraph mb-0 text-sm" style={{ color: colors.textSecondary }}>
-                                Das Muskelrelaxans blockiert temporär die Nervensignale an die Schweißdrüsen und reduziert so die Schweißproduktion in den behandelten Arealen effektiv.
-                               </p>
-                             </div>
-                             <div className="bg-white/50 p-6 rounded-xl shadow-md border" style={{ borderColor: colors.cardBorder }}>
-                               <h4 className="font-serif text-xl font-semibold mb-4" style={{ color: colors.textPrimary }}>Einsatzgebiete</h4>
-                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-0 list-none p-0">
-                                 {['Achseln', 'Handinnenflächen', 'Fußsohlen', 'Stirn / Kopfhaut'].map((item, i) => (
-                                   <li key={i} className="flex items-center bg-white/70 p-3 rounded-lg text-sm">
-                                     <FaDotCircle className="h-4 w-4 mr-2 flex-shrink-0" style={{ color: colors.primaryAccent }}/>
-                                     <span style={{ color: colors.textSecondary }}>{item}</span>
-                                   </li>
-                                 ))}
-                               </ul>
-                             </div>
+                           <div className="mt-6">
+                             <h4 className="font-serif text-lg font-semibold mb-2" style={{ color: colors.textPrimary }}>Wirkung bei Schwitzen</h4>
+                             <p className="text-sm mb-2" style={{ color: colors.textSecondary }}>Die Signalübertragung an Schweißdrüsen wird temporär gehemmt – die Schweißproduktion sinkt für mehrere Monate deutlich.</p>
+                             <h5 className="font-medium text-sm mt-3 mb-1" style={{ color: colors.textPrimary }}>Einsatzgebiete</h5>
+                             <ul className="list-disc pl-5 text-sm" style={{ color: colors.textSecondary }}>
+                               {['Achseln','Handinnenflächen','Fußsohlen','Stirn/Kopfhaut'].map((item,i)=>(
+                                 <li key={i} className="mb-1">{item}</li>
+                               ))}
+                             </ul>
+                           </div>
+                         )}
+
+                         {/* Zusätzliche, längere Beschreibungen */}
+                         {['eyebrowLift'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Beim Augenbrauenlifting werden gezielt die Muskeln entspannt, die den Brauenbogen nach unten ziehen. Dadurch hebt sich vor allem der äußere Anteil der Braue, ohne dass die Mimik starr wirkt.</p>
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Das Ergebnis ist ein offener, frischer Blick. Ideal auch in Kombination mit der Behandlung der Zornes- oder Stirnregion.</p>
+                           </div>
+                         )}
+                         {['foreheadLines'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Horizontale Stirnfalten entstehen durch häufiges Anheben der Augenbrauen. Mit einer sehr fein dosierten Entspannung wird die Oberfläche geglättet – natürliche Mimik bleibt erhalten.</p>
+                           </div>
+                         )}
+                         {['frownLines'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Die sogenannte Glabellafalte lässt das Gesicht leicht angestrengt erscheinen. Durch Entspannung der mimischen Muskulatur wirkt der Blick sofort freundlicher und entspannter.</p>
+                           </div>
+                         )}
+                         {['crowsFeet'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Feine Fältchen am äußeren Augenrand werden sanft reduziert. Das natürliche Lächeln bleibt erhalten – der Blick wirkt erholter.</p>
+                           </div>
+                         )}
+                         {['bunnyLines'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Querfalten am Nasenrücken („Bunny Lines“) werden punktgenau behandelt und harmonisiert – besonders effektiv in Ergänzung zur Zornesfaltenbehandlung.</p>
+                           </div>
+                         )}
+                         {['lippen'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Je nach Wunsch setzen wir Akzente für Kontur, Volumen oder Proportion (z. B. Herzform). Wir arbeiten mit fein abgestimmten Techniken für ein weiches, natürliches Finish.</p>
+                           </div>
+                         )}
+                         {['barcode'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Vertikale Lippenfältchen entstehen durch wiederkehrende Mimik und Strukturverlust. Mit fein vernetzten Fillern werden diese Linien sanft geglättet, ohne die Beweglichkeit zu beeinträchtigen.</p>
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Je nach Hautqualität empfiehlt sich die Kombination mit Skin-Quality‑Behandlungen (z. B. Microneedling/PRP) für ein besonders gleichmäßiges Ergebnis.</p>
+                           </div>
+                         )}
+                         {['nasolabial'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Durch Aufpolstern der Falte und – falls sinnvoll – sanften Volumenaufbau im Mittelgesicht wird die Region langfristig harmonisiert.</p>
+                           </div>
+                         )}
+                         {['marionetten'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Schatten und herabsinkende Mundwinkel werden ausgeglichen, sodass der Gesamtausdruck freundlicher und vitaler wirkt.</p>
+                           </div>
+                         )}
+                         {['jawline'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Stabile Filler definieren die Kinn-Kiefer-Linie. Die benötigte Menge richtet sich nach Anatomie und Zielbild.</p>
+                           </div>
+                         )}
+                         {['chin'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Ein gezielter Kinnaufbau harmonisiert die Seitenansicht und betont die Kinn-Hals-Linie – dezent oder markanter, je nach Wunsch.</p>
+                           </div>
+                         )}
+                         {['cheekbones'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Die Betonung der Jochbögen verleiht dem Gesicht Struktur und Jugendlichkeit. Mit strukturierten Fillern wird der Wangenknochen subtil angehoben, um Lichtreflexe zu optimieren und die Mittelface‑Kontur zu verbessern.</p>
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Die Menge richtet sich nach Anatomie; häufig 1–2 ml verteilt auf beide Seiten. Natürlichkeit hat Priorität.</p>
+                           </div>
+                         )}
+                         {['tearTrough'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Die Behandlung der Tränenrinne mildert Schatten und eingefallene Partien unter den Augen. Es kommen sehr weiche, wasserarme Filler zum Einsatz, die speziell für den Unterlidbereich geeignet sind.</p>
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Wichtig ist die sorgfältige Indikationsstellung – bei ausgeprägten Tränensäcken oder Flüssigkeitsneigung ist ein anderes Vorgehen sinnvoll. Ziel ist ein erholter, frischer Blick ohne Überkorrektur.</p>
+                           </div>
+                         )}
+                         {['fullface'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Das Full‑Face‑Konzept betrachtet das Gesicht ganzheitlich: Je nach Bedarf werden Konturen (Kinn/Jawline), Volumen (Wangen/Midface) und Übergänge (Nasolabial/Marionette) in einem abgestimmten Plan optimiert.</p>
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Typischerweise erfolgt die Behandlung in Schichten und Vektoren mit 2–6 ml insgesamt, um ein harmonisches, natürliches Ergebnis zu erzielen. Häufige Ergänzung: gezielte Muskelrelaxans‑Behandlungen zur Faltenprävention.</p>
+                           </div>
+                         )}
+                         {['faltenKorrektur'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Die allgemeine Faltenkorrektur mit Muskelrelaxans adressiert häufig Stirn-, Zornes- und Augenfältchen. Dosierung und Injektionspunkte werden individuell festgelegt, um ein natürlich bewegliches Ergebnis zu gewährleisten.</p>
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Der Effekt setzt in der Regel nach 3–5 Tagen ein, erreicht nach ca. 10–14 Tagen das Maximum und hält mehrere Monate. Auffrischungen sichern die Langzeitwirkung.</p>
+                           </div>
+                         )}
+                         {['facialSlimming'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Beim Facial Slimming wird der Kaumuskel (Masseter) gezielt entspannt. Dadurch kann das untere Gesicht schmaler wirken; gleichzeitig profitieren Patientinnen/Patienten mit Bruxismus von einer Entlastung der Kaumuskulatur.</p>
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Die Formveränderung entwickelt sich über Wochen. Für nachhaltige Ergebnisse sind meist Folgebehandlungen in individuell angepassten Abständen sinnvoll.</p>
+                           </div>
+                         )}
+                         {['neckLift'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Beim Nefertiti‑Lift werden Zuglinien des Platysma entspannt, um die Kinn‑Kiefer‑Kontur zu schärfen und vertikale Halsbänder zu mildern. Das Profil wirkt definierter, ohne Volumenaufbau.</p>
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Je nach Befund kombiniert man die Behandlung sinnvoll mit Kinn- oder Jawline‑Fillern. Die Wirkung hält mehrere Monate und kann aufgefrischt werden.</p>
+                           </div>
+                         )}
+                         {['chinDimples'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Das sogenannte Pflasterstein‑Kinn entsteht durch eine überaktive Kinnmuskulatur (Musculus mentalis). Durch gezielte Entspannung wird die Hautoberfläche geglättet und unruhige Konturen beruhigt.</p>
+                           </div>
+                         )}
+                         {['lipFlip'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Der Lip Flip eignet sich besonders, wenn mehr Sichtbarkeit des Lippenrots gewünscht ist, ohne zusätzliches Volumen aufzubauen. Ideal auch zur Feinkorrektur nach einer Lippenbehandlung.</p>
+                           </div>
+                         )}
+                         {['nasalTip'].includes(selectedSubTreatment.id) && (
+                           <div className="space-y-4 mt-6">
+                             <p className="paragraph mb-0" style={{ color: colors.textSecondary }}>Durch gezielte Entspannung des depressor septi nasi wird ein Absenken der Nasenspitze beim Sprechen/Lächeln reduziert. Das führt zu einem ruhiger wirkenden Profil – die Veränderung bleibt subtil und natürlich.</p>
                            </div>
                          )}
                        </>
@@ -728,19 +844,17 @@ const Treatments = () => {
                   
                   {/* Button - Style angepasst */}
                    <div className="mt-10 text-center">
-                      <motion.a 
-                        href={getPlanityBookingUrl()}
-                        onClick={openPlanityBooking}
-                        className="inline-block px-10 py-4 text-lg font-semibold rounded-full shadow-lg transition-all duration-300 ease-out transform hover:-translate-y-1" // Größerer Button
+                      <BookingSelector 
+                        variant="modal"
+                        className="inline-block px-10 py-4 text-lg font-semibold rounded-full shadow-lg transition-all duration-300 ease-out transform hover:-translate-y-1"
                         style={{ 
                           background: `linear-gradient(135deg, ${colors.buttonGradientStart}, ${colors.buttonGradientEnd})`, 
                           color: colors.buttonText,
                           boxShadow: `0 10px 20px -5px ${colors.primaryAccent}59`
                         }}
-                        whileHover={{ boxShadow: `0 15px 30px -8px ${colors.primaryAccent}7A` }} // Stärkerer Hover-Schatten
-                       >
+                      >
                         Jetzt Termin Buchen
-                      </motion.a>
+                      </BookingSelector>
                     </div>
                 </div>
               </motion.div>

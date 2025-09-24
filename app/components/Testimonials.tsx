@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
+import BookingSelector from './BookingSelector';
 
 const testimonials = [
   {
@@ -133,9 +134,12 @@ const Testimonials = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <a href={getPlanityBookingUrl()} target="_blank" rel="noopener noreferrer" className="button-primary">
+          <BookingSelector 
+            variant="modal"
+            className="button-primary"
+          >
             Jetzt Termin Buchen
-          </a>
+          </BookingSelector>
         </motion.div>
       </div>
     </section>

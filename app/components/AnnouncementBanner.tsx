@@ -32,10 +32,10 @@ const AnnouncementBanner = () => {
           className="relative w-full overflow-hidden z-50"
         >
           <div
-            className="relative w-full bg-gradient-to-r from-secondary via-accent to-secondary text-primary py-3 px-4"
+            className="relative w-full bg-gradient-to-r from-secondary via-accent to-secondary text-white py-3 px-4"
             style={{
-              background: 'linear-gradient(135deg, #D2B48C 0%, #E6C9A8 50%, #D2B48C 100%)',
-              boxShadow: '0 4px 15px rgba(210, 180, 140, 0.3)'
+              background: 'linear-gradient(135deg, #718096 0%, #A0AEC0 50%, #718096 100%)',
+              boxShadow: '0 4px 15px rgba(113, 128, 150, 0.3)'
             }}
           >
       {/* Decorative pattern */}
@@ -51,7 +51,7 @@ const AnnouncementBanner = () => {
         {/* Icon */}
         <div className="hidden sm:flex items-center mr-3">
           <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-            <FaMapMarkerAlt className="text-sm text-primary" />
+            <FaMapMarkerAlt className="text-sm text-white" />
           </div>
         </div>
         
@@ -76,7 +76,7 @@ const AnnouncementBanner = () => {
           className="ml-2 p-1 rounded-full hover:bg-white/20 transition-colors duration-300"
           aria-label="Banner schließen"
         >
-          <FaTimes className="text-sm text-primary" />
+          <FaTimes className="text-sm text-white" />
         </button>
       </div>
       

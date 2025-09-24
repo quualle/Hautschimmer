@@ -15,38 +15,40 @@ const treatments = {
     color: 'secondary',
     description: 'Präzise Muskelentspannung für ein natürlich verjüngtes Aussehen',
     treatments: [
-      { name: 'Zornesfalte (Glabella)', price: 179, duration: '15 Min', info: 'Glättet die vertikalen Falten zwischen den Augenbrauen', unit: undefined },
-      { name: 'Stirn quer', price: 134, duration: '10 Min', info: 'Reduziert horizontale Stirnfalten', unit: undefined },
-      { name: 'Krähenfüße (beidseitig)', price: 215, duration: '15 Min', info: 'Mildert Lachfältchen um die Augen', unit: undefined },
-      { name: 'Bunny Lines Nase', price: 80, duration: '5 Min', info: 'Glättet Nasenfalten beim Lachen', unit: undefined },
-      { name: 'Lippen-Flip / Gummy Smile', price: 107, duration: '10 Min', info: 'Korrigiert das Zahnfleischlächeln', unit: undefined },
-      { name: 'Masseter (Knirschen)', price: 404, duration: '20 Min', info: 'Entspannt die Kaumuskulatur', unit: undefined },
-      { name: 'Hyperhidrose Achsel', price: 809, duration: '30 Min', info: 'Stoppt übermäßiges Schwitzen', unit: undefined }
+      { name: '1 Zone (flexibel)', price: 189, duration: '15–20 Min', info: 'Wählen Sie eine beliebige Zone (z. B. Stirn, Glabella oder Krähenfüße)', unit: undefined },
+      { name: '2 Zonen (flexibel)', price: 314, duration: '20–25 Min', info: 'Beliebige Kombination aus zwei Zonen', unit: undefined },
+      { name: '3 Zonen (flexibel)', price: 450, duration: '25–35 Min', info: 'Beliebige Kombination aus drei Zonen', unit: undefined },
+      // Spezielle Areale
+      { name: 'Bunny Lines (Nasenfältchen)', price: 150, duration: '10–15 Min', info: 'Feine Fältchen am Nasenrücken werden sanft geglättet', unit: undefined },
+      { name: 'Lip Flip', price: 150, duration: '10–15 Min', info: 'Dezente Betonung der Oberlippe durch gezielte Muskelentspannung', unit: undefined },
+      { name: 'Hyperhidrose (Achseln)', price: 500, duration: '25–35 Min', info: 'Reduziert die Schweißproduktion an den Achseln für mehrere Monate', unit: undefined },
+      { name: 'Masseter (Bruxismus / Gesichtsverschmälerung)', price: 300, duration: '15–25 Min', info: 'Entspannt die Kaumuskeln – Linderung von Knirschen und schmalere Kontur', unit: undefined },
+      { name: 'Nasenspitze (Nasen-Botox)', price: 150, duration: '10–15 Min', info: 'Feinkorrektur der Nasenspitzenbewegung für ein harmonisches Profil', unit: undefined },
+      { name: 'Erdbeerkinn (Pflasterstein-Kinn)', price: 150, duration: '10–15 Min', info: 'Glättet unruhige Kinnhaut und Grübchenbildung', unit: undefined },
+      { name: 'Augenbrauen-Lift', price: 150, duration: '10–15 Min', info: 'Hebt den seitlichen Brauenanteil für einen offeneren Blick', unit: undefined },
+      { name: 'Nefertiti-Lift (Kiefer/Hals)', price: 300, duration: '25–35 Min', info: 'Definiert Kinn- und Halslinie durch gezielte Muskelentspannung', unit: undefined },
     ],
-    packages: [
-      { name: 'Summer-Special: Hyperhidrose Achseln', price: 719, special: true, info: 'Behandlung gegen starkes Schwitzen - Sonderpreis nur für kurze Zeit! (Normalpreis: 809€)', savings: 90 },
-      { name: '2 Zonen (Stirn + Glabella)', price: 314, info: 'Zwei Behandlungszonen zum Vorteilspreis', special: undefined, savings: undefined },
-      { name: '3 Zonen (Stirn + Glabella + Krähenfüße)', price: 449, savings: 79, info: 'Komplettbehandlung für ein frisches Aussehen', special: undefined }
-    ]
+    packages: []
   },
   hyaluron: {
     title: 'Hyaluron-Filler',
     subtitle: 'Volumenaufbau & Konturierung',
     icon: FaDroplet,
     color: 'accent',
-    description: 'Natürliche Volumengabe und Faltenunterspritzung mit Premium-Fillern',
+    description: 'Standard 215 € pro ml • Areale mit ab‑Preis',
     treatments: [
-      { name: 'Lippen Volumen 1 ml', price: 224, duration: '30 Min', info: 'Für vollere, definierte Lippen', unit: undefined },
-      { name: 'Nasolabialfalte 1 ml', price: 224, duration: '20 Min', info: 'Glättet tiefe Falten von Nase zu Mund', unit: undefined },
-      { name: 'Marionettenfalten 1 ml', price: 224, duration: '20 Min', info: 'Mildert Falten von Mundwinkel zum Kinn', unit: undefined },
-      { name: 'Wangen / Midface', price: 251, unit: '/ml', duration: '30 Min', info: 'Stellt jugendliches Volumen wieder her' },
-      { name: 'Jawline Kontur', price: 251, unit: '/ml', duration: '40 Min', info: 'Definiert die Kieferlinie' }
+      { name: 'Standard (1 ml)', price: 215, unit: ' / ml', duration: '20–40 Min', info: 'Gilt für alle nicht gesondert gelisteten Areale' },
+      { name: 'Lippen', price: 150, duration: '30–40 Min', info: 'Natürlicher Volumenaufbau – ab Preis', unit: undefined },
+      { name: 'Nasolabialfalten', price: 250, duration: '20–30 Min', info: 'Ausgleich der Falten von Nase zu Mund – ab Preis', unit: undefined },
+      { name: 'Jawline', price: 430, duration: '30–45 Min', info: 'Kieferlinie definieren – ab Preis', unit: undefined },
+      { name: 'Wangen/Midface', price: 215, duration: '30–45 Min', info: 'Volumen & Lift – ab Preis', unit: undefined },
+      { name: 'Kinn', price: 215, duration: '20–40 Min', info: 'Profilharmonisierung – ab Preis', unit: undefined },
     ],
     packages: [
-      { name: '2 ml-Paket', price: 476, savings: 22, info: 'Ideal für kombinierte Behandlungen', special: undefined },
-      { name: '4 ml-Paket', price: 944, savings: 60, info: 'Für umfassende Volumenbehandlungen', special: undefined },
-      { name: 'Russian Lips 2 ml', price: 404, special: true, info: 'Spezielle Technik für natürlich volle Lippen', savings: undefined },
-      { name: 'Liquid Lift (Full Face) 6 ml', price: 1169, savings: 337, info: 'Komplette Gesichtsverjüngung ohne OP', special: undefined }
+      { name: '2 ml Paket', price: 410, info: 'Preisvorteil bei Kombination', special: undefined },
+      { name: '3 ml Paket', price: 615, info: 'Für umfassendere Korrekturen', special: undefined },
+      { name: '4 ml Paket', price: 820, info: 'Für Full-Face Ansätze', special: undefined },
+      { name: 'Liquid Facelift', price: 1169, info: 'Umfassende Gesichtskonturierung – ab Preis', special: true },
     ]
   },
   prp: {
@@ -56,8 +58,8 @@ const treatments = {
     color: 'primary',
     description: 'Natürliche Hautverjüngung mit körpereigenen Wachstumsfaktoren',
     treatments: [
-      { name: 'PRP Behandlung', price: 550, duration: '45-60 Min', info: 'Intensive Hautregeneration mit 2 Sitzungen', unit: undefined },
-      { name: 'Ergänzende Einzelbehandlung', price: 300, duration: '45 Min', info: 'Zusätzliche PRP-Sitzung für optimale Ergebnisse', unit: undefined }
+      { name: 'PRP Behandlung', price: 500, duration: '45-60 Min', info: 'Intensive Hautregeneration – zwei Termine', unit: undefined },
+      { name: 'Ergänzende Einzelbehandlung', price: 300, duration: '45 Min', info: 'Zusätzliche PRP-Sitzung', unit: undefined }
     ],
     packages: [
       { 
@@ -69,6 +71,43 @@ const treatments = {
       }
     ]
   }
+  ,
+  polynucleotides: {
+    title: 'Polynukleotide',
+    subtitle: 'Zelluläre Regeneration',
+    icon: FaVial,
+    color: 'primary',
+    description: 'Stimuliert Regeneration, Elastizität und Hautqualität',
+    treatments: [
+      { name: 'Polynukleotide', price: 300, duration: '30–45 Min', info: 'Zellfreie Regeneration, fördert Kollagen & Elastin', unit: undefined },
+    ],
+    packages: []
+  }
+  ,
+  mesotherapy: {
+    title: 'Mesotherapie',
+    subtitle: 'Fein dosierte Wirkstoffdepots',
+    icon: FaDroplet,
+    color: 'accent',
+    description: 'Gezielte Effekte im Augenbereich',
+    treatments: [
+      { name: '1x Behandlung Augenpartie', price: 180, duration: '20–30 Min', info: 'Sanfte Revitalisierung und Glättung', unit: undefined },
+      { name: '2x Behandlung Augenpartie', price: 320, duration: '2 Termine', info: 'Kombinierte Behandlung für intensiveren Effekt', unit: undefined }
+    ],
+    packages: []
+  },
+  vitamininfusion: {
+    title: 'Vitamin Infusionen',
+    subtitle: 'Nährstoff-Booster',
+    icon: FaVial,
+    color: 'primary',
+    description: 'Gezielte Versorgung mit Vitaminen & Mineralien',
+    treatments: [
+      { name: 'Basis Infusion (Vit C, B-Komplex, Mineralien)', price: 99, duration: '30–45 Min', info: 'Stärkt Immunsystem und Energiehaushalt', unit: undefined },
+      { name: 'Beauty-/Anti-Aging-Infusion', price: 129, duration: '30–45 Min', info: 'Mit Antioxidantien, Aminosäuren – je nach Bedarf', unit: undefined }
+    ],
+    packages: []
+  }
 };
 
 const Pricing = () => {
@@ -77,7 +116,7 @@ const Pricing = () => {
     triggerOnce: true
   });
 
-  const [activeCategory, setActiveCategory] = useState<'muskelrelaxans' | 'hyaluron' | 'prp'>('muskelrelaxans');
+  const [activeCategory, setActiveCategory] = useState<'muskelrelaxans' | 'hyaluron' | 'prp' | 'polynucleotides'>('muskelrelaxans');
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const containerVariants = {
@@ -227,7 +266,9 @@ const Pricing = () => {
                       <div className="flex justify-between items-start mb-2">
                         <h4 className="font-medium text-primary flex-1 pr-4">{treatment.name}</h4>
                         <div className="text-right">
-                          <span className="text-2xl font-light text-secondary">€{treatment.price}</span>
+                          <span className="text-2xl font-light text-secondary">ab €{treatment.price}{
+                            (activeCategory === 'prp' && treatment.name === 'PRP Behandlung') ? ' [zwei Termine]' : ''
+                          }</span>
                           {treatment.unit && <span className="text-sm text-primary/60">{treatment.unit}</span>}
                         </div>
                       </div>
@@ -307,7 +348,7 @@ const Pricing = () => {
                       {/* Price and Savings */}
                       <div className="flex items-end justify-between">
                         <div>
-                          <span className="text-3xl font-light text-secondary">€{pkg.price}</span>
+                          <span className="text-3xl font-light text-secondary">ab €{pkg.price}</span>
                         </div>
                         {pkg.savings && (
                           <div className="text-right">

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
+import { getSuperSaaSBookingUrl, BookingLocation, openBookingForLocation } from '../utils/supersaasBooking';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +45,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-primary/20">
+    <section id="contact" className="py-24 bg-light">
       <div className="section-container !pt-0 !pb-0">
         <motion.div
           ref={ref}
@@ -53,67 +54,70 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="heading-2 mb-4">Kontakt<span className="text-[#C0A080]">aufnahme</span></h2>
+          <h2 className="heading-2 mb-4">Kontakt<span className="text-secondary">aufnahme</span></h2>
           <p className="paragraph max-w-3xl mx-auto">
             Bereit, Ihre Schönheitsreise zu beginnen? Kontaktieren Sie uns, um einen Beratungstermin zu vereinbaren oder mehr über unsere Behandlungen zu erfahren.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Kontaktinformationen */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto"
-          >
-            <h3 className="heading-3 mb-6">Kontaktinformationen</h3>
-            <div className="space-y-6 mb-8">
-              <div className="flex items-start">
-                <div className="bg-[#333333]/50 p-3 rounded-full mr-4">
-                  <FaPhone className="text-[#C0A080]" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Telefon</h4>
-                  <p>0173 8615766</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="bg-[#333333]/50 p-3 rounded-full mr-4">
-                  <FaEnvelope className="text-[#C0A080]" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Email</h4>
-                  <p>saskia.medestetique@gmail.com</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Deutlich hervorgehobene Buchungsplattform-CTA */}
+        <div className="grid grid-cols-1 gap-12">
+          {/* Standort-spezifische Buchungsplattform-CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-16 max-w-3xl mx-auto text-center p-10 relative"
+            className="mt-8 text-center p-10 md:p-12 relative bg-white/80 border border-secondary/20 rounded-2xl shadow-xl"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary to-[#d2b48c] rounded-2xl shadow-gold"></div>
-            <div className="relative z-10 text-light">
-              <h3 className="font-serif text-3xl mb-6 font-semibold drop-shadow-lg">Jetzt Termin Buchen</h3>
-              <p className="mb-8 text-lg font-light max-w-xl mx-auto">
+            <div className="relative z-10 text-primary">
+              <h3 className="font-serif text-3xl mb-6 font-semibold">Jetzt Termin buchen</h3>
+              <p className="mb-8 text-lg font-light max-w-2xl mx-auto text-primary/80">
                 Ärztliche Leistungen von Saskia Heer werden an ausgewählten Tagen im Jahr
-                im Kosmetikstudio Glam & Glow Beauty in Königs Wusterhausen und 
-                ab dem 13. Oktober 2025 auch in Neumarkt i.d.Opf (Mussinanstraße 65) angeboten. 
-                Terminreservierungen sind bequem über unsere Buchungsplattform möglich.
+                an zwei Standorten angeboten. Wählen Sie Ihren bevorzugten Standort für die Terminbuchung.
               </p>
-              <a
-                href={getPlanityBookingUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-10 py-4 rounded-full bg-light text-secondary font-semibold text-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
-              >
-                Zur Buchungsplattform
-              </a>
+              
+              {/* Standort-Buttons */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 w-full">
+                {/* Königs Wusterhausen */}
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white rounded-xl p-6 border border-secondary/20"
+                >
+                  <div className="flex items-center justify-center mb-4">
+                    <FaMapMarkerAlt className="text-2xl text-secondary mr-3" />
+                    <h4 className="text-xl font-semibold text-primary">Königs Wusterhausen</h4>
+                  </div>
+                  <p className="text-primary/70 mb-4 text-sm">
+                    Kosmetikstudio Glam & Glow Beauty
+                  </p>
+                  <button
+                    onClick={(e) => openBookingForLocation(BookingLocation.KOENIGS_WUSTERHAUSEN, e)}
+                    className="w-full px-6 py-3 rounded-full bg-gradient-to-r from-secondary to-secondary/90 text-white font-semibold shadow-lg transform hover:scale-105 transition-transform duration-300"
+                  >
+                    Termin in KW buchen
+                  </button>
+                </motion.div>
+
+                {/* Neumarkt */}
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white rounded-xl p-6 border border-secondary/20"
+                >
+                  <div className="flex items-center justify-center mb-4">
+                    <FaMapMarkerAlt className="text-2xl text-secondary mr-3" />
+                    <h4 className="text-xl font-semibold text-primary">Neumarkt i.d.Opf</h4>
+                  </div>
+                  <p className="text-primary/70 mb-4 text-sm">
+                    Mussinanstraße 65<br />
+                    <span className="text-xs">ab 13. Oktober 2025</span>
+                  </p>
+                  <button
+                    onClick={(e) => openBookingForLocation(BookingLocation.NEUMARKT, e)}
+                    className="w-full px-6 py-3 rounded-full bg-gradient-to-r from-secondary to-secondary/90 text-white font-semibold shadow-lg transform hover:scale-105 transition-transform duration-300"
+                  >
+                    Termin in Neumarkt buchen
+                  </button>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>

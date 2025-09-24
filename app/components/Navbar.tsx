@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
+import BookingSelector from './BookingSelector';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,16 +111,20 @@ const Navbar = () => {
               key={link.name} 
               href={link.href} 
               className={`relative font-light text-xs md:text-sm tracking-wide uppercase text-shadow-soft ${
-                activeSection === link.id 
-                  ? 'text-white font-medium' 
-                  : 'text-white/90 hover:text-white'
+                scrolled
+                  ? (activeSection === link.id
+                      ? 'text-primary font-medium'
+                      : 'text-primary/80 hover:text-primary')
+                  : (activeSection === link.id
+                      ? 'text-white font-medium'
+                      : 'text-white/90 hover:text-white')
               } transition-colors duration-300 group py-1 px-2`}
-              style={{ textShadow: scrolled ? '0 1px 2px rgba(0,0,0,0.25)' : '0 2px 6px rgba(0,0,0,0.45)' }}
+              style={{ textShadow: scrolled ? 'none' : '0 2px 6px rgba(0,0,0,0.45)' }}
             >
               <span className={`relative z-10`}>{link.name}</span>
-              <span className={`absolute inset-x-0 bottom-0 h-px bg-white/70 transform origin-left transition-transform duration-300 ${
+              <span className={`absolute inset-x-0 bottom-0 h-px transform origin-left transition-transform duration-300 ${
                 activeSection === link.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-              }`}></span>
+              } ${scrolled ? 'bg-secondary/70' : 'bg-white/70'}`}></span>
               {!scrolled && (
                 <span className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               )}
@@ -210,15 +215,12 @@ const Navbar = () => {
                 
                 {/* CTA Button */}
                 <div className="mt-8">
-                  <a 
-                    href={getPlanityBookingUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <BookingSelector 
+                    variant="modal"
                     className="button-primary w-full text-center block"
-                    onClick={toggleMenu}
                   >
                     Jetzt Termin Buchen
-                  </a>
+                  </BookingSelector>
                 </div>
               </div>
             </motion.div>

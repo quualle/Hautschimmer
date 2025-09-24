@@ -9,12 +9,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#2D3748",     // Cool slate gray
-        secondary: "#718096",   // Medium cool gray
-        accent: "#A0AEC0",      // Light cool gray
-        highlight: "#E2E8F0",   // Very light gray
-        dark: "#1A202C",        // Deep charcoal
-        light: "#F7FAFC"        // Clean cool white
+        // Warmer palette
+        primary: "#2F2A26",     // Warm dark taupe
+        secondary: "#C0A080",   // Soft gold/taupe accent
+        accent: "#E6D9C8",      // Warm beige
+        highlight: "#F5EFE6",   // Warm light
+        dark: "#1F1B18",        // Warm near-black
+        light: "#FCFAF7"        // Warm white
       },
       fontFamily: {
         sans: ['var(--font-montserrat)'],
@@ -27,7 +28,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-luxury': 'linear-gradient(135deg, #718096 0%, #A0AEC0 100%)',
+        'gradient-luxury': 'linear-gradient(135deg, #C0A080 0%, #E6D9C8 100%)',
       },
     },
   },

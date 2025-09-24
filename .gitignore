@@ -35,3 +35,7 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Local booking data (do not commit PII)
+/data/neumarkt-bookings.json
+/data/outbox/
