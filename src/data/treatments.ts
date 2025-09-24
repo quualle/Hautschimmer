@@ -45,12 +45,18 @@ export const TREATMENTS: Treatment[] = [
   // Polynukleotide
   { id: 'poly-std', name: 'Polynukleotide', category: 'polynucleotides', priceEUR: 300, durationMinutes: 45 },
 
-  // Mesotherapie & weitere
-  { id: 'meso-std', name: 'Mesotherapie', category: 'mesotherapy', priceEUR: 0, durationMinutes: 45, notes: 'on_request' },
+  // Mesotherapie (Augenpartie)
+  { id: 'meso-eyes-1x', name: 'Mesotherapie – Augenpartie (1x)', category: 'mesotherapy', priceEUR: 180, durationMinutes: 30 },
+  { id: 'meso-eyes-2x', name: 'Mesotherapie – Augenpartie (2x)', category: 'mesotherapy', priceEUR: 320, durationMinutes: 60 },
+
+  // Vitamin‑Infusionen
+  { id: 'vit-infusion-base', name: 'Basis‑Infusion (Vit C, B‑Komplex, Mineralien)', category: 'vitamininfusion', priceEUR: 99, durationMinutes: 40 },
+  { id: 'vit-infusion-beauty', name: 'Beauty/Anti‑Aging‑Infusion', category: 'vitamininfusion', priceEUR: 129, durationMinutes: 40 },
+
+  // Weitere nach Absprache
   { id: 'micro-analysis', name: 'Mikronährstoffanalyse', category: 'micronutrients', priceEUR: 0, durationMinutes: 30, notes: 'on_request' },
-  { id: 'vitamin-infusions', name: 'Vitamin‑Infusionen', category: 'vitamininfusion', priceEUR: 0, durationMinutes: 45, notes: 'on_request' },
   { id: 'exosomes-std', name: 'Exosomen Therapie', category: 'exosomes', priceEUR: 0, durationMinutes: 60, notes: 'on_request' },
-  // Lipolyse Sub‑Zonen
+  // Lipolyse Sub‑Zonen (Preis nach Absprache)
   { id: 'lipo-doppelkinn', name: 'Lipolyse – Doppelkinn', category: 'lipolysis', priceEUR: 0, durationMinutes: 45, notes: 'on_request' },
   { id: 'lipo-bauch', name: 'Lipolyse – Bauchfett', category: 'lipolysis', priceEUR: 0, durationMinutes: 45, notes: 'on_request' },
   { id: 'lipo-cellulite', name: 'Lipolyse – Cellulite', category: 'lipolysis', priceEUR: 0, durationMinutes: 50, notes: 'on_request' },
