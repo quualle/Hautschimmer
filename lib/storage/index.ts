@@ -1,6 +1,7 @@
 import { HAS_SUPABASE } from './env';
 import * as file from './fileStore';
 import * as sbase from './supabaseStore';
+import type { Booking as FileBooking } from './fileStore';
 
 export async function listBookingsByDate(date: string) {
   if (HAS_SUPABASE) return sbase.listBookingsByDate(date);
@@ -19,7 +20,7 @@ export async function addBooking(input: {
   endTime: string;
   durationMinutes: number;
   remindAtISO?: string;
-}) {
+}): Promise<FileBooking> {
   if (HAS_SUPABASE) {
     return sbase.addBooking({
       firstName: input.firstName,
@@ -43,8 +44,19 @@ export async function addBooking(input: {
     phone: input.phone,
     smsOptIn: input.smsOptIn,
     treatmentId: input.treatmentId,
-    treatmentName: '',
-    priceEUR: 0,
+    treatmentName: ((): string => {
+      try {
+        const { getTreatmentById } = require('../../src/data/treatments');
+        return getTreatmentById(input.treatmentId)?.name || 'Behandlung';
+      } catch { return 'Behandlung'; }
+    })(),
+    priceEUR: ((): number => {
+      try {
+        const { getTreatmentById } = require('../../src/data/treatments');
+        const t = getTreatmentById(input.treatmentId);
+        return t?.priceEUR || 0;
+      } catch { return 0; }
+    })(),
     date: input.date,
     startTime: input.time,
     endTime: input.endTime,
@@ -53,4 +65,3 @@ export async function addBooking(input: {
   });
   return booking;
 }
-

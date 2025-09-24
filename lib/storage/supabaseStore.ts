@@ -1,5 +1,6 @@
 import { getAdminClient } from './supabaseClient';
 import { TREATMENTS, getTreatmentById } from '../../src/data/treatments';
+import type { Booking as FileBooking } from './fileStore';
 
 export type BookingRow = {
   id: string;
@@ -47,7 +48,7 @@ export async function addBooking(input: {
   endTime: string; // HH:MM
   durationMinutes: number;
   remindAtISO?: string;
-}) {
+}): Promise<FileBooking> {
   const supabase = getAdminClient();
   const t = getTreatmentById(input.treatmentId);
   const price = t?.priceEUR ?? 0;
@@ -90,4 +91,3 @@ export async function addBooking(input: {
     smsReminderSent: data.sms_reminder_sent,
   };
 }
-
