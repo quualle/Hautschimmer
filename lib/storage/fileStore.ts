@@ -161,11 +161,19 @@ export function getTreatmentDurationMinutes(treatmentId: string): number {
 }
 
 export function writeOutboxEmail(bookingId: string, html: string) {
-  ensureDirs();
-  fs.writeFileSync(path.join(emailsDir, `${bookingId}.html`), html, 'utf8');
+  try {
+    ensureDirs();
+    fs.writeFileSync(path.join(emailsDir, `${bookingId}.html`), html, 'utf8');
+  } catch {
+    // ignore on read-only FS
+  }
 }
 
 export function writeOutboxSms(bookingId: string, kind: 'confirm' | 'reminder', text: string) {
-  ensureDirs();
-  fs.writeFileSync(path.join(smsDir, `${bookingId}-${kind}.txt`), text, 'utf8');
+  try {
+    ensureDirs();
+    fs.writeFileSync(path.join(smsDir, `${bookingId}-${kind}.txt`), text, 'utf8');
+  } catch {
+    // ignore on read-only FS
+  }
 }
