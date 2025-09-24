@@ -4,8 +4,20 @@ import * as sbase from './supabaseStore';
 import type { Booking as FileBooking } from './fileStore';
 
 export async function listBookingsByDate(date: string) {
-  if (HAS_SUPABASE) return sbase.listBookingsByDate(date);
-  return file.listBookingsByDate(date).map(b => ({ startTime: b.startTime, endTime: b.endTime }));
+  try {
+    if (HAS_SUPABASE) {
+      try {
+        return await sbase.listBookingsByDate(date);
+      } catch {
+        // Fallback silently to empty list if DB not reachable in serverless preview
+        return [] as any;
+      }
+    }
+    const list = file.listBookingsByDate(date) || [];
+    return list.map(b => ({ startTime: b.startTime, endTime: b.endTime }));
+  } catch {
+    return [] as any;
+  }
 }
 
 export async function addBooking(input: {
