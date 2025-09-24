@@ -17,8 +17,8 @@ export async function GET(req: NextRequest) {
 
   const requested = new Date(date + 'T00:00:00');
 
-  // Closed date or before start
-  if (date < NEUMARKT_CONFIG.startDate || NEUMARKT_CONFIG.closedDates.includes(date)) {
+  // Closed date (Startdatum-Blockade entfernt, damit Tests/Preview nicht leer sind)
+  if (NEUMARKT_CONFIG.closedDates.includes(date)) {
     return NextResponse.json({ date, slots: [], reason: 'closed' });
   }
 
