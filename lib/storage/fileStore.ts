@@ -46,9 +46,10 @@ function ensureDirs() {
 }
 
 function readAll(): BookingsFile {
-  ensureDirs();
-  const raw = fs.readFileSync(bookingsFile, 'utf8');
+  // On serverless (Netlify), filesystem can be read-only at runtime.
+  // For read operations, gracefully return empty when file/dirs are missing.
   try {
+    const raw = fs.readFileSync(bookingsFile, 'utf8');
     return JSON.parse(raw) as BookingsFile;
   } catch {
     return { bookings: [] };
