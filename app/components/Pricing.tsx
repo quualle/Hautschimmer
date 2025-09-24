@@ -350,13 +350,13 @@ const Pricing = () => {
                         <div>
                           <span className="text-3xl font-light text-secondary">ab €{pkg.price}</span>
                         </div>
-                        {pkg.savings && (
+                        {'savings' in pkg && (pkg as any).savings ? (
                           <div className="text-right">
                             <span className="text-sm text-green-600 font-medium">
-                              Sie sparen €{pkg.savings}
+                              Sie sparen €{(pkg as any).savings}
                             </span>
                           </div>
-                        )}
+                        ) : null}
                       </div>
                       
                       {/* Hover Effect */}
