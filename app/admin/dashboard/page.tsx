@@ -34,6 +34,7 @@ export default function AdminDashboardPage() {
       <div className="container mx-auto px-4 py-8">
         <header className="mb-8 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
+          <a href="/admin/bookings" className="text-secondary hover:text-primary underline">Zu den Terminen</a>
           <button
             onClick={() => {
               Cookies.remove('admin_session')
