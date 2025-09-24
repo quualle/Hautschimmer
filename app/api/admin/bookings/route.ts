@@ -3,6 +3,8 @@ import { HAS_SUPABASE } from '../../../../lib/storage/env';
 import { getAdminClient } from '../../../../lib/storage/supabaseClient';
 import { listAllBookings as listAllFromFile } from '../../../../lib/storage/fileStore';
 
+export const runtime = 'nodejs';
+
 export async function GET(req: NextRequest) {
   try {
     const authHeader = req.headers.get('authorization');
@@ -12,19 +14,23 @@ export async function GET(req: NextRequest) {
     }
 
     if (HAS_SUPABASE) {
-      const supabase = getAdminClient();
-      const { data, error } = await supabase
-        .from('bookings')
-        .select('id, location, first_name, last_name, email, phone, sms_opt_in, treatment_id, price_eur, date, start_time, end_time, duration_minutes, status, created_at')
-        .order('date', { ascending: true })
-        .order('start_time', { ascending: true });
-      if (error) {
-        console.error('Supabase error:', error);
-        return NextResponse.json({ error: 'Failed to fetch bookings' }, { status: 500 });
+      try {
+        const supabase = getAdminClient();
+        const { data, error } = await supabase
+          .from('bookings')
+          .select('id, location, first_name, last_name, email, phone, sms_opt_in, treatment_id, price_eur, date, start_time, end_time, duration_minutes, status, created_at')
+          .order('date', { ascending: true })
+          .order('start_time', { ascending: true });
+        if (!error) {
+          return NextResponse.json({ bookings: data || [] });
+        }
+        console.warn('Supabase bookings fetch failed, falling back to file store:', error?.message);
+      } catch (e: any) {
+        console.warn('Supabase admin GET error, fallback to file:', e?.message);
       }
-      return NextResponse.json({ bookings: data || [] });
-    } else {
-      const bookings = listAllFromFile().map((b: any) => ({
+    }
+
+    const bookings = (listAllFromFile() || []).map((b: any) => ({
         id: b.id,
         location: b.location,
         first_name: b.firstName,
@@ -40,9 +46,8 @@ export async function GET(req: NextRequest) {
         duration_minutes: b.durationMinutes,
         status: b.status,
         created_at: b.createdAt,
-      }));
-      return NextResponse.json({ bookings });
-    }
+    }));
+    return NextResponse.json({ bookings });
   } catch (e: any) {
     console.error('Admin bookings GET error:', e);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
