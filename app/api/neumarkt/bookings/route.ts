@@ -8,6 +8,8 @@ import { renderConfirmationSms } from '../../../../lib/notifications/sms';
 import { sendSmsOrOutbox } from '../../../../lib/notifications/smsSender';
 import { NEUMARKT_CONFIG } from '../../../../src/data/neumarkt-config';
 
+export const runtime = 'nodejs';
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -28,8 +30,8 @@ export async function POST(req: NextRequest) {
     const end = start + duration;
 
     // Check working window
-    const dObj = new Date(date + 'T00:00:00');
-    const weekdayISO = ((dObj.getDay() + 6) % 7) + 1;
+    const dObj = new Date(date + 'T12:00:00');
+    const weekdayISO = ((dObj.getUTCDay() + 6) % 7) + 1;
     const dayConfig = NEUMARKT_CONFIG.workingHours.find(w => w.day === (weekdayISO as any));
     if (!dayConfig) {
       return NextResponse.json({ error: 'Closed on selected day' }, { status: 400 });
