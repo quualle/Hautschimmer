@@ -42,14 +42,14 @@ export async function GET(req: NextRequest) {
     }
 
     const bookings = await listBookingsByDate(date);
-    const busyIntervals = (bookings || [])
+    const busyIntervals: { start: number; end: number }[] = (bookings || [])
       .filter((b: any) => typeof b?.startTime === 'string' && typeof b?.endTime === 'string')
       .map((b: any) => ({ start: timeToMinutes(b.startTime), end: timeToMinutes(b.endTime) }));
 
     const slots: { time: string; available: boolean }[] = [];
     for (let start = openMin; start + duration <= closeMin; start += NEUMARKT_CONFIG.slotIntervalMinutes) {
       const end = start + duration;
-      const isBusy = busyIntervals.some(iv => overlaps(start, end, iv.start, iv.end));
+      const isBusy = busyIntervals.some((iv: { start: number; end: number }) => overlaps(start, end, iv.start, iv.end));
       slots.push({ time: minutesToTime(start), available: !isBusy });
     }
 
