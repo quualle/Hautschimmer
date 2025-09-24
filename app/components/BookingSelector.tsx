@@ -9,9 +9,10 @@ interface BookingSelectorProps {
   children: React.ReactNode;
   className?: string;
   variant?: 'button' | 'dropdown' | 'modal';
+  style?: React.CSSProperties;
 }
 
-const BookingSelector = ({ children, className = '', variant = 'dropdown' }: BookingSelectorProps) => {
+const BookingSelector = ({ children, className = '', variant = 'dropdown', style }: BookingSelectorProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const locations = [
@@ -40,6 +41,7 @@ const BookingSelector = ({ children, className = '', variant = 'dropdown' }: Boo
         <button
           onClick={() => setIsOpen(true)}
           className={className}
+          style={style}
         >
           {children}
         </button>
@@ -121,6 +123,7 @@ const BookingSelector = ({ children, className = '', variant = 'dropdown' }: Boo
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`${className} flex items-center gap-2`}
+          style={style}
         >
           {children}
           <FaChevronDown className={`text-sm transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
@@ -176,10 +179,7 @@ const BookingSelector = ({ children, className = '', variant = 'dropdown' }: Boo
 
   // Simple button variant - just opens modal
   return (
-    <button
-      onClick={() => setIsOpen(true)}
-      className={className}
-    >
+    <button onClick={() => setIsOpen(true)} className={className} style={style}>
       {children}
     </button>
   );
