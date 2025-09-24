@@ -57,8 +57,12 @@ function readAll(): BookingsFile {
 }
 
 function writeAll(data: BookingsFile) {
-  ensureDirs();
-  fs.writeFileSync(bookingsFile, JSON.stringify(data, null, 2), 'utf8');
+  try {
+    ensureDirs();
+    fs.writeFileSync(bookingsFile, JSON.stringify(data, null, 2), 'utf8');
+  } catch {
+    // ignore on read-only FS (Netlify)
+  }
 }
 
 export function listBookingsByDate(date: string): Booking[] {

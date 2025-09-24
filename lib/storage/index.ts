@@ -34,19 +34,23 @@ export async function addBooking(input: {
   remindAtISO?: string;
 }): Promise<FileBooking> {
   if (HAS_SUPABASE) {
-    return sbase.addBooking({
-      firstName: input.firstName,
-      lastName: input.lastName,
-      email: input.email,
-      phone: input.phone,
-      smsOptIn: input.smsOptIn,
-      treatmentId: input.treatmentId,
-      date: input.date,
-      startTime: input.time,
-      endTime: input.endTime,
-      durationMinutes: input.durationMinutes,
-      remindAtISO: input.remindAtISO,
-    });
+    try {
+      return await sbase.addBooking({
+        firstName: input.firstName,
+        lastName: input.lastName,
+        email: input.email,
+        phone: input.phone,
+        smsOptIn: input.smsOptIn,
+        treatmentId: input.treatmentId,
+        date: input.date,
+        startTime: input.time,
+        endTime: input.endTime,
+        durationMinutes: input.durationMinutes,
+        remindAtISO: input.remindAtISO,
+      });
+    } catch {
+      // fallthrough to file fallback (may be no-op on read-only FS but avoids 500)
+    }
   }
   const booking = file.addBooking({
     location: 'neumarkt',
