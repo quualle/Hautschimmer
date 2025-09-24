@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
-import { getSuperSaaSBookingUrl, BookingLocation, openBookingForLocation } from '../utils/supersaasBooking';
+import { BookingLocation, openBookingForLocation } from '../utils/supersaasBooking';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
