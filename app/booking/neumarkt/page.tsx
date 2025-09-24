@@ -163,10 +163,22 @@ export default function NeumarktBookingPage() {
           {/* Auswahl: Behandlung */}
           <section className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-5">
             <h2 className="font-serif text-xl text-primary mb-3">Behandlung</h2>
-            <div className="flex gap-2 mb-4">
-              {categories.map(c => (
-                <button key={c.id} onClick={() => setCategory(c.id)} className={`px-3 py-1.5 rounded-full text-sm border ${category === c.id ? 'bg-secondary text-white border-secondary' : 'border-gray-300 text-primary hover:bg-gray-50'}`}>{c.name}</button>
-              ))}
+            <div className="mb-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {categories.map(c => (
+                  <button
+                    key={c.id}
+                    onClick={() => setCategory(c.id)}
+                    className={`px-3 py-1.5 rounded-full text-sm border transition-colors ${
+                      category === c.id
+                        ? 'bg-secondary text-white border-secondary'
+                        : 'border-gray-300 text-primary hover:bg-gray-50'
+                    }`}
+                  >
+                    {c.name}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="space-y-2 max-h-[380px] overflow-auto pr-1">
               {TREATMENTS.filter(t => t.category === category).map(t => (
