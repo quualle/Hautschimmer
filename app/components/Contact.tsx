@@ -71,7 +71,7 @@ const Contact = () => {
             <div className="relative z-10 text-primary">
               <h3 className="font-serif text-3xl mb-6 font-semibold">Jetzt Termin buchen</h3>
               <p className="mb-8 text-lg font-light max-w-2xl mx-auto text-primary/80">
-                Ärztliche Leistungen von Saskia Heer werden an ausgewählten Tagen im Jahr
+                Ärztliche Leistungen von Saskia Heer werden
                 an zwei Standorten angeboten. Wählen Sie Ihren bevorzugten Standort für die Terminbuchung.
               </p>
               
