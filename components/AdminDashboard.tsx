@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Cookies from 'js-cookie'
 import { BlogArticle, TreatmentType, AgeGroup, ApplicationType } from '../src/types/blog'
+import BlogArticleEditModal from './BlogArticleEditModal'
 
 const treatmentTypeLabels: Record<TreatmentType, string> = {
   botox: 'Botox',
@@ -35,6 +36,8 @@ export default function AdminDashboard() {
     mesotherapie: 0,
     andere: 0
   })
+  const [selectedArticle, setSelectedArticle] = useState<BlogArticle | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     fetchArticles()
@@ -105,6 +108,20 @@ export default function AdminDashboard() {
     if (filter === 'all') return true
     return article.status === filter
   })
+
+  const handleEditClick = (article: BlogArticle) => {
+    setSelectedArticle(article)
+    setIsModalOpen(true)
+  }
+
+  const handleModalClose = () => {
+    setIsModalOpen(false)
+    setSelectedArticle(null)
+  }
+
+  const handleModalSave = () => {
+    fetchArticles() // Refresh the list after save
+  }
 
   if (loading) {
     return (
@@ -231,12 +248,20 @@ export default function AdminDashboard() {
                     {new Date(article.created_at).toLocaleDateString('de-DE')}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <button
-                      onClick={() => handleStatusToggle(article.id, article.status)}
-                      className="text-rose-600 hover:text-rose-900"
-                    >
-                      {article.status === 'published' ? 'Unpublish' : 'Publish'}
-                    </button>
+                    <div className="flex items-center justify-end gap-3">
+                      <button
+                        onClick={() => handleEditClick(article)}
+                        className="text-blue-600 hover:text-blue-900"
+                      >
+                        Bearbeiten
+                      </button>
+                      <button
+                        onClick={() => handleStatusToggle(article.id, article.status)}
+                        className="text-rose-600 hover:text-rose-900"
+                      >
+                        {article.status === 'published' ? 'Unpublish' : 'Publish'}
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -280,12 +305,20 @@ export default function AdminDashboard() {
               <span className="text-gray-500">
                 {new Date(article.created_at).toLocaleDateString('de-DE')}
               </span>
-              <button
-                onClick={() => handleStatusToggle(article.id, article.status)}
-                className="text-rose-600 hover:text-rose-900 font-medium"
-              >
-                {article.status === 'published' ? 'Unpublish' : 'Publish'}
-              </button>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => handleEditClick(article)}
+                  className="text-blue-600 hover:text-blue-900 font-medium"
+                >
+                  Bearbeiten
+                </button>
+                <button
+                  onClick={() => handleStatusToggle(article.id, article.status)}
+                  className="text-rose-600 hover:text-rose-900 font-medium"
+                >
+                  {article.status === 'published' ? 'Unpublish' : 'Publish'}
+                </button>
+              </div>
             </div>
           </div>
         ))}
@@ -296,6 +329,16 @@ export default function AdminDashboard() {
           </div>
         )}
       </div>
+
+      {/* Edit Modal */}
+      {selectedArticle && (
+        <BlogArticleEditModal
+          article={selectedArticle}
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+          onSave={handleModalSave}
+        />
+      )}
     </div>
   )
 }
