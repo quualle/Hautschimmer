@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
       .from('articles')
       .select('*')
       .eq('status', 'published')
-      .order('published_at', { ascending: false })
+      .order('created_at', { ascending: false })
 
     // Apply filters
     Object.entries(filters).forEach(([key, value]) => {
