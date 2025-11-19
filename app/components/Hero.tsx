@@ -132,7 +132,7 @@ const Hero = () => {
                   textShadow: "0 2px 8px rgba(0,0,0,0.4)",
                 }}
               >
-                Ihr neues Strahlen
+                Ihr neues Strahlen!
                 {showDecorations && (
                   <motion.div
                     initial={{ width: 0 }}
