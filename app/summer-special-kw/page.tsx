@@ -8,7 +8,7 @@ export const metadata = {
     title: 'Summer Special - Faltenbehandlung in Königs Wusterhausen',
     description: 'Nutzen Sie unsere limitierte Sommer-Aktion für strahlend schöne Haut. Professionelle Behandlung zum Aktionspreis.',
     url: 'https://medestetique.de/summer-special-kw',
-    siteName: 'Medestetique',
+    siteName: 'Hautschimmer',
     locale: 'de_DE',
     type: 'website',
     images: [{

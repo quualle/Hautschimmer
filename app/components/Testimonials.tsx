@@ -83,7 +83,7 @@ const Testimonials = () => {
         >
           <h2 className="heading-2 mb-4">Kunden<span className="text-[#C0A080]">stimmen</span></h2>
           <p className="paragraph max-w-3xl mx-auto">
-            Entdecken Sie, was unsere zufriedenen Kunden über ihre Erfahrungen und Ergebnisse bei MedEstetique zu sagen haben.
+            Entdecken Sie, was unsere zufriedenen Kunden über ihre Erfahrungen und Ergebnisse bei Hautschimmer zu sagen haben.
           </p>
         </motion.div>
 

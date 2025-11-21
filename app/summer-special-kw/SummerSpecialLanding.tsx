@@ -637,7 +637,7 @@ const SummerSpecialLanding = () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Medestetique - Summer Special",
+            "name": "Hautschimmer - Summer Special",
             "description": "Professionelle Faltenbehandlung in Königs Wusterhausen",
             "url": "https://medestetique.de/summer-special-kw",
             "telephone": phoneNumber,

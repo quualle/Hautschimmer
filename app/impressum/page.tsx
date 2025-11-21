@@ -8,7 +8,7 @@ const ImpressumPage = () => {
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-3">Angaben gemäß § 5 DDG:</h2>
         <p className="mb-2">Saskia Heer</p>
-        <p className="mb-2">medestetique</p>
+        <p className="mb-2">Hautschimmer</p>
         <div className="mb-4">
           <p className="mb-2 font-medium">Standorte:</p>
           <p className="mb-1">Bahnhofstraße 8, 15711 Königs Wusterhausen</p>

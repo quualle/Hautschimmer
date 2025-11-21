@@ -1,4 +1,4 @@
-# MedEstetique - Saskia Heer's Schönheitsklinik Website
+# Hautschimmer - Saskia Heer's Schönheitsklinik Website
 
 Dies ist eine moderne, responsive Website für Saskia Heers ästhetische Medizinklinik mit Informationen über Behandlungen, Preise und Kontaktdaten.
 

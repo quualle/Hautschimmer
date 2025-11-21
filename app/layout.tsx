@@ -23,19 +23,19 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'MedEstetique | Saskia Heer | Premium Schönheitsbehandlungen',
+  title: 'Hautschimmer | Saskia Heer | Premium Schönheitsbehandlungen',
   description: 'Exklusive ästhetische Behandlungen mit Muskelrelaxanzien, Hyaluronsäure und PRP von Saskia Heer in erstklassiger Qualität für Ihre natürliche Schönheit.',
   keywords: 'Muskelrelaxans, Hyaluronsäure, PRP, ästhetische Behandlungen, Faltenbehandlung, Schönheitsbehandlung, Premium',
   authors: [{ name: 'Saskia Heer' }],
   openGraph: {
     url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-    title: 'MedEstetique | Saskia Heer | Premium Schönheitsbehandlungen',
+    title: 'Hautschimmer | Saskia Heer | Premium Schönheitsbehandlungen',
     description: 'Exklusive ästhetische Behandlungen mit Muskelrelaxanzien, Hyaluronsäure und PRP von Saskia Heer in erstklassiger Qualität.',
     images: ['/images/logo.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MedEstetique | Saskia Heer',
+    title: 'Hautschimmer | Saskia Heer',
     description: 'Premium Schönheitsbehandlungen – natürlich, präzise, modern.',
     images: ['/images/logo.jpg'],
   },

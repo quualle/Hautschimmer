@@ -49,13 +49,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   if (!article) {
     return {
-      title: 'Artikel nicht gefunden | Medestetique',
+      title: 'Artikel nicht gefunden | Hautschimmer',
       description: 'Der gesuchte Artikel konnte nicht gefunden werden.',
     }
   }
 
   return {
-    title: article.meta_title || `${article.title} | Medestetique`,
+    title: article.meta_title || `${article.title} | Hautschimmer`,
     description: article.meta_description || article.excerpt,
     keywords: article.keywords?.join(', '),
   }

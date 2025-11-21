@@ -2,7 +2,7 @@ import React from 'react'
 import BlogOverview from '../../components/BlogOverview'
 
 export const metadata = {
-  title: 'Blog | Medestetique - Expertenwissen zu ästhetischer Medizin',
+  title: 'Blog | Hautschimmer - Expertenwissen zu ästhetischer Medizin',
   description: 'Erfahren Sie alles über Botox, Hyaluron, PRP und weitere Behandlungen. Professionelle Aufklärung von Dr. med. Saskia Heer.',
 }
 

@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Admin Login</h1>
-          <p className="text-gray-600">Medestetique Blog Verwaltung</p>
+          <p className="text-gray-600">Hautschimmer Blog Verwaltung</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">

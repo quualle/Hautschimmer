@@ -59,7 +59,7 @@ const Footer = () => {
 
       <div className="section-container !py-0 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <h3 className="text-2xl font-serif font-bold mb-4 drop-shadow-sm" style={{textShadow: "0px 1px 2px rgba(0,0,0,0.15)"}}>MedEstetique</h3>
+          <h3 className="text-2xl font-serif font-bold mb-4 drop-shadow-sm" style={{textShadow: "0px 1px 2px rgba(0,0,0,0.15)"}}>Hautschimmer</h3>
           <p className="mb-4">Premium Schönheitsbehandlungen von Saskia Heer.</p>
           <div className="flex space-x-4">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-xl hover:text-[#C0A080] transition-colors">
@@ -111,7 +111,7 @@ const Footer = () => {
       </div>
       
       <div className="section-container !py-0 mt-8 pt-8 border-t border-gray-800 text-center text-sm">
-        <p>&copy; {new Date().getFullYear()} MedEstetique. Alle Rechte vorbehalten.</p>
+        <p>&copy; {new Date().getFullYear()} Hautschimmer. Alle Rechte vorbehalten.</p>
         <div className="mt-2 space-x-4">
           <Link href="/impressum" className="hover:text-[#C0A080] transition-colors">Impressum</Link>
           <Link href="/datenschutz" className="hover:text-[#C0A080] transition-colors">Datenschutz</Link>

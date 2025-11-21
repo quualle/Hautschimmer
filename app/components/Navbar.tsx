@@ -73,32 +73,32 @@ const Navbar = () => {
             className="flex items-center"
           >
             {/* Smaller logo container */}
-            <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full mr-2 md:mr-3 flex-shrink-0 overflow-hidden group-hover:shadow-glow transition-all duration-300" 
+            <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full mr-2 md:mr-3 flex-shrink-0 overflow-hidden group-hover:shadow-glow transition-all duration-300"
                 style={{
                   boxShadow: "0 0 15px rgba(113, 128, 150, 0.2), 0 0 5px rgba(113, 128, 150, 0.15)"
                 }}>
-              <Image 
-                src="/images/logo.jpg" 
-                alt="MedEstetique Logo" 
-                width={48} 
-                height={48} 
-                className="w-full h-full object-cover transform scale-110 group-hover:scale-105 transition-transform duration-700" 
+              <Image
+                src="/images/logo.jpg"
+                alt="Hautschimmer Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-cover transform scale-110 group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-dark/5 to-transparent opacity-40"></div>
             </div>
-            
+
             {/* Smaller brand name */}
             <div className="relative">
-              <Image 
-                src="/images/Medestetique.png" 
-                alt="MedEstetique Schriftzug" 
-                width={200} 
-                height={40} 
-                className="h-auto" 
-                style={{ 
+              <Image
+                src="/images/Hautschimmer.png"
+                alt="Hautschimmer Schriftzug"
+                width={200}
+                height={40}
+                className="h-auto"
+                style={{
                   maxWidth: 'clamp(120px, 20vw, 200px)',
                   filter: 'brightness(1.05) contrast(1.08) drop-shadow(0 2px 8px rgba(0,0,0,0.35))'
-                }} 
+                }}
               />
             </div>
           </motion.div>
@@ -194,7 +194,7 @@ const Navbar = () => {
               >
                 {/* Logo section */}
                 <div className="mb-8 text-center">
-                  <h2 className="font-serif text-2xl text-primary mb-2">MedEstetique</h2>
+                  <h2 className="font-serif text-2xl text-primary mb-2">Hautschimmer</h2>
                   <div className="w-12 h-px bg-secondary mx-auto"></div>
                 </div>
                 
