@@ -68,7 +68,7 @@ const Footer = () => {
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-xl hover:text-[#C0A080] transition-colors">
               <FaFacebook />
             </a>
-            <a href="mailto:saskia.medestetique@gmail.com" aria-label="Email" className="text-xl hover:text-[#C0A080] transition-colors">
+            <a href="mailto:saskia.hautschimmer@gmail.com" aria-label="Email" className="text-xl hover:text-[#C0A080] transition-colors">
               <FaEnvelope />
             </a>
           </div>
@@ -95,7 +95,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center">
               <FaEnvelope className="mr-2" />
-              <p>saskia.medestetique@gmail.com</p>
+              <p>saskia.hautschimmer@gmail.com</p>
             </li>
             <li className="flex items-start mt-4">
               <FaMapMarkerAlt className="mr-2 mt-1 text-secondary" />

@@ -18,7 +18,7 @@ const ImpressumPage = () => {
 
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-3">Kontakt:</h2>
-        <p className="mb-2">E-Mail: saskia.medestetique@gmail.com</p>
+        <p className="mb-2">E-Mail: saskia.hautschimmer@gmail.com</p>
       </section>
 
       <section className="mb-6">
