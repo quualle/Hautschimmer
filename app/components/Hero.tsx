@@ -96,7 +96,7 @@ const Hero = () => {
               />
               <h1 className="font-serif text-5xl md:text-8xl text-secondary tracking-wider md:tracking-widest relative">
                 <span className="relative z-10">
-                  Med<span className="font-light italic">Estetique</span>
+                  Hautschimmer
                 </span>
               </h1>
               <motion.div 
