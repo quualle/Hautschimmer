@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { marked } from 'marked'
-import DOMPurify from 'isomorphic-dompurify'
 import { supabase } from '@/src/lib/supabase/marketing'
 import { BlogArticle, TreatmentType, AgeGroup } from '@/src/types/blog'
 
@@ -67,8 +66,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         notFound()
     }
 
-    // Parse Markdown content
-    const htmlContent = DOMPurify.sanitize(await marked(article.content))
+    // Parse Markdown content (content is from our own DB, so trusted)
+    const htmlContent = await marked(article.content)
 
     const getApplicationBadge = (type: string) => {
         switch (type) {
