@@ -22,8 +22,8 @@ export const NEUMARKT_CONFIG: NeumarktConfig = {
   slotIntervalMinutes: 15,
   defaultDurationMinutes: 30,
   workingHours: [
-    { day: 1, open: '10:00', close: '17:00' }, // Monday
-    { day: 6, open: '10:00', close: '17:00' }, // Saturday
+    { day: 1, open: '10:00', close: '18:00' }, // Monday
+    { day: 6, open: '10:00', close: '18:00' }, // Saturday
     // Other days: closed
   ],
   closedDates: [],
