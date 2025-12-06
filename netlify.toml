@@ -1,6 +1,10 @@
 [build]
+  base = "contest/design1"
   command = "npm run build"
   publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
