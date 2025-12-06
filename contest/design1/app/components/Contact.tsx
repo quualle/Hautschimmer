@@ -1,6 +1,7 @@
 "use client";
 
 import { MapPin, ArrowRight, Mail, Phone } from 'lucide-react';
+import { BookingLocation, openBookingForLocation } from '../utils/supersaasBooking';
 
 const Contact = () => {
     return (
@@ -30,7 +31,10 @@ const Contact = () => {
                                             <MapPin size={20} />
                                         </div>
                                     </div>
-                                    <button className="w-full bg-secondary/10 text-foreground py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 mb-6">
+                                    <button
+                                        onClick={(e) => openBookingForLocation(BookingLocation.KOENIGS_WUSTERHAUSEN, e)}
+                                        className="w-full bg-secondary/10 text-foreground py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 mb-6"
+                                    >
                                         Termin in KW buchen <ArrowRight size={16} />
                                     </button>
                                 </div>
@@ -61,7 +65,10 @@ const Contact = () => {
                                             <MapPin size={20} />
                                         </div>
                                     </div>
-                                    <button className="w-full bg-secondary/10 text-foreground py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 mb-6">
+                                    <button
+                                        onClick={(e) => openBookingForLocation(BookingLocation.NEUMARKT, e)}
+                                        className="w-full bg-secondary/10 text-foreground py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 mb-6"
+                                    >
                                         Termin in Neumarkt buchen <ArrowRight size={16} />
                                     </button>
                                 </div>
