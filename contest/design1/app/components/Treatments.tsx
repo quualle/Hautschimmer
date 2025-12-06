@@ -92,6 +92,21 @@ const treatments = [
         )
     },
     {
+        id: 'skinbooster',
+        title: 'Skin Booster',
+        description: 'Tiefenwirksame Hydratation für natürliche Ausstrahlung.',
+        icon: <FlaskConical className="w-6 h-6" />,
+        hasSubMenu: false,
+        fullDescription: (
+            <>
+                <p className="mb-4">Skin Booster sind hochwertige Hyaluronsäure-Präparate, die speziell für die tiefenwirksame Hydratation der Haut entwickelt wurden. Im Gegensatz zu klassischen Fillern geht es nicht um Volumenaufbau, sondern um die nachhaltige Verbesserung der Hautqualität von innen heraus.</p>
+                <p className="mb-4">Die ultrafeinen Hyaluronsäure-Moleküle werden mittels präziser Injektionstechnik in die mittlere Hautschicht eingebracht. Dort binden sie Feuchtigkeit, stimulieren die Kollagen- und Elastinproduktion und aktivieren die natürlichen Regenerationsprozesse der Haut.</p>
+                <p className="mb-4">Das Ergebnis: Eine sichtbar prallere, glattere Haut mit verfeinertem Hautbild und natürlichem Glow. Feine Linien werden gemildert, die Hautelastizität verbessert sich spürbar. Der Effekt hält 6-9 Monate an.</p>
+                <p>Ideal für alle Hauttypen, besonders empfohlen bei müder, dehydrierter Haut, ersten Alterszeichen oder zur Vorbereitung auf besondere Anlässe. Auch für empfindliche Bereiche wie Hals, Dekolleté und Handrücken geeignet.</p>
+            </>
+        )
+    },
+    {
         id: 'prp',
         title: 'PRP Therapie',
         description: 'Vampir-Lifting zur natürlichen Regeneration.',

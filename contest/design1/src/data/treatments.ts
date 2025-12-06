@@ -1,7 +1,7 @@
 export type Treatment = {
   id: string;
   name: string;
-  category: 'muskelrelaxans' | 'hyaluron' | 'prp' | 'polynucleotides' | 'mesotherapy' | 'micronutrients' | 'lipolysis' | 'exosomes' | 'vitamininfusion';
+  category: 'muskelrelaxans' | 'hyaluron' | 'prp' | 'polynucleotides' | 'mesotherapy' | 'micronutrients' | 'lipolysis' | 'exosomes' | 'vitamininfusion' | 'skinbooster';
   priceEUR: number;
   durationMinutes: number;
   notes?: string;
@@ -45,6 +45,9 @@ export const TREATMENTS: Treatment[] = [
   // Polynukleotide
   { id: 'poly-std', name: 'Polynukleotide', category: 'polynucleotides', priceEUR: 300, durationMinutes: 45 },
 
+  // Skin Booster
+  { id: 'skinbooster-std', name: 'Skin Booster', category: 'skinbooster', priceEUR: 310, durationMinutes: 45 },
+
   // Mesotherapie (Augenpartie)
   { id: 'meso-eyes-1x', name: 'Mesotherapie – Augenpartie (1x)', category: 'mesotherapy', priceEUR: 180, durationMinutes: 30 },
   { id: 'meso-eyes-2x', name: 'Mesotherapie – Augenpartie (2x)', category: 'mesotherapy', priceEUR: 320, durationMinutes: 60 },
@@ -67,6 +70,7 @@ export const categories = [
   { id: 'hyaluron', name: 'Hyaluron-Filler' },
   { id: 'prp', name: 'PRP' },
   { id: 'polynucleotides', name: 'Polynukleotide' },
+  { id: 'skinbooster', name: 'Skin Booster' },
   { id: 'mesotherapy', name: 'Mesotherapie' },
   { id: 'micronutrients', name: 'Mikronährstoffanalyse' },
   { id: 'vitamininfusion', name: 'Vitamin‑Infusionen' },

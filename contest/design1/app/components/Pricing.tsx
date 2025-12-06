@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Syringe, Droplets, Activity, Sparkles, Flame, Info, Clock, Gift, TestTubes, Microscope } from 'lucide-react';
+import { Syringe, Droplets, Activity, Sparkles, Flame, Info, Clock, Gift, TestTubes, Microscope, FlaskConical } from 'lucide-react';
 
 const categories = [
     { id: 'muskelrelaxans', label: 'Muskelrelaxans', icon: Syringe, subtitle: 'Faltenbehandlung' },
     { id: 'hyaluron', label: 'Hyaluron', icon: Droplets, subtitle: 'Volumen & Kontur' },
     { id: 'prp', label: 'PRP Therapie', icon: Activity, subtitle: 'Eigenblutbehandlung' },
     { id: 'polynucleotides', label: 'Polynukleotide', icon: Sparkles, subtitle: 'Zelluläre Regeneration' },
+    { id: 'skinbooster', label: 'Skin Booster', icon: FlaskConical, subtitle: 'Tiefenhydratation' },
     { id: 'mesotherapy', label: 'Mesotherapie', icon: Droplets, subtitle: 'Wirkstoffdepots' },
     { id: 'vitamininfusion', label: 'Infusionen', icon: TestTubes, subtitle: 'Nährstoff-Booster' },
 ];
@@ -68,6 +69,12 @@ const pricingData: Record<string, PricingCategory> = {
         description: 'Stimuliert Regeneration, Elastizität und Hautqualität',
         items: [
             { name: 'Polynukleotide', price: '300 €', info: 'Zelluläre Regeneration', duration: '30–45 Min' },
+        ]
+    },
+    skinbooster: {
+        description: 'Tiefenwirksame Hydratation für natürlichen Glow und pralle Haut',
+        items: [
+            { name: 'Skin Booster', price: '310 €', info: 'Tiefenhydratation & Hautqualität', duration: '30–45 Min' },
         ]
     },
     mesotherapy: {
