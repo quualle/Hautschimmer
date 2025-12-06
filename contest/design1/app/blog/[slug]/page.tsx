@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     </h1>
 
                     <div className="flex items-center justify-center text-foreground/60 gap-4 text-sm">
-                        <span className="font-medium">Von {article.author_id || 'Saskia Heer'}</span>
+                        <span className="font-medium">Von {article.author || 'Saskia Heer'}</span>
                         <span className="w-1 h-1 bg-foreground/30 rounded-full"></span>
                         <time>{new Date(article.published_at || article.created_at).toLocaleDateString('de-DE')}</time>
                     </div>
