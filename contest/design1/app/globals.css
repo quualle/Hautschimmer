@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  
+  --color-background: #FCFAF7;
+  --color-foreground: #2F2A26;
+  
+  --color-primary: #C0A080;
+  --color-primary-foreground: #FFFFFF;
+  
+  --color-secondary: #E6D9C8;
+  --color-secondary-foreground: #2F2A26;
+  
+  --color-accent: #9B7D57;
+  --color-accent-foreground: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .text-shadow-soft {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+}
