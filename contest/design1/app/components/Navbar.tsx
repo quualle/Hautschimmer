@@ -22,9 +22,10 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'Behandlungen', href: '/behandlungen' },
-        { name: 'Über Mich', href: '/ueber-uns' },
         { name: 'Preise', href: '/preise' },
         { name: 'Blog', href: '/blog' },
+        { name: 'Über Mich', href: '/ueber-uns' },
+        { name: 'Standorte', href: '/standorte' },
         { name: 'Kontakt', href: '/kontakt' },
     ];
 
