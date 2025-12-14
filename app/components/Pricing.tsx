@@ -35,14 +35,14 @@ const treatments = {
     subtitle: 'Volumenaufbau & Konturierung',
     icon: FaDroplet,
     color: 'accent',
-    description: 'Standard 215 € pro ml • Areale mit ab‑Preis',
+    description: 'Standard 280 € pro ml • Areale mit ab‑Preis',
     treatments: [
-      { name: 'Standard (1 ml)', price: 215, unit: ' / ml', duration: '20–40 Min', info: 'Gilt für alle nicht gesondert gelisteten Areale' },
+      { name: 'Standard (1 ml)', price: 280, unit: ' / ml', duration: '20–40 Min', info: 'Gilt für alle nicht gesondert gelisteten Areale' },
       { name: 'Lippen', price: 150, duration: '30–40 Min', info: 'Natürlicher Volumenaufbau – ab Preis', unit: undefined },
       { name: 'Nasolabialfalten', price: 250, duration: '20–30 Min', info: 'Ausgleich der Falten von Nase zu Mund – ab Preis', unit: undefined },
       { name: 'Jawline', price: 430, duration: '30–45 Min', info: 'Kieferlinie definieren – ab Preis', unit: undefined },
-      { name: 'Wangen/Midface', price: 215, duration: '30–45 Min', info: 'Volumen & Lift – ab Preis', unit: undefined },
-      { name: 'Kinn', price: 215, duration: '20–40 Min', info: 'Profilharmonisierung – ab Preis', unit: undefined },
+      { name: 'Wangen/Midface', price: 280, duration: '30–45 Min', info: 'Volumen & Lift – ab Preis', unit: undefined },
+      { name: 'Kinn', price: 280, duration: '20–40 Min', info: 'Profilharmonisierung – ab Preis', unit: undefined },
     ],
     packages: [
       { name: '2 ml Paket', price: 410, info: 'Preisvorteil bei Kombination', special: undefined },

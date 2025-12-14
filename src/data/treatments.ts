@@ -24,12 +24,12 @@ export const TREATMENTS: Treatment[] = [
   { id: 'mr-nefertiti', name: 'Nefertiti‑Lift (Kiefer/Hals)', category: 'muskelrelaxans', priceEUR: 300, durationMinutes: 30 },
 
   // Hyaluron – Standard & Areale (ab‑Preise)
-  { id: 'hy-standard-1ml', name: 'Hyaluron Standard (1 ml)', category: 'hyaluron', priceEUR: 215, durationMinutes: 30 },
+  { id: 'hy-standard-1ml', name: 'Hyaluron Standard (1 ml)', category: 'hyaluron', priceEUR: 280, durationMinutes: 30 },
   { id: 'hy-lippen', name: 'Lippen', category: 'hyaluron', priceEUR: 150, durationMinutes: 35 },
   { id: 'hy-nasolabial', name: 'Nasolabial', category: 'hyaluron', priceEUR: 250, durationMinutes: 25 },
   { id: 'hy-jawline', name: 'Jawline', category: 'hyaluron', priceEUR: 430, durationMinutes: 40 },
-  { id: 'hy-wangen', name: 'Wangen/Midface', category: 'hyaluron', priceEUR: 215, durationMinutes: 40 },
-  { id: 'hy-kinn', name: 'Kinn', category: 'hyaluron', priceEUR: 215, durationMinutes: 30 },
+  { id: 'hy-wangen', name: 'Wangen/Midface', category: 'hyaluron', priceEUR: 280, durationMinutes: 40 },
+  { id: 'hy-kinn', name: 'Kinn', category: 'hyaluron', priceEUR: 280, durationMinutes: 30 },
 
   // Hyaluron – Pakete
   { id: 'hy-2ml', name: 'Hyaluron Paket 2 ml', category: 'hyaluron', priceEUR: 410, durationMinutes: 45 },

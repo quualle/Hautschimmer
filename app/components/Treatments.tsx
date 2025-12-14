@@ -419,7 +419,7 @@ const Treatments = () => {
     if (subId === 'nasolabial') return 'ab 250 €';
     if (subId === 'jawline') return 'ab 430 €';
     if (subId === 'fullface') return 'ab 1169 €';
-    if (subId === 'tearTrough' || subId === 'chin' || subId === 'cheekbones' || subId === 'marionetten' || subId === 'barcode') return 'Standard 215 €/ml';
+    if (subId === 'tearTrough' || subId === 'chin' || subId === 'cheekbones' || subId === 'marionetten' || subId === 'barcode') return 'Standard 280 €/ml';
     if (subId === 'hyaluronidase') return 'Preis nach Aufwand';
     return '';
   };

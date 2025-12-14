@@ -43,13 +43,13 @@ const pricingData: Record<string, PricingCategory> = {
         ]
     },
     hyaluron: {
-        description: 'Standard 215 € pro ml • Areale mit ab‑Preis',
+        description: 'Standard 280 € pro ml • Areale mit ab‑Preis',
         items: [
-            { name: 'Standard (1 ml)', price: '215 €', info: 'Für diverse Areale', duration: '20–40 Min' },
+            { name: 'Standard (1 ml)', price: '280 €', info: 'Für diverse Areale', duration: '20–40 Min' },
             { name: 'Lippenvolumen', price: 'ab 150 €', info: 'Natürlicher Aufbau', duration: '30–40 Min' },
             { name: 'Nasolabialfalten', price: 'ab 250 €', info: 'Faltenglättung', duration: '20–30 Min' },
             { name: 'Jawline Definition', price: 'ab 430 €', info: 'Kieferkonturierung', duration: '30–45 Min' },
-            { name: 'Wangenaufbau', price: 'ab 215 €', info: 'Volumen & Lift', duration: '30–45 Min' },
+            { name: 'Wangenaufbau', price: 'ab 280 €', info: 'Volumen & Lift', duration: '30–45 Min' },
             { name: 'Liquid Facelift', price: 'ab 1169 €', info: 'Full Face Approach', duration: '60 Min', special: true },
         ],
         packages: [
