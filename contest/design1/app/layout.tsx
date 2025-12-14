@@ -17,8 +17,54 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Hautschimmer | Ästhetische Medizin Saskia Heer",
-  description: "Professionelle Schönheitsbehandlungen für natürliche Ergebnisse. Ärztlich durchgeführt für harmonische Proportionen.",
+  metadataBase: new URL('https://hautschimmer.de'),
+  title: {
+    default: "Hautschimmer | Ästhetische Medizin Saskia Heer",
+    template: "%s | Hautschimmer"
+  },
+  description: "Professionelle Schönheitsbehandlungen für natürliche Ergebnisse. Ärztlich durchgeführt in Berlin, Königs Wusterhausen und Neumarkt i.d.Opf.",
+  keywords: ["Ästhetische Medizin", "Botox", "Hyaluron", "Faltenbehandlung", "Neumarkt", "Königs Wusterhausen", "Berlin", "Hautschimmer", "Saskia Heer"],
+  authors: [{ name: "Saskia Heer" }],
+  creator: "Hautschimmer",
+  publisher: "Hautschimmer",
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://hautschimmer.de',
+    siteName: 'Hautschimmer',
+    title: 'Hautschimmer | Ästhetische Medizin Saskia Heer',
+    description: 'Professionelle Schönheitsbehandlungen für natürliche Ergebnisse. Standorte in Königs Wusterhausen und Neumarkt i.d.Opf.',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Hautschimmer - Ästhetische Medizin',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hautschimmer | Ästhetische Medizin',
+    description: 'Professionelle Schönheitsbehandlungen für natürliche Ergebnisse.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // TODO: Google Search Console verifizieren
+  },
 };
 
 export default function RootLayout({

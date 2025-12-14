@@ -10,11 +10,17 @@ export async function GET() {
       .eq('status', 'published')
       .order('updated_at', { ascending: false })
 
-    const baseUrl = 'https://medestetique.de'
-    
-    // Static pages
+    const baseUrl = 'https://hautschimmer.de'
+
+    // Static pages - mit Fokus auf Neumarkt für lokales SEO
     const staticPages = [
       { url: '', priority: '1.0', changefreq: 'weekly' },
+      { url: '/behandlungen', priority: '0.9', changefreq: 'weekly' },
+      { url: '/preise', priority: '0.8', changefreq: 'weekly' },
+      { url: '/standorte', priority: '0.9', changefreq: 'weekly' },
+      { url: '/booking/neumarkt', priority: '0.95', changefreq: 'daily' }, // Neumarkt Buchung - hohe Priorität
+      { url: '/ueber-uns', priority: '0.7', changefreq: 'monthly' },
+      { url: '/kontakt', priority: '0.8', changefreq: 'monthly' },
       { url: '/blog', priority: '0.9', changefreq: 'daily' },
       { url: '/impressum', priority: '0.3', changefreq: 'yearly' },
       { url: '/datenschutz', priority: '0.3', changefreq: 'yearly' },
