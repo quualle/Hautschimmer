@@ -1,9 +1,40 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+
+// Hook to hide root layout navbar/footer for this landing page
+const useHideRootLayout = () => {
+  useLayoutEffect(() => {
+    // Hide root navbar and footer
+    const style = document.createElement('style');
+    style.id = 'landing-page-overrides';
+    style.textContent = `
+      body { background: #0a0a0a !important; }
+      body > div > nav,
+      body > div > header,
+      body > div > footer,
+      body > div > main > nav,
+      [class*="Navbar"],
+      [class*="navbar"],
+      footer:not(.landing-footer) {
+        display: none !important;
+      }
+      body > div > main {
+        padding-top: 0 !important;
+        min-height: auto !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      const styleEl = document.getElementById('landing-page-overrides');
+      if (styleEl) styleEl.remove();
+    };
+  }, []);
+};
 import {
   Stethoscope,
   Sparkles,
@@ -136,6 +167,9 @@ const processSteps = [
 ];
 
 export default function NeumarktLandingPage() {
+  // Hide root layout navbar/footer for immersive landing experience
+  useHideRootLayout();
+
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [isSticky, setIsSticky] = useState(false);
   const bookingRef = useRef<HTMLDivElement>(null);
@@ -179,7 +213,16 @@ export default function NeumarktLandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+    <div
+      className="min-h-screen text-white overflow-x-hidden"
+      style={{
+        background: '#0a0a0a',
+        marginTop: '-5rem',
+        paddingTop: '5rem',
+        position: 'relative',
+        zIndex: 100,
+      }}
+    >
       {/* Floating Header */}
       <motion.header
         initial={{ y: -100 }}

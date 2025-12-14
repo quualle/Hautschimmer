@@ -213,7 +213,16 @@ export default function NeumarktLandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
+    <div
+      className="min-h-screen text-white overflow-x-hidden"
+      style={{
+        background: '#0a0a0a',
+        marginTop: '-5rem',
+        paddingTop: '5rem',
+        position: 'relative',
+        zIndex: 100,
+      }}
+    >
       {/* Floating Header */}
       <motion.header
         initial={{ y: -100 }}
