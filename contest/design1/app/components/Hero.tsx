@@ -16,7 +16,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 0.2 }}
                 >
                     <span className="block text-white/90 text-sm md:text-base uppercase tracking-[0.3em] mb-6 drop-shadow-lg">
-                        Ästhetische Medizin Berlin
+                        Ästhetische Medizin in Neumarkt & Königs Wusterhausen
                     </span>
                     <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-8 leading-tight text-white drop-shadow-xl">
                         Natürliche <br />

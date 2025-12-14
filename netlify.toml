@@ -9,6 +9,13 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Redirect www.hautschimmer.de zu hautschimmer.de (Canonical Domain)
+[[redirects]]
+  from = "https://www.hautschimmer.de/*"
+  to = "https://hautschimmer.de/:splat"
+  status = 301
+  force = true
+
 # Redirect alte Domain medestetique.de zu hautschimmer.de (SEO-relevant: 301 permanent)
 [[redirects]]
   from = "https://medestetique.de/*"

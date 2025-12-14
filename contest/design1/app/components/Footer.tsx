@@ -17,7 +17,6 @@ const Footer = () => {
                                     Neumarkt i.d.Opf
                                 </h4>
                                 <p className="text-white/70 ml-7">Mussinanstraße 65, 92318 Neumarkt</p>
-                                <p className="text-white/50 text-sm ml-7 mt-1">ab 13. Oktober 2025</p>
                             </div>
                             <div className="aspect-video w-full h-[300px]">
                                 <iframe
@@ -108,8 +107,8 @@ const Footer = () => {
                                 <MapPin size={20} className="text-primary mt-1 shrink-0" />
                                 <div>
                                     <p className="font-medium text-white mb-1">Standorte:</p>
+                                    <p>Neumarkt i.d.Opf</p>
                                     <p>Königs Wusterhausen</p>
-                                    <p>Neumarkt i.d.Opf (ab 13.10.2025)</p>
                                 </div>
                             </li>
                         </ul>
