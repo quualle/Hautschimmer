@@ -8,3 +8,16 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Redirect alte Domain medestetique.de zu hautschimmer.de (SEO-relevant: 301 permanent)
+[[redirects]]
+  from = "https://medestetique.de/*"
+  to = "https://hautschimmer.de/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.medestetique.de/*"
+  to = "https://hautschimmer.de/:splat"
+  status = 301
+  force = true
