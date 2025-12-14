@@ -19,7 +19,41 @@ const Contact = () => {
                         </p>
 
                         <div className="space-y-12">
-                            {/* Location 1: KW */}
+                            {/* Location 1: Neumarkt (Hauptstandort) */}
+                            <div className="bg-white rounded-2xl shadow-sm border border-secondary/10 overflow-hidden group">
+                                <div className="p-8 pb-4">
+                                    <div className="flex items-start justify-between mb-4">
+                                        <div>
+                                            <h4 className="font-serif text-xl mb-1">Neumarkt i.d.Opf</h4>
+                                            <p className="text-sm text-foreground/50">Mussinanstraße 65</p>
+                                        </div>
+                                        <div className="bg-[#FCFAF7] p-3 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
+                                            <MapPin size={20} />
+                                        </div>
+                                    </div>
+                                    <button
+                                        onClick={(e) => openBookingForLocation(BookingLocation.NEUMARKT, e)}
+                                        className="w-full bg-secondary/10 text-foreground py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 mb-6"
+                                    >
+                                        Termin in Neumarkt buchen <ArrowRight size={16} />
+                                    </button>
+                                </div>
+                                {/* Map Embed */}
+                                <div className="h-48 w-full bg-gray-100">
+                                    <iframe
+                                        src="https://maps.google.com/maps?q=Mussinanstra%C3%9Fe+65,+92318+Neumarkt+in+der+Oberpfalz&output=embed"
+                                        width="100%"
+                                        height="100%"
+                                        style={{ border: 0 }}
+                                        allowFullScreen
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title="Google Maps - Neumarkt"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Location 2: Königs Wusterhausen */}
                             <div className="bg-white rounded-2xl shadow-sm border border-secondary/10 overflow-hidden group">
                                 <div className="p-8 pb-4">
                                     <div className="flex items-start justify-between mb-4">
@@ -49,40 +83,6 @@ const Contact = () => {
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
                                         title="Google Maps - Königs Wusterhausen"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Location 2: Neumarkt */}
-                            <div className="bg-white rounded-2xl shadow-sm border border-secondary/10 overflow-hidden group">
-                                <div className="p-8 pb-4">
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h4 className="font-serif text-xl mb-1">Neumarkt i.d.Opf</h4>
-                                            <p className="text-sm text-foreground/50">Mussinanstraße 65 • (ab 13.10.2025)</p>
-                                        </div>
-                                        <div className="bg-[#FCFAF7] p-3 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
-                                            <MapPin size={20} />
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={(e) => openBookingForLocation(BookingLocation.NEUMARKT, e)}
-                                        className="w-full bg-secondary/10 text-foreground py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 mb-6"
-                                    >
-                                        Termin in Neumarkt buchen <ArrowRight size={16} />
-                                    </button>
-                                </div>
-                                {/* Map Embed */}
-                                <div className="h-48 w-full bg-gray-100">
-                                    <iframe
-                                        src="https://maps.google.com/maps?q=Mussinanstra%C3%9Fe+65,+92318+Neumarkt+in+der+Oberpfalz&output=embed"
-                                        width="100%"
-                                        height="100%"
-                                        style={{ border: 0 }}
-                                        allowFullScreen
-                                        loading="lazy"
-                                        referrerPolicy="no-referrer-when-downgrade"
-                                        title="Google Maps - Neumarkt"
                                     />
                                 </div>
                             </div>

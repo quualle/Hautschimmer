@@ -17,8 +17,8 @@ const ImpressumPage = () => {
                 <p className="mb-4">Hautschimmer</p>
                 <div className="mb-4 p-6 bg-[#FCFAF7] rounded-xl border border-secondary/10">
                     <p className="mb-3 font-medium uppercase tracking-wide text-sm text-foreground/60">Standorte:</p>
+                    <p className="mb-1">Mussinanstraße 65, 92318 Neumarkt i.d.Opf</p>
                     <p className="mb-1">Bahnhofstraße 8, 15711 Königs Wusterhausen</p>
-                    <p className="mb-1">Mussinanstraße 65, 92318 Neumarkt i.d.Opf (ab 13.10.2025)</p>
                 </div>
             </section>
 
@@ -71,8 +71,8 @@ const ImpressumPage = () => {
             <section className="mb-10">
                 <h2 className="text-xl font-semibold mb-4 text-primary">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h2>
                 <p className="mb-1">Saskia Heer</p>
+                <p className="mb-1">Mussinanstraße 65, 92318 Neumarkt i.d.Opf</p>
                 <p className="mb-1">Bahnhofstraße 8, 15711 Königs Wusterhausen</p>
-                <p className="mb-1">Mussinanstraße 65, 92318 Neumarkt i.d.Opf (ab 13.10.2025)</p>
             </section>
 
             <section className="mb-10 text-sm text-foreground/70">

@@ -1,24 +1,25 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { MapPin, ArrowRight } from 'lucide-react';
 
 const locations = [
     {
-        name: "GlamGlow Studio",
-        city: "Königs Wusterhausen",
-        image: "/images/room.jpg",
-        desc: "Unsere Premium-Behandlungen werden exklusiv im eleganten GlamGlow Studio durchgeführt. Der Standort vereint modernste medizinische Ausstattung mit luxuriösem Ambiente.",
-        address: "Bahnhofstraße 8",
-        link: "https://glamglowkw.de"
-    },
-    {
-        name: "Beauty by Princess",
+        name: "Hautschimmer Neumarkt",
         city: "Neumarkt i.d.Opf",
         image: "/images/Studio Neumarkt.jpeg",
-        desc: "'Beauty by Princess' steht für hochwertige, medizinisch fundierte Ästhetik in elegantem Ambiente. Individuelle Beratung und präzise Techniken.",
+        desc: "Unser Hauptstandort im Herzen der Oberpfalz. Professionelle ästhetische Medizin durch Ärztin Saskia Heer in modernem Ambiente.",
         address: "Mussinanstraße 65",
-        link: null
+        link: "/neumarkt"
+    },
+    {
+        name: "Glam & Glow Beauty",
+        city: "Königs Wusterhausen",
+        image: "/images/room.jpg",
+        desc: "Unsere Behandlungen im Süden von Berlin. Ideal erreichbar aus Berlin und Brandenburg, direkt am Bahnhof KW.",
+        address: "Bahnhofstraße 8",
+        link: "/koenigs-wusterhausen"
     }
 ];
 
@@ -62,9 +63,9 @@ const TreatmentRooms = () => {
 
                             <div className="flex items-center justify-between border-t border-secondary/10 pt-6">
                                 <span className="text-sm text-foreground/50">{loc.address}</span>
-                                <button className="flex items-center gap-2 text-primary font-medium uppercase text-xs tracking-widest group-hover:gap-4 transition-all">
-                                    Termin Buchen <ArrowRight size={14} />
-                                </button>
+                                <Link href={loc.link} className="flex items-center gap-2 text-primary font-medium uppercase text-xs tracking-widest group-hover:gap-4 transition-all">
+                                    Mehr erfahren <ArrowRight size={14} />
+                                </Link>
                             </div>
                         </div>
                     ))}

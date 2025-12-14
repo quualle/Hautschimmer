@@ -2,22 +2,22 @@ import TreatmentRooms from '../components/TreatmentRooms';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Standorte | Königs Wusterhausen & Neumarkt i.d.Opf',
-    description: 'Hautschimmer Standorte: Ästhetische Medizin in Königs Wusterhausen (Berlin) und NEU ab Oktober 2025 in Neumarkt in der Oberpfalz. Botox, Hyaluron, Faltenbehandlung.',
+    title: 'Standorte | Neumarkt i.d.Opf & Königs Wusterhausen | Hautschimmer',
+    description: 'Hautschimmer Standorte: Ästhetische Medizin in Neumarkt i.d.Opf und Königs Wusterhausen bei Berlin. Botox, Hyaluron, Faltenbehandlung durch Ärztin Saskia Heer.',
     keywords: [
         'Hautschimmer Standorte',
         'Ästhetische Medizin Neumarkt',
         'Botox Königs Wusterhausen',
         'Hyaluron Neumarkt Oberpfalz',
         'Kosmetik Neumarkt',
-        'Faltenbehandlung Berlin',
+        'Faltenbehandlung Brandenburg',
     ],
     alternates: {
-        canonical: '/standorte',
+        canonical: 'https://hautschimmer.de/standorte',
     },
     openGraph: {
         title: 'Unsere Standorte | Hautschimmer',
-        description: 'Besuchen Sie uns in Königs Wusterhausen oder NEU in Neumarkt i.d.Opf. Professionelle ästhetische Behandlungen.',
+        description: 'Besuchen Sie uns in Neumarkt i.d.Opf oder Königs Wusterhausen. Professionelle ästhetische Behandlungen durch Ärztin Saskia Heer.',
         url: 'https://hautschimmer.de/standorte',
     },
 };

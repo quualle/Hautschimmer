@@ -99,8 +99,8 @@ const DatenschutzPage = () => {
                 <div className="bg-[#FCFAF7] p-6 rounded-xl border border-secondary/10 mb-4">
                     <p className="mb-1 font-medium text-foreground">Saskia Heer</p>
                     <p className="mb-1">Hautschimmer</p>
+                    <p className="mb-1">Mussinanstraße 65, 92318 Neumarkt i.d.Opf</p>
                     <p className="mb-1">Bahnhofstraße 8, 15711 Königs Wusterhausen</p>
-                    <p className="mb-1">Mussinanstraße 65, 92318 Neumarkt i.d.Opf (ab 13.10.2025)</p>
                     <p className="mb-1 mt-2">Telefon: 0173 8615766</p>
                     <p className="mb-1">E-Mail: saskia.hautschimmer@gmail.com</p>
                 </div>
