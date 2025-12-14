@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: 'Was kostet Botox in Neumarkt?',
-    a: 'Die Preise für Botox-Behandlungen beginnen bei uns ab 99€ pro Zone. Eine genaue Preisauskunft erhalten Sie im persönlichen Beratungsgespräch oder auf unserer Preisseite.',
+    a: 'Die Preise für Botox-Behandlungen beginnen bei uns ab 199€ pro Zone. Eine genaue Preisauskunft erhalten Sie im persönlichen Beratungsgespräch oder auf unserer Preisseite.',
   },
   {
     q: 'Gibt es Risiken bei der Botox-Behandlung?',

@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: 'Was kostet Botox in Königs Wusterhausen?',
-    a: 'Die Preise beginnen ab 99€ pro Zone. Eine genaue Auskunft erhalten Sie im Beratungsgespräch oder auf unserer Preisseite.',
+    a: 'Die Preise beginnen ab 199€ pro Zone. Eine genaue Auskunft erhalten Sie im Beratungsgespräch oder auf unserer Preisseite.',
   },
   {
     q: 'Wie komme ich aus Berlin zur Praxis?',
