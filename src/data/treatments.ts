@@ -31,10 +31,10 @@ export const TREATMENTS: Treatment[] = [
   { id: 'hy-wangen', name: 'Wangen/Midface', category: 'hyaluron', priceEUR: 280, durationMinutes: 40 },
   { id: 'hy-kinn', name: 'Kinn', category: 'hyaluron', priceEUR: 280, durationMinutes: 30 },
 
-  // Hyaluron – Pakete
-  { id: 'hy-2ml', name: 'Hyaluron Paket 2 ml', category: 'hyaluron', priceEUR: 410, durationMinutes: 45 },
-  { id: 'hy-3ml', name: 'Hyaluron Paket 3 ml', category: 'hyaluron', priceEUR: 615, durationMinutes: 60 },
-  { id: 'hy-4ml', name: 'Hyaluron Paket 4 ml', category: 'hyaluron', priceEUR: 820, durationMinutes: 75 },
+  // Hyaluron – Pakete (2ml: 5% Rabatt, 3ml+: 10% Rabatt)
+  { id: 'hy-2ml', name: 'Hyaluron Paket 2 ml', category: 'hyaluron', priceEUR: 532, durationMinutes: 45 },
+  { id: 'hy-3ml', name: 'Hyaluron Paket 3 ml', category: 'hyaluron', priceEUR: 756, durationMinutes: 60 },
+  { id: 'hy-4ml', name: 'Hyaluron Paket 4 ml', category: 'hyaluron', priceEUR: 1008, durationMinutes: 75 },
   { id: 'hy-liquid-lift', name: 'Liquid Facelift', category: 'hyaluron', priceEUR: 1169, durationMinutes: 120 },
 
   // PRP (unverändert)

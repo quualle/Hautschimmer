@@ -45,9 +45,9 @@ const treatments = {
       { name: 'Kinn', price: 280, duration: '20–40 Min', info: 'Profilharmonisierung – ab Preis', unit: undefined },
     ],
     packages: [
-      { name: '2 ml Paket', price: 410, info: 'Preisvorteil bei Kombination', special: undefined },
-      { name: '3 ml Paket', price: 615, info: 'Für umfassendere Korrekturen', special: undefined },
-      { name: '4 ml Paket', price: 820, info: 'Für Full-Face Ansätze', special: undefined },
+      { name: '2 ml Paket', price: 532, info: '5% Rabatt', special: undefined },
+      { name: '3 ml Paket', price: 756, info: '10% Rabatt', special: undefined },
+      { name: '4 ml Paket', price: 1008, info: '10% Rabatt', special: undefined },
       { name: 'Liquid Facelift', price: 1169, info: 'Umfassende Gesichtskonturierung – ab Preis', special: true },
     ]
   },

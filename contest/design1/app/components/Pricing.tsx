@@ -53,8 +53,8 @@ const pricingData: Record<string, PricingCategory> = {
             { name: 'Liquid Facelift', price: 'ab 1169 €', info: 'Full Face Approach', duration: '60 Min', special: true },
         ],
         packages: [
-            { name: '2 ml Paket', price: '410 €', info: 'Preisvorteil bei Kombination' },
-            { name: '3 ml Paket', price: '615 €', info: 'Für umfassendere Korrekturen' },
+            { name: '2 ml Paket', price: '532 €', info: '5% Rabatt' },
+            { name: '3 ml Paket', price: '756 €', info: '10% Rabatt' },
         ]
     },
     prp: {
