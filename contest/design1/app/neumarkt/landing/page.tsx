@@ -213,17 +213,31 @@ export default function NeumarktLandingPage() {
   };
 
   return (
-    <div
-      className="min-h-screen text-white overflow-x-hidden"
-      style={{
-        background: '#0a0a0a',
-        marginTop: '-5rem',
-        paddingTop: '5rem',
-        position: 'relative',
-        zIndex: 100,
-      }}
-    >
-      {/* Floating Header */}
+    <>
+      {/* Full-screen dark background overlay to cover root layout */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: '#0a0a0a',
+          zIndex: 40,
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="min-h-screen text-white overflow-x-hidden"
+        style={{
+          background: '#0a0a0a',
+          marginTop: '-5rem',
+          paddingTop: '5rem',
+          position: 'relative',
+          zIndex: 50,
+        }}
+      >
+        {/* Floating Header */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -1035,6 +1049,7 @@ export default function NeumarktLandingPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+      </div>
+    </>
   );
 }
