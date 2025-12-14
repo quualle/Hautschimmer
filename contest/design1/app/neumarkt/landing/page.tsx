@@ -5,20 +5,35 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  FaUserDoctor,
-  FaLeaf,
-  FaClock,
-  FaCheck,
-  FaChevronDown,
-  FaChevronUp,
-  FaLocationDot,
-  FaPhone,
-  FaWhatsapp,
-  FaEnvelope,
-  FaSyringe,
-  FaDroplet,
-  FaVial
-} from 'react-icons/fa6';
+  UserRound,
+  Leaf,
+  Clock,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  MapPin,
+  Phone,
+  MessageCircle,
+  Mail,
+  Syringe,
+  Droplet,
+  TestTube
+} from 'lucide-react';
+
+// Alias for compatibility
+const FaUserDoctor = UserRound;
+const FaLeaf = Leaf;
+const FaClock = Clock;
+const FaCheck = Check;
+const FaChevronDown = ChevronDown;
+const FaChevronUp = ChevronUp;
+const FaLocationDot = MapPin;
+const FaPhone = Phone;
+const FaWhatsapp = MessageCircle;
+const FaEnvelope = Mail;
+const FaSyringe = Syringe;
+const FaDroplet = Droplet;
+const FaVial = TestTube;
 
 // Pricing data from existing Pricing component
 const pricingData = {
