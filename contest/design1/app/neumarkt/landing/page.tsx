@@ -271,7 +271,7 @@ export default function NeumarktLandingPage() {
                 </Link>
                 <button
                   onClick={() => handleBookingClick('header')}
-                  className="group relative px-5 py-2.5 rounded-full bg-gradient-to-r from-secondary to-accent text-primary font-medium text-sm overflow-hidden transition-all hover:shadow-lg hover:shadow-secondary/25"
+                  className="group relative px-5 py-2.5 rounded-full bg-gradient-to-r from-secondary via-[#d4b896] to-accent text-[#1a1a1a] font-semibold text-sm overflow-hidden transition-all shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40 border border-secondary/50 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
                 >
                   <span className="relative z-10">Termin buchen</span>
                 </button>
@@ -331,10 +331,11 @@ export default function NeumarktLandingPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-serif font-light tracking-wide leading-[1.1] mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl font-serif font-light tracking-wide leading-[1.15] mb-6"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.5)' }}
           >
-            <span className="block">Ästhetische Medizin</span>
-            <span className="block mt-2 bg-gradient-to-r from-secondary via-accent to-secondary bg-clip-text text-transparent">
+            <span className="block text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">Ästhetische Medizin</span>
+            <span className="block mt-2 bg-gradient-to-r from-secondary via-accent to-secondary bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
               Natürlich. Ärztlich. Diskret.
             </span>
           </motion.h1>
@@ -344,7 +345,8 @@ export default function NeumarktLandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10 leading-relaxed"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
           >
             Behandlungen mit Botulinumtoxin & Hyaluronsäure – mit Zeit für Beratung
             und einem Ergebnis, das nach Ihnen aussieht.
@@ -362,7 +364,11 @@ export default function NeumarktLandingPage() {
               { icon: Shield, text: 'Sterile Einmalinstrumente' },
               { icon: Clock, text: 'Ausführliche Beratung' }
             ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-sm text-white/60">
+              <div
+                key={i}
+                className="flex items-center gap-2 text-sm text-white/90 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10"
+                style={{ textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}
+              >
                 <item.icon className="w-4 h-4 text-secondary" />
                 <span>{item.text}</span>
               </div>
@@ -378,16 +384,17 @@ export default function NeumarktLandingPage() {
           >
             <button
               onClick={() => handleBookingClick('hero')}
-              className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-secondary to-accent text-primary font-semibold text-base overflow-hidden transition-all hover:shadow-2xl hover:shadow-secondary/30 hover:scale-105"
+              className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-secondary to-accent text-primary font-semibold text-base overflow-hidden transition-all hover:shadow-2xl hover:shadow-secondary/30 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+              aria-label="Termin für ästhetische Behandlung buchen"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 Termin buchen
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </span>
             </button>
             <Link
               href="#treatments"
-              className="px-8 py-4 rounded-full border border-white/30 text-white font-medium text-base hover:bg-white/10 hover:border-white/50 transition-all flex items-center justify-center gap-2"
+              className="px-8 py-4 rounded-full border border-white/30 text-white font-medium text-base hover:bg-white/10 hover:border-white/50 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
             >
               Behandlungen entdecken
             </Link>
@@ -414,7 +421,7 @@ export default function NeumarktLandingPage() {
       </section>
 
       {/* Why Hautschimmer Section */}
-      <section id="why" className="relative py-32 bg-gradient-to-b from-[#0a0a0a] to-[#111]">
+      <section id="why" className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-[#0a0a0a] to-[#111]">
         <div className="max-w-7xl mx-auto px-4">
           {/* Section Header */}
           <motion.div
@@ -514,7 +521,7 @@ export default function NeumarktLandingPage() {
       </section>
 
       {/* Treatments Section */}
-      <section id="treatments" className="relative py-32 bg-[#111]">
+      <section id="treatments" className="relative py-16 md:py-24 lg:py-32 bg-[#111]">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[120px]" />
@@ -570,7 +577,7 @@ export default function NeumarktLandingPage() {
       </section>
 
       {/* Process Timeline Section */}
-      <section className="relative py-32 bg-gradient-to-b from-[#111] to-[#0a0a0a]">
+      <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-[#111] to-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4">
           {/* Section Header */}
           <motion.div
@@ -590,8 +597,8 @@ export default function NeumarktLandingPage() {
 
           {/* Horizontal Timeline */}
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="hidden lg:block absolute top-[60px] left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
+            {/* Timeline Line - positioned at center of 120px circles */}
+            <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-secondary/30 to-transparent z-0" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
               {processSteps.map((step, index) => (
@@ -603,10 +610,12 @@ export default function NeumarktLandingPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative text-center lg:text-center"
                 >
-                  {/* Step Number */}
-                  <div className="relative z-10 w-[120px] h-[120px] mx-auto mb-6 rounded-full bg-gradient-to-br from-secondary/20 to-accent/10 border border-secondary/30 flex flex-col items-center justify-center group hover:border-secondary/60 transition-all">
-                    <step.icon className="w-8 h-8 text-secondary mb-1" />
-                    <span className="text-xs text-white/40 uppercase tracking-wider">Schritt {step.step}</span>
+                  {/* Step Number - solid background to hide timeline line */}
+                  <div className="relative z-10 w-24 h-24 lg:w-[120px] lg:h-[120px] mx-auto mb-6 rounded-full bg-[#111] border border-secondary/30 flex flex-col items-center justify-center group hover:border-secondary/60 transition-all">
+                    {/* Inner gradient overlay */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-secondary/20 to-accent/10" />
+                    <step.icon className="relative w-7 h-7 lg:w-8 lg:h-8 text-secondary mb-1" />
+                    <span className="relative text-xs text-white/40 uppercase tracking-wider">Schritt {step.step}</span>
                   </div>
                   <h3 className="text-lg font-serif text-white mb-2">{step.title}</h3>
                   <p className="text-white/50 text-sm">{step.description}</p>
@@ -618,7 +627,7 @@ export default function NeumarktLandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="relative py-32 bg-[#0a0a0a]">
+      <section id="pricing" className="relative py-16 md:py-24 lg:py-32 bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
           <motion.div
@@ -774,7 +783,7 @@ export default function NeumarktLandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-32 bg-[#111]">
+      <section className="relative py-16 md:py-24 lg:py-32 bg-[#111]">
         <div className="max-w-3xl mx-auto px-4">
           {/* Section Header */}
           <motion.div
@@ -793,7 +802,7 @@ export default function NeumarktLandingPage() {
           </motion.div>
 
           {/* FAQ Accordion */}
-          <div className="space-y-4">
+          <div className="space-y-4" role="region" aria-label="Häufig gestellte Fragen">
             {faqData.map((faq, index) => (
               <motion.div
                 key={index}
@@ -804,9 +813,12 @@ export default function NeumarktLandingPage() {
               >
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                  className={`w-full text-left bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all ${
+                  className={`w-full text-left bg-white/5 backdrop-blur-sm border rounded-2xl p-6 transition-all focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-[#111] ${
                     expandedFaq === index ? 'border-secondary/50' : 'border-white/10 hover:border-white/20'
                   }`}
+                  aria-expanded={expandedFaq === index}
+                  aria-controls={`faq-answer-${index}`}
+                  id={`faq-question-${index}`}
                 >
                   <div className="flex items-center justify-between gap-4">
                     <span className="font-medium text-white">{faq.question}</span>
@@ -814,6 +826,7 @@ export default function NeumarktLandingPage() {
                       animate={{ rotate: expandedFaq === index ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                       className="flex-shrink-0"
+                      aria-hidden="true"
                     >
                       <ChevronDown className={`w-5 h-5 ${expandedFaq === index ? 'text-secondary' : 'text-white/50'}`} />
                     </motion.div>
@@ -826,6 +839,9 @@ export default function NeumarktLandingPage() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
+                        id={`faq-answer-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-question-${index}`}
                       >
                         <p className="pt-4 text-white/60 leading-relaxed">{faq.answer}</p>
                       </motion.div>
@@ -839,7 +855,7 @@ export default function NeumarktLandingPage() {
       </section>
 
       {/* CTA Booking Section */}
-      <section ref={bookingRef} id="termin" className="relative py-32 bg-gradient-to-b from-[#111] via-[#0a0a0a] to-[#0a0a0a] overflow-hidden">
+      <section ref={bookingRef} id="termin" className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-b from-[#111] via-[#0a0a0a] to-[#0a0a0a] overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[150px]" />
@@ -876,11 +892,12 @@ export default function NeumarktLandingPage() {
           >
             <button
               onClick={() => handleBookingClick('booking_section')}
-              className="group relative px-12 py-5 rounded-full bg-gradient-to-r from-secondary to-accent text-primary font-semibold text-lg overflow-hidden transition-all hover:shadow-2xl hover:shadow-secondary/30 hover:scale-105 w-full sm:w-auto"
+              className="group relative px-12 py-5 rounded-full bg-gradient-to-r from-secondary to-accent text-primary font-semibold text-lg overflow-hidden transition-all hover:shadow-2xl hover:shadow-secondary/30 hover:scale-105 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+              aria-label="Termin für ästhetische Behandlung in Neumarkt buchen"
             >
               <span className="relative z-10 flex items-center justify-center gap-3">
                 Zur Terminbuchung
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </span>
             </button>
             <p className="text-white/50 text-sm mt-4">
@@ -896,9 +913,10 @@ export default function NeumarktLandingPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               onClick={handleWhatsAppClick}
-              className="group flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:border-green-500/50 hover:bg-green-500/5 transition-all"
+              className="group flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:border-green-500/50 hover:bg-green-500/5 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+              aria-label="WhatsApp-Nachricht an Hautschimmer senden"
             >
-              <MessageCircle className="w-6 h-6 text-green-500" />
+              <MessageCircle className="w-6 h-6 text-green-500" aria-hidden="true" />
               <span className="text-white group-hover:text-green-400 transition-colors">WhatsApp schreiben</span>
             </motion.button>
 
@@ -908,9 +926,10 @@ export default function NeumarktLandingPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
               onClick={handlePhoneClick}
-              className="group flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:border-secondary/50 hover:bg-secondary/5 transition-all"
+              className="group flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:border-secondary/50 hover:bg-secondary/5 transition-all focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+              aria-label="Hautschimmer telefonisch kontaktieren"
             >
-              <Phone className="w-6 h-6 text-secondary" />
+              <Phone className="w-6 h-6 text-secondary" aria-hidden="true" />
               <span className="text-white group-hover:text-secondary transition-colors">0173 8615766</span>
             </motion.button>
           </div>
@@ -918,7 +937,7 @@ export default function NeumarktLandingPage() {
       </section>
 
       {/* Location Section */}
-      <section className="relative py-32 bg-[#0a0a0a]">
+      <section className="relative py-16 md:py-24 lg:py-32 bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
           <motion.div
@@ -980,7 +999,7 @@ export default function NeumarktLandingPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden h-[350px]"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden h-[280px] md:h-[350px]"
             >
               <iframe
                 src="https://maps.google.com/maps?q=Mussinanstra%C3%9Fe+65,+92318+Neumarkt+in+der+Oberpfalz&output=embed"
@@ -1033,14 +1052,15 @@ export default function NeumarktLandingPage() {
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <button
                   onClick={() => handleBookingClick('sticky_bar')}
-                  className="flex-1 sm:flex-none px-6 py-3 rounded-full bg-gradient-to-r from-secondary to-accent text-primary font-semibold text-sm hover:shadow-lg hover:shadow-secondary/25 transition-all flex items-center justify-center gap-2"
+                  className="flex-1 sm:flex-none px-6 py-3 rounded-full bg-gradient-to-r from-secondary to-accent text-primary font-semibold text-sm hover:shadow-lg hover:shadow-secondary/25 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+                  aria-label="Termin buchen"
                 >
                   Termin buchen
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </button>
                 <Link
                   href="#pricing"
-                  className="hidden sm:flex px-4 py-3 rounded-full border border-white/20 text-white text-sm hover:bg-white/10 transition-all"
+                  className="hidden sm:flex px-4 py-3 rounded-full border border-white/20 text-white text-sm hover:bg-white/10 transition-all focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
                 >
                   Preise
                 </Link>
