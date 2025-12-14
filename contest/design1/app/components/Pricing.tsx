@@ -32,56 +32,56 @@ const pricingData: Record<string, PricingCategory> = {
     muskelrelaxans: {
         description: 'Präzise Muskelentspannung für ein natürlich verjüngtes Aussehen',
         items: [
-            { name: '1 Zone (flexibel)', price: '189 €', info: 'Stirn, Glabella oder Krähenfüße', duration: '15–20 Min' },
-            { name: '2 Zonen (flexibel)', price: '314 €', info: 'Beliebige Kombination', duration: '20–25 Min' },
-            { name: '3 Zonen (flexibel)', price: '450 €', info: 'Beliebige Kombination', duration: '25–35 Min' },
-            { name: 'Bunny Lines', price: '150 €', info: 'Nasenfältchen', duration: '10–15 Min' },
-            { name: 'Lip Flip', price: '150 €', info: 'Oberlippenbetonung', duration: '10–15 Min' },
-            { name: 'Masseter / Facial Slimming', price: '300 €', info: 'Zähneknirschen & Kontur', duration: '15–25 Min' },
-            { name: 'Hyperhidrose (Achseln)', price: '500 €', info: 'Gegen starkes Schwitzen', duration: '25–35 Min' },
-            { name: 'Nefertiti-Lift', price: '300 €', info: 'Kiefer/Hals Definition', duration: '25–35 Min' },
+            { name: '1 Zone (flexibel)', price: '199 €', info: 'Stirn, Glabella oder Krähenfüße', duration: '15–20 Min' },
+            { name: '2 Zonen (flexibel)', price: '299 €', info: 'Beliebige Kombination', duration: '20–25 Min' },
+            { name: '3 Zonen (flexibel)', price: '399 €', info: 'Beliebige Kombination', duration: '25–35 Min' },
+            { name: 'Bunny Lines', price: '169 €', info: 'Nasenfältchen', duration: '10–15 Min' },
+            { name: 'Lip Flip', price: '149 €', info: 'Oberlippenbetonung', duration: '10–15 Min' },
+            { name: 'Masseter / Facial Slimming', price: '319 €', info: 'Zähneknirschen & Kontur', duration: '15–25 Min' },
+            { name: 'Hyperhidrose (Achseln)', price: '499 €', info: 'Gegen starkes Schwitzen', duration: '25–35 Min' },
+            { name: 'Nefertiti-Lift', price: '339 €', info: 'Kiefer/Hals Definition', duration: '25–35 Min' },
         ]
     },
     hyaluron: {
-        description: 'Standard 280 € pro ml • Areale mit ab‑Preis',
+        description: 'Standard 299 € pro ml • Areale mit ab‑Preis',
         items: [
-            { name: 'Standard (1 ml)', price: '280 €', info: 'Für diverse Areale', duration: '20–40 Min' },
-            { name: 'Lippenvolumen', price: 'ab 150 €', info: 'Natürlicher Aufbau', duration: '30–40 Min' },
-            { name: 'Nasolabialfalten', price: 'ab 250 €', info: 'Faltenglättung', duration: '20–30 Min' },
-            { name: 'Jawline Definition', price: 'ab 430 €', info: 'Kieferkonturierung', duration: '30–45 Min' },
-            { name: 'Wangenaufbau', price: 'ab 280 €', info: 'Volumen & Lift', duration: '30–45 Min' },
-            { name: 'Liquid Facelift', price: 'ab 1169 €', info: 'Full Face Approach', duration: '60 Min', special: true },
+            { name: 'Standard (1 ml)', price: '299 €', info: 'Für diverse Areale', duration: '20–40 Min' },
+            { name: 'Lippenvolumen', price: 'ab 189 €', info: 'Natürlicher Aufbau', duration: '30–40 Min' },
+            { name: 'Nasolabialfalten', price: 'ab 319 €', info: 'Faltenglättung', duration: '20–30 Min' },
+            { name: 'Jawline Definition', price: 'ab 599 €', info: 'Kieferkonturierung', duration: '30–45 Min' },
+            { name: 'Wangenaufbau', price: 'ab 329 €', info: 'Volumen & Lift', duration: '30–45 Min' },
+            { name: 'Liquid Facelift', price: 'ab 1299 €', info: 'Full Face Approach', duration: '60 Min', special: true },
         ],
         packages: [
-            { name: '2 ml Paket', price: '532 €', info: '5% Rabatt' },
-            { name: '3 ml Paket', price: '756 €', info: '10% Rabatt' },
+            { name: '2 ml Paket', price: '568 €', info: '5% Rabatt' },
+            { name: '3 ml Paket', price: '807 €', info: '10% Rabatt' },
         ]
     },
     prp: {
         description: 'Natürliche Hautverjüngung mit körpereigenen Wachstumsfaktoren',
         items: [
-            { name: 'PRP Behandlung', price: '500 €', info: '2 Termine inklusive', duration: '45-60 Min' },
-            { name: 'Einzelbehandlung', price: '300 €', info: 'Auffrischung', duration: '45 Min' },
+            { name: 'PRP Behandlung', price: '699 €', info: '2 Termine inklusive', duration: '45-60 Min' },
+            { name: 'Einzelbehandlung', price: '399 €', info: 'Auffrischung', duration: '45 Min' },
             { name: 'Anti-Aging Konzept', price: '1899 €', info: '4x Intensivkur + Analyse', duration: 'Kur', special: true },
         ]
     },
     polynucleotides: {
         description: 'Stimuliert Regeneration, Elastizität und Hautqualität',
         items: [
-            { name: 'Polynukleotide', price: '300 €', info: 'Zelluläre Regeneration', duration: '30–45 Min' },
+            { name: 'Polynukleotide', price: '299 €', info: 'Zelluläre Regeneration', duration: '30–45 Min' },
         ]
     },
     skinbooster: {
         description: 'Tiefenwirksame Hydratation für natürlichen Glow und pralle Haut',
         items: [
-            { name: 'Skin Booster', price: '310 €', info: 'Tiefenhydratation & Hautqualität', duration: '30–45 Min' },
+            { name: 'Skin Booster', price: '349 €', info: 'Tiefenhydratation & Hautqualität', duration: '30–45 Min' },
         ]
     },
     mesotherapy: {
         description: 'Gezielte Effekte im Augenbereich',
         items: [
-            { name: 'Augenpartie (1x)', price: '180 €', info: 'Revitalisierung', duration: '20–30 Min' },
-            { name: 'Augenpartie (2x)', price: '320 €', info: 'Intensivkur', duration: '2 Termine' },
+            { name: 'Augenpartie (1x)', price: '199 €', info: 'Revitalisierung', duration: '20–30 Min' },
+            { name: 'Augenpartie (2x)', price: '359 €', info: 'Intensivkur', duration: '2 Termine' },
         ]
     },
     vitamininfusion: {

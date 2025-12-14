@@ -394,32 +394,32 @@ const Treatments = () => {
     }, 350);
   };
 
-  // Preislabel für Sub-Behandlungen (vereinheitlicht nach neuem Schema)
+  // Preislabel für Sub-Behandlungen (vereinheitlicht nach neuem Schema – 70. Perzentil)
   const getPriceLabel = (subId: string) => {
     // Muskelrelaxans – Zonenmodell
     const botoxIds = [
       'faltenKorrektur','eyebrowLift','lipFlip','foreheadLines','frownLines','crowsFeet','bunnyLines','facialSlimming','neckLift','chinDimples','bruxismBehandlung','hyperhidrosisBehandlung','nasalTip'
     ];
     if (botoxIds.includes(subId)) {
-      // Spezielle Einzelpreise
-      if (subId === 'bunnyLines') return 'ab 150 €';
-      if (subId === 'lipFlip') return 'ab 150 €';
-      if (subId === 'hyperhidrosisBehandlung') return 'ab 500 €';
-      if (subId === 'bruxismBehandlung') return 'ab 300 €';
-      if (subId === 'nasalTip') return 'ab 150 €';
-      if (subId === 'chinDimples') return 'ab 150 €';
-      if (subId === 'eyebrowLift') return 'ab 150 €';
-      if (subId === 'neckLift') return 'ab 300 €';
+      // Spezielle Einzelpreise (70. Perzentil)
+      if (subId === 'bunnyLines') return 'ab 169 €';
+      if (subId === 'lipFlip') return 'ab 149 €';
+      if (subId === 'hyperhidrosisBehandlung') return 'ab 499 €';
+      if (subId === 'bruxismBehandlung') return 'ab 319 €';
+      if (subId === 'nasalTip') return 'ab 169 €';
+      if (subId === 'chinDimples') return 'ab 169 €';
+      if (subId === 'eyebrowLift') return 'ab 169 €';
+      if (subId === 'neckLift') return 'ab 339 €';
       // Standard-Zonenhinweis für übrige mimische Falten
-      if (['foreheadLines','frownLines','crowsFeet'].includes(subId)) return '1 Zone 189 €';
-      return '1 Zone 189 € · 2 Zonen 314 € · 3 Zonen 450 €';
+      if (['foreheadLines','frownLines','crowsFeet'].includes(subId)) return '1 Zone 199 €';
+      return '1 Zone 199 € · 2 Zonen 299 € · 3 Zonen 399 €';
     }
-    // Hyaluron – ab-Preise + Standard
-    if (subId === 'lippen') return 'ab 150 €';
-    if (subId === 'nasolabial') return 'ab 250 €';
-    if (subId === 'jawline') return 'ab 430 €';
-    if (subId === 'fullface') return 'ab 1169 €';
-    if (subId === 'tearTrough' || subId === 'chin' || subId === 'cheekbones' || subId === 'marionetten' || subId === 'barcode') return 'Standard 280 €/ml';
+    // Hyaluron – ab-Preise + Standard (70. Perzentil)
+    if (subId === 'lippen') return 'ab 189 €';
+    if (subId === 'nasolabial') return 'ab 319 €';
+    if (subId === 'jawline') return 'ab 599 €';
+    if (subId === 'fullface') return 'ab 1299 €';
+    if (subId === 'tearTrough' || subId === 'chin' || subId === 'cheekbones' || subId === 'marionetten' || subId === 'barcode') return 'Standard 299 €/ml';
     if (subId === 'hyaluronidase') return 'Preis nach Aufwand';
     return '';
   };

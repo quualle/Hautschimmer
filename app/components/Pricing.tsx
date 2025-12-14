@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { FaSyringe, FaDroplet, FaStar, FaClock, FaGift, FaCircleInfo, FaVial } from 'react-icons/fa6';
 import { getPlanityBookingUrl } from '../utils/planityBooking';
 
-// Neue Datenstruktur für die überarbeitete Preisliste
+// Neue Datenstruktur für die überarbeitete Preisliste (70. Perzentil Umfeld München-Nürnberg-Regensburg)
 const treatments = {
   muskelrelaxans: {
     title: 'Muskelrelaxans',
@@ -15,18 +15,18 @@ const treatments = {
     color: 'secondary',
     description: 'Präzise Muskelentspannung für ein natürlich verjüngtes Aussehen',
     treatments: [
-      { name: '1 Zone (flexibel)', price: 189, duration: '15–20 Min', info: 'Wählen Sie eine beliebige Zone (z. B. Stirn, Glabella oder Krähenfüße)', unit: undefined },
-      { name: '2 Zonen (flexibel)', price: 314, duration: '20–25 Min', info: 'Beliebige Kombination aus zwei Zonen', unit: undefined },
-      { name: '3 Zonen (flexibel)', price: 450, duration: '25–35 Min', info: 'Beliebige Kombination aus drei Zonen', unit: undefined },
+      { name: '1 Zone (flexibel)', price: 199, duration: '15–20 Min', info: 'Wählen Sie eine beliebige Zone (z. B. Stirn, Glabella oder Krähenfüße)', unit: undefined },
+      { name: '2 Zonen (flexibel)', price: 299, duration: '20–25 Min', info: 'Beliebige Kombination aus zwei Zonen', unit: undefined },
+      { name: '3 Zonen (flexibel)', price: 399, duration: '25–35 Min', info: 'Beliebige Kombination aus drei Zonen', unit: undefined },
       // Spezielle Areale
-      { name: 'Bunny Lines (Nasenfältchen)', price: 150, duration: '10–15 Min', info: 'Feine Fältchen am Nasenrücken werden sanft geglättet', unit: undefined },
-      { name: 'Lip Flip', price: 150, duration: '10–15 Min', info: 'Dezente Betonung der Oberlippe durch gezielte Muskelentspannung', unit: undefined },
-      { name: 'Hyperhidrose (Achseln)', price: 500, duration: '25–35 Min', info: 'Reduziert die Schweißproduktion an den Achseln für mehrere Monate', unit: undefined },
-      { name: 'Masseter (Bruxismus / Gesichtsverschmälerung)', price: 300, duration: '15–25 Min', info: 'Entspannt die Kaumuskeln – Linderung von Knirschen und schmalere Kontur', unit: undefined },
-      { name: 'Nasenspitze (Nasen-Botox)', price: 150, duration: '10–15 Min', info: 'Feinkorrektur der Nasenspitzenbewegung für ein harmonisches Profil', unit: undefined },
-      { name: 'Erdbeerkinn (Pflasterstein-Kinn)', price: 150, duration: '10–15 Min', info: 'Glättet unruhige Kinnhaut und Grübchenbildung', unit: undefined },
-      { name: 'Augenbrauen-Lift', price: 150, duration: '10–15 Min', info: 'Hebt den seitlichen Brauenanteil für einen offeneren Blick', unit: undefined },
-      { name: 'Nefertiti-Lift (Kiefer/Hals)', price: 300, duration: '25–35 Min', info: 'Definiert Kinn- und Halslinie durch gezielte Muskelentspannung', unit: undefined },
+      { name: 'Bunny Lines (Nasenfältchen)', price: 169, duration: '10–15 Min', info: 'Feine Fältchen am Nasenrücken werden sanft geglättet', unit: undefined },
+      { name: 'Lip Flip', price: 149, duration: '10–15 Min', info: 'Dezente Betonung der Oberlippe durch gezielte Muskelentspannung', unit: undefined },
+      { name: 'Hyperhidrose (Achseln)', price: 499, duration: '25–35 Min', info: 'Reduziert die Schweißproduktion an den Achseln für mehrere Monate', unit: undefined },
+      { name: 'Masseter (Bruxismus / Gesichtsverschmälerung)', price: 319, duration: '15–25 Min', info: 'Entspannt die Kaumuskeln – Linderung von Knirschen und schmalere Kontur', unit: undefined },
+      { name: 'Nasenspitze (Nasen-Botox)', price: 169, duration: '10–15 Min', info: 'Feinkorrektur der Nasenspitzenbewegung für ein harmonisches Profil', unit: undefined },
+      { name: 'Erdbeerkinn (Pflasterstein-Kinn)', price: 169, duration: '10–15 Min', info: 'Glättet unruhige Kinnhaut und Grübchenbildung', unit: undefined },
+      { name: 'Augenbrauen-Lift', price: 169, duration: '10–15 Min', info: 'Hebt den seitlichen Brauenanteil für einen offeneren Blick', unit: undefined },
+      { name: 'Nefertiti-Lift (Kiefer/Hals)', price: 339, duration: '25–35 Min', info: 'Definiert Kinn- und Halslinie durch gezielte Muskelentspannung', unit: undefined },
     ],
     packages: []
   },
@@ -35,20 +35,20 @@ const treatments = {
     subtitle: 'Volumenaufbau & Konturierung',
     icon: FaDroplet,
     color: 'accent',
-    description: 'Standard 280 € pro ml • Areale mit ab‑Preis',
+    description: 'Standard 299 € pro ml • Areale mit ab‑Preis',
     treatments: [
-      { name: 'Standard (1 ml)', price: 280, unit: ' / ml', duration: '20–40 Min', info: 'Gilt für alle nicht gesondert gelisteten Areale' },
-      { name: 'Lippen', price: 150, duration: '30–40 Min', info: 'Natürlicher Volumenaufbau – ab Preis', unit: undefined },
-      { name: 'Nasolabialfalten', price: 250, duration: '20–30 Min', info: 'Ausgleich der Falten von Nase zu Mund – ab Preis', unit: undefined },
-      { name: 'Jawline', price: 430, duration: '30–45 Min', info: 'Kieferlinie definieren – ab Preis', unit: undefined },
-      { name: 'Wangen/Midface', price: 280, duration: '30–45 Min', info: 'Volumen & Lift – ab Preis', unit: undefined },
-      { name: 'Kinn', price: 280, duration: '20–40 Min', info: 'Profilharmonisierung – ab Preis', unit: undefined },
+      { name: 'Standard (1 ml)', price: 299, unit: ' / ml', duration: '20–40 Min', info: 'Gilt für alle nicht gesondert gelisteten Areale' },
+      { name: 'Lippen', price: 189, duration: '30–40 Min', info: 'Natürlicher Volumenaufbau – ab Preis', unit: undefined },
+      { name: 'Nasolabialfalten', price: 319, duration: '20–30 Min', info: 'Ausgleich der Falten von Nase zu Mund – ab Preis', unit: undefined },
+      { name: 'Jawline', price: 599, duration: '30–45 Min', info: 'Kieferlinie definieren – ab Preis', unit: undefined },
+      { name: 'Wangen/Midface', price: 329, duration: '30–45 Min', info: 'Volumen & Lift – ab Preis', unit: undefined },
+      { name: 'Kinn', price: 299, duration: '20–40 Min', info: 'Profilharmonisierung – ab Preis', unit: undefined },
     ],
     packages: [
-      { name: '2 ml Paket', price: 532, info: '5% Rabatt', special: undefined },
-      { name: '3 ml Paket', price: 756, info: '10% Rabatt', special: undefined },
-      { name: '4 ml Paket', price: 1008, info: '10% Rabatt', special: undefined },
-      { name: 'Liquid Facelift', price: 1169, info: 'Umfassende Gesichtskonturierung – ab Preis', special: true },
+      { name: '2 ml Paket', price: 568, info: '5% Rabatt', special: undefined },
+      { name: '3 ml Paket', price: 807, info: '10% Rabatt', special: undefined },
+      { name: '4 ml Paket', price: 1076, info: '10% Rabatt', special: undefined },
+      { name: 'Liquid Facelift', price: 1299, info: 'Umfassende Gesichtskonturierung – ab Preis', special: true },
     ]
   },
   prp: {
@@ -58,14 +58,14 @@ const treatments = {
     color: 'primary',
     description: 'Natürliche Hautverjüngung mit körpereigenen Wachstumsfaktoren',
     treatments: [
-      { name: 'PRP Behandlung', price: 500, duration: '45-60 Min', info: 'Intensive Hautregeneration – zwei Termine', unit: undefined },
-      { name: 'Ergänzende Einzelbehandlung', price: 300, duration: '45 Min', info: 'Zusätzliche PRP-Sitzung', unit: undefined }
+      { name: 'PRP Behandlung (2 Termine)', price: 699, duration: '45-60 Min', info: 'Intensive Hautregeneration – zwei Termine', unit: undefined },
+      { name: 'PRP Einzelbehandlung', price: 399, duration: '45 Min', info: 'Zusätzliche PRP-Sitzung', unit: undefined }
     ],
     packages: [
-      { 
-        name: 'Exklusives Anti-Aging Konzept', 
-        price: 1899, 
-        special: true, 
+      {
+        name: 'Exklusives Anti-Aging Konzept',
+        price: 1899,
+        special: true,
         info: '4x 3-Stufen Intensivbehandlung + Nährstoffanalyse. Inkl. PRP + Infusion + individuelle PRP-Creme',
         savings: undefined
       }
@@ -79,7 +79,7 @@ const treatments = {
     color: 'primary',
     description: 'Stimuliert Regeneration, Elastizität und Hautqualität',
     treatments: [
-      { name: 'Polynukleotide', price: 300, duration: '30–45 Min', info: 'Zellfreie Regeneration, fördert Kollagen & Elastin', unit: undefined },
+      { name: 'Polynukleotide', price: 299, duration: '30–45 Min', info: 'Zellfreie Regeneration, fördert Kollagen & Elastin', unit: undefined },
     ],
     packages: []
   }
@@ -91,8 +91,8 @@ const treatments = {
     color: 'accent',
     description: 'Gezielte Effekte im Augenbereich',
     treatments: [
-      { name: '1x Behandlung Augenpartie', price: 180, duration: '20–30 Min', info: 'Sanfte Revitalisierung und Glättung', unit: undefined },
-      { name: '2x Behandlung Augenpartie', price: 320, duration: '2 Termine', info: 'Kombinierte Behandlung für intensiveren Effekt', unit: undefined }
+      { name: '1x Behandlung Augenpartie', price: 199, duration: '20–30 Min', info: 'Sanfte Revitalisierung und Glättung', unit: undefined },
+      { name: '2x Behandlung Augenpartie', price: 359, duration: '2 Termine', info: 'Kombinierte Behandlung für intensiveren Effekt', unit: undefined }
     ],
     packages: []
   },
