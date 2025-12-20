@@ -23,6 +23,7 @@ export async function GET() {
     { loc: `${baseUrl}/datenschutz`, lastmod: new Date().toISOString(), changefreq: 'yearly', priority: 0.3 },
     // Location pages
     { loc: `${baseUrl}/neumarkt`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.9 },
+    { loc: `${baseUrl}/neumarkt/landing`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.9 },
     { loc: `${baseUrl}/koenigs-wusterhausen`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.9 },
     // Service + Location pages - Neumarkt
     { loc: `${baseUrl}/neumarkt/botox`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
