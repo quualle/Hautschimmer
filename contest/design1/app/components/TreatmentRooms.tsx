@@ -9,6 +9,7 @@ const locations = [
         name: "Hautschimmer Neumarkt",
         city: "Neumarkt i.d.Opf",
         image: "/images/Studio Neumarkt.jpeg",
+        alt: "Behandlungsraum Hautschimmer Neumarkt - Ästhetische Medizin in der Oberpfalz",
         desc: "Unser Hauptstandort im Herzen der Oberpfalz. Professionelle ästhetische Medizin durch Ärztin Saskia Heer in modernem Ambiente.",
         address: "Mussinanstraße 65",
         link: "/neumarkt"
@@ -17,6 +18,7 @@ const locations = [
         name: "Glam & Glow Beauty",
         city: "Königs Wusterhausen",
         image: "/images/room.jpg",
+        alt: "Behandlungsraum Königs Wusterhausen - Botox & Hyaluron Berlin Süd",
         desc: "Unsere Behandlungen im Süden von Berlin. Ideal erreichbar aus Berlin und Brandenburg, direkt am Bahnhof KW.",
         address: "Bahnhofstraße 8",
         link: "/koenigs-wusterhausen"
@@ -42,7 +44,7 @@ const TreatmentRooms = () => {
                             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl mb-8">
                                 <Image
                                     src={loc.image}
-                                    alt={loc.name}
+                                    alt={loc.alt}
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
