@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 type HeroVideoProps = {
   webmSrc?: string;
@@ -18,6 +19,24 @@ export default function HeroVideo({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile devices
+    const checkMobile = () => window.innerWidth < 768;
+    setIsMobile(checkMobile());
+
+    // On desktop, load video immediately
+    // On mobile, delay video loading to improve LCP
+    if (!checkMobile()) {
+      setShouldLoadVideo(true);
+    } else {
+      // On mobile, load video after LCP (2 seconds delay)
+      const timer = setTimeout(() => setShouldLoadVideo(true), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -30,25 +49,36 @@ export default function HeroVideo({
       video.removeEventListener("canplay", onCanPlay);
       video.removeEventListener("error", onError);
     };
-  }, []);
-
-  if (hasError) return null;
+  }, [shouldLoadVideo]);
 
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <video
-        ref={videoRef}
-        className={className}
-        autoPlay
-        playsInline
-        muted
-        loop
-        preload="auto"
-        poster={poster}
-      >
-        <source src={webmSrc} type="video/webm" />
-        <source src={mp4Src} type="video/mp4" />
-      </video>
+      {/* Priority poster image for fast LCP */}
+      <Image
+        src={poster}
+        alt="Hautschimmer - Ästhetische Medizin für natürliche Schönheit"
+        fill
+        priority
+        quality={85}
+        className={`object-cover ${shouldLoadVideo && isReady ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
+        sizes="100vw"
+      />
+
+      {/* Video loads after poster for better LCP */}
+      {shouldLoadVideo && !hasError && (
+        <video
+          ref={videoRef}
+          className={`${className} ${isReady ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
+          autoPlay
+          playsInline
+          muted
+          loop
+          preload={isMobile ? "none" : "auto"}
+        >
+          <source src={webmSrc} type="video/webm" />
+          <source src={mp4Src} type="video/mp4" />
+        </video>
+      )}
 
       {/* Overlay: sanfter Vignette + Gradient für Lesbarkeit */}
       <div className="absolute inset-0 pointer-events-none">
@@ -56,18 +86,12 @@ export default function HeroVideo({
         <div className="absolute inset-0" style={{ boxShadow: "inset 0 0 200px rgba(0,0,0,0.35)" }} />
       </div>
 
-      {/* Reduced motion Fallback: statisches Poster */}
+      {/* Reduced motion Fallback */}
       <style jsx>{`
         @media (prefers-reduced-motion: reduce) {
-          video { display: none; }
-          .poster-fallback { display: block; }
+          video { display: none !important; }
         }
       `}</style>
-      <img
-        src={poster}
-        alt="Hero Poster"
-        className="poster-fallback hidden absolute inset-0 w-full h-full object-cover"
-      />
     </div>
   );
 }

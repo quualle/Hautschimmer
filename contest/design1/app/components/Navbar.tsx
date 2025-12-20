@@ -41,7 +41,7 @@ const Navbar = () => {
                     <div className="w-10 h-10 rounded-full overflow-hidden relative">
                         <Image
                             src="/images/logo.jpg"
-                            alt="Logo"
+                            alt="Hautschimmer Logo - Ästhetische Medizin"
                             fill
                             className="object-cover"
                         />
