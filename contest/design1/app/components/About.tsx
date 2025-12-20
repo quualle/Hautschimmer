@@ -19,7 +19,7 @@ const About = () => {
                         <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
                             <Image
                                 src="/images/saskia.png"
-                                alt="Saskia Heer"
+                                alt="Ärztin Saskia Heer - Spezialistin für ästhetische Medizin bei Hautschimmer"
                                 fill
                                 className="object-cover"
                             />
