@@ -42,15 +42,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Outside working hours' }, { status: 400 });
     }
 
-    // Check overlap with existing bookings
-    const existing = await listBookingsByDateUnified(date);
-    const conflict = existing.some((b: any) => overlaps(start, end, timeToMinutes(b.startTime), timeToMinutes(b.endTime)));
+    // Check overlap with existing bookings (inkl. Puffer)
+    const bufferMinutes = NEUMARKT_CONFIG.bufferMinutes || 0;
+    const existing = await listBookingsByDateUnified(date, 'neumarkt');
+    const conflict = existing.some((b: any) => {
+      const bStart = timeToMinutes(b.startTime);
+      const bEnd = timeToMinutes(b.endTime) + bufferMinutes;
+      // Neuer Termin braucht auch Puffer am Ende
+      return overlaps(start, end + bufferMinutes, bStart, bEnd);
+    });
     if (conflict) {
       return NextResponse.json({ error: 'Slot already booked' }, { status: 409 });
     }
 
     const endTime = minutesToTime(end);
     const booking = await addBookingUnified({
+      location: 'neumarkt',
       firstName,
       lastName,
       email,

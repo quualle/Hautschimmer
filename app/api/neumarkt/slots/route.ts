@@ -41,15 +41,22 @@ export async function GET(req: NextRequest) {
       if (!Number.isNaN(d) && d > 0) duration = d;
     }
 
-    const bookings = await listBookingsByDate(date);
+    const bookings = await listBookingsByDate(date, 'neumarkt');
+    const bufferMinutes = NEUMARKT_CONFIG.bufferMinutes || 0;
+
+    // Bestehende Buchungen mit Puffer als blockierte Intervalle
     const busyIntervals: { start: number; end: number }[] = (bookings || [])
       .filter((b: any) => typeof b?.startTime === 'string' && typeof b?.endTime === 'string')
-      .map((b: any) => ({ start: timeToMinutes(b.startTime), end: timeToMinutes(b.endTime) }));
+      .map((b: any) => ({
+        start: timeToMinutes(b.startTime),
+        end: timeToMinutes(b.endTime) + bufferMinutes, // Puffer am Ende
+      }));
 
     const slots: { time: string; available: boolean }[] = [];
     for (let start = openMin; start + duration <= closeMin; start += NEUMARKT_CONFIG.slotIntervalMinutes) {
       const end = start + duration;
-      const isBusy = busyIntervals.some((iv: { start: number; end: number }) => overlaps(start, end, iv.start, iv.end));
+      // Neuer Termin braucht auch Puffer am Ende
+      const isBusy = busyIntervals.some((iv) => overlaps(start, end + bufferMinutes, iv.start, iv.end));
       slots.push({ time: minutesToTime(start), available: !isBusy });
     }
 

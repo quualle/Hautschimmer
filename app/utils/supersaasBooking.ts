@@ -23,10 +23,13 @@ export enum BookingLocation {
   NEUMARKT = 'neumarkt'
 }
 
+// KW Booking URL - jetzt auch intern
+export const KW_BOOKING_URL = '/booking/kw';
+
 export const getBookingUrlForLocation = (location: BookingLocation) => {
   switch (location) {
     case BookingLocation.KOENIGS_WUSTERHAUSEN:
-      return 'https://www.planity.com/de-DE/glam-glow-beauty-15711-konigs-wusterhausen#service-name-10-0';
+      return KW_BOOKING_URL; // Jetzt interne Buchungsseite statt Planity
     case BookingLocation.NEUMARKT:
       return NEUMARKT_BOOKING_URL;
     default:
@@ -38,13 +41,8 @@ export const openBookingForLocation = (location: BookingLocation, e?: React.Mous
   if (e) {
     e.preventDefault();
   }
-  
-  if (location === BookingLocation.KOENIGS_WUSTERHAUSEN) {
-    // Externe Planity-Buchung öffnen
-    const url = getBookingUrlForLocation(location);
-    window.open(url, '_blank');
-  } else {
-    // Interne Neumarkt-Buchungsseite
-    openNeumarktBooking(e);
-  }
+
+  // Beide Standorte nutzen jetzt interne Buchungsseiten
+  const url = getBookingUrlForLocation(location);
+  window.location.href = url;
 };

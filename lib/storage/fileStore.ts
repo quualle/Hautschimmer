@@ -5,7 +5,7 @@ import { TREATMENTS, getTreatmentById } from '../../src/data/treatments';
 
 export type Booking = {
   id: string;
-  location: 'neumarkt';
+  location: 'neumarkt' | 'kw';
   firstName: string;
   lastName: string;
   email: string;
@@ -65,9 +65,18 @@ function writeAll(data: BookingsFile) {
   }
 }
 
-export function listBookingsByDate(date: string): Booking[] {
+export function listBookingsByDate(date: string, location?: 'neumarkt' | 'kw'): Booking[] {
   const { bookings } = readAll();
-  return bookings.filter(b => b.date === date && b.status !== 'cancelled');
+  return bookings.filter(b =>
+    b.date === date &&
+    b.status !== 'cancelled' &&
+    (location === undefined || b.location === location)
+  );
+}
+
+export function listBookingsByLocation(location: 'neumarkt' | 'kw'): Booking[] {
+  const { bookings } = readAll();
+  return bookings.filter(b => b.location === location);
 }
 
 export function listAllBookings(): Booking[] {
