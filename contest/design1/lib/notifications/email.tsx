@@ -1,4 +1,5 @@
 import { Booking } from '../storage/fileStore';
+import { LOCATIONS } from '@/src/data/locations';
 
 export function renderBookingEmailHTML(booking: Booking) {
   const fullName = `${booking.firstName} ${booking.lastName}`.trim();
@@ -6,12 +7,17 @@ export function renderBookingEmailHTML(booking: Booking) {
   const localeDate = date.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
   const time = `${booking.startTime}–${booking.endTime} Uhr`;
 
+  const loc = LOCATIONS[booking.location];
+  const brandName = loc.brandName;
+  const locationName = loc.locationName;
+  const mapsQuery = encodeURIComponent(loc.mapsQuery);
+
   return `<!DOCTYPE html>
   <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terminbestätigung – MedEstetique</title>
+    <title>Terminbestätigung – ${brandName}</title>
     <style>
       body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background: #F7FAFC; color: #1A202C; }
       .container { max-width: 640px; margin: 0 auto; padding: 24px; }
@@ -34,12 +40,12 @@ export function renderBookingEmailHTML(booking: Booking) {
     <div class="container">
       <div class="card">
         <div class="header">
-          <div class="brand">MedEstetique by Saskia Heer</div>
+          <div class="brand">${brandName}</div>
           <div class="title">Ihre Terminbestätigung</div>
         </div>
         <div class="content">
           <p>Liebe/r ${fullName},</p>
-          <p>vielen Dank für Ihre Buchung. Wir freuen uns, Sie bei uns in <strong>Neumarkt i.d.Opf</strong> begrüßen zu dürfen.</p>
+          <p>vielen Dank für Ihre Buchung. Wir freuen uns, Sie bei uns in <strong>${locationName}</strong> begrüßen zu dürfen.</p>
 
           <div class="row">
             <div class="cell">
@@ -66,7 +72,7 @@ export function renderBookingEmailHTML(booking: Booking) {
           <p class="note">Bitte kommen Sie 5 Minuten vor Ihrem Termin und bringen Sie ggf. relevante Unterlagen mit. Falls Sie verhindert sind, geben Sie uns bitte frühzeitig Bescheid.</p>
 
           <p style="margin-top: 18px;">
-            <a class="cta" href="https://www.google.com/maps/search/?api=1&query=Neumarkt%20i.d.Opf%20MedEstetique" target="_blank" rel="noopener">Route planen</a>
+            <a class="cta" href="https://www.google.com/maps/search/?api=1&query=${mapsQuery}" target="_blank" rel="noopener">Route planen</a>
           </p>
 
           <p class="note" style="margin-top: 20px;">
@@ -74,7 +80,7 @@ export function renderBookingEmailHTML(booking: Booking) {
           </p>
         </div>
         <div class="footer">
-          MedEstetique · Neumarkt i.d.Opf · Diese E‑Mail wurde automatisch generiert
+          ${brandName} · ${locationName} · Diese E‑Mail wurde automatisch generiert
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ export type NeumarktConfig = {
   startDate: string; // YYYY-MM-DD
   slotIntervalMinutes: number; // granularity of time slots
   defaultDurationMinutes: number; // fallback when treatment not found
+  bufferMinutes: number; // buffer between appointments
   workingHours: WorkingHours[]; // weekly schedule
   closedDates: string[]; // YYYY-MM-DD
 };
@@ -21,6 +22,7 @@ export const NEUMARKT_CONFIG: NeumarktConfig = {
   startDate: '2025-10-13',
   slotIntervalMinutes: 15,
   defaultDurationMinutes: 30,
+  bufferMinutes: 15, // 15 Min Puffer zwischen Terminen
   workingHours: [
     { day: 1, open: '10:00', close: '18:00' }, // Monday
     { day: 6, open: '10:00', close: '18:00' }, // Saturday
