@@ -11,7 +11,7 @@ type HeroVideoProps = {
 };
 
 export default function HeroVideo({
-  webmSrc,
+  webmSrc = "/videos/hero.webm",
   mp4Src = "/videos/hero.mp4",
   poster = "/images/hero-bg.jpg",
   className = "absolute inset-0 w-full h-full object-cover",
@@ -74,7 +74,7 @@ export default function HeroVideo({
           playsInline
           muted
           loop
-          preload={isMobile ? "none" : "auto"}
+          preload="metadata"
         >
           {webmSrc && <source src={webmSrc} type="video/webm" />}
           <source src={mp4Src} type="video/mp4" />
