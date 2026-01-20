@@ -42,7 +42,9 @@ const Navbar = () => {
                         <Image
                             src="/images/logo.jpg"
                             alt="Hautschimmer Logo - Ästhetische Medizin"
-                            fill
+                            width={40}
+                            height={40}
+                            sizes="40px"
                             className="object-cover"
                         />
                     </div>
@@ -72,6 +74,8 @@ const Navbar = () => {
                 <button
                     className="md:hidden z-50"
                     onClick={() => setIsOpen(!isOpen)}
+                    aria-label={isOpen ? "Menü schließen" : "Menü öffnen"}
+                    aria-expanded={isOpen}
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>

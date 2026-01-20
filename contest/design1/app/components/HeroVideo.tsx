@@ -11,7 +11,7 @@ type HeroVideoProps = {
 };
 
 export default function HeroVideo({
-  webmSrc = "/videos/hero.webm",
+  webmSrc,
   mp4Src = "/videos/hero.mp4",
   poster = "/images/hero-bg.jpg",
   className = "absolute inset-0 w-full h-full object-cover",
@@ -59,6 +59,7 @@ export default function HeroVideo({
         alt="Hautschimmer - Ästhetische Medizin für natürliche Schönheit"
         fill
         priority
+        fetchPriority="high"
         quality={85}
         className={`object-cover ${shouldLoadVideo && isReady ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
         sizes="100vw"
@@ -75,7 +76,7 @@ export default function HeroVideo({
           loop
           preload={isMobile ? "none" : "auto"}
         >
-          <source src={webmSrc} type="video/webm" />
+          {webmSrc && <source src={webmSrc} type="video/webm" />}
           <source src={mp4Src} type="video/mp4" />
         </video>
       )}

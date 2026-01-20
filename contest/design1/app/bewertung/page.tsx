@@ -100,6 +100,7 @@ export default function BewertungPage() {
                     alt="Hautschimmer"
                     width={80}
                     height={80}
+                    sizes="80px"
                     className="object-cover"
                   />
                 </div>

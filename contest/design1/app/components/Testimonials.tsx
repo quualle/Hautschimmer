@@ -84,13 +84,16 @@ const Testimonials = () => {
                         </AnimatePresence>
                     </div>
 
-                    <div className="flex justify-center gap-3 mt-12">
+                    <div className="flex justify-center gap-3 mt-12" role="tablist" aria-label="Kundenstimmen Navigation">
                         {testimonials.map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => setCurrentIndex(index)}
                                 className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-primary w-8' : 'bg-secondary/30 hover:bg-secondary/50'
                                     }`}
+                                aria-label={`Bewertung ${index + 1} von ${testimonials.length} anzeigen`}
+                                aria-selected={index === currentIndex}
+                                role="tab"
                             />
                         ))}
                     </div>
