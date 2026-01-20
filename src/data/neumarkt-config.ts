@@ -24,7 +24,7 @@ export const NEUMARKT_CONFIG: NeumarktConfig = {
   defaultDurationMinutes: 30,
   bufferMinutes: 15, // 15 Min Puffer zwischen Terminen
   workingHours: [
-    { day: 1, open: '10:00', close: '17:00' }, // Monday
+    { day: 1, open: '09:30', close: '14:30' }, // Monday
     { day: 6, open: '10:00', close: '17:00' }, // Saturday
     // Other days: closed
   ],
