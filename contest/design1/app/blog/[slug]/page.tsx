@@ -5,6 +5,12 @@ import BlogArticleComponent from '../../components/BlogArticle'
 import { supabase } from '@/src/lib/supabase/marketing'
 import { BlogArticle } from '@/src/types/blog'
 
+// Revalidate every 60 seconds - changes in Supabase will be visible after max 1 minute
+export const revalidate = 60
+
+// Allow new articles to be rendered on-demand (not just those from generateStaticParams)
+export const dynamicParams = true
+
 export async function generateStaticParams() {
   const { data } = await supabase
     .from('articles')

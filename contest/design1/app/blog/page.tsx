@@ -6,6 +6,9 @@ import { supabase } from '@/src/lib/supabase/marketing'
 import { BlogArticle, TreatmentType, AgeGroup } from '@/src/types/blog'
 import BlogFilters from './BlogFilters'
 
+// Revalidate every 60 seconds - changes in Supabase will be visible after max 1 minute
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Blog | Expertenwissen zur ästhetischen Medizin | Hautschimmer',
   description: 'Informieren Sie sich über Botox, Hyaluron, PRP und weitere Behandlungen der ästhetischen Medizin. Fachartikel von Ärztin Saskia Heer aus Neumarkt i.d.Opf und Königs Wusterhausen.',
